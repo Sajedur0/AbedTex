@@ -8,6 +8,8 @@ export default defineConfig({
   server: {
     port: 3000,
     open: false,
-    host: true
-  }
+    host: true,
+    // Allow the sandbox preview host (dev server only)
+    allowedHosts: true,
+  },
 });
