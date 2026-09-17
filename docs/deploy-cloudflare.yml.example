@@ -1,9 +1,11 @@
-name: Deploy to Cloudflare Pages
+name: Deploy to Cloudflare
 
-# Optional CI/CD: deploys the site to Cloudflare Pages on every push to main.
+# Optional CI/CD: deploys the site on every push to main.
 # Requires these repository secrets:
-#   CLOUDFLARE_API_TOKEN   — token with "Cloudflare Pages: Edit" permission
+#   CLOUDFLARE_API_TOKEN   — token with "Workers Scripts: Edit" permission
 #   CLOUDFLARE_ACCOUNT_ID  — your Cloudflare account ID
+#
+# Setup: copy this file into .github/workflows/deploy-cloudflare.yml
 on:
   push:
     branches: [main]
@@ -22,7 +24,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
       - name: Install dependencies
@@ -31,9 +33,9 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Deploy to Cloudflare Pages
+      - name: Deploy to Cloudflare Workers (static assets)
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=abedtex
+          command: deploy

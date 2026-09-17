@@ -48,36 +48,40 @@ npm run build
 npm run preview
 ```
 
-## Deployment (Cloudflare Pages)
+## Deployment (Cloudflare — Workers with static assets)
 
-The project is configured to deploy to **Cloudflare Pages** out of the box:
+The project is configured for **Cloudflare's unified Workers & Pages platform** (a Worker serving the Vite build as static assets):
 
-- `wrangler.toml` — Cloudflare Pages project config (`pages_build_output_dir = "dist"`)
-- `public/_redirects` — SPA fallback (`/* → /index.html 200`)
+- `wrangler.toml` — Worker config: `[assets] directory = "./dist"` + `not_found_handling = "single-page-application"` (SPA fallback)
 - `public/_headers` — asset caching & security headers
-- `.node-version` — pins Node 20 for Cloudflare's build system
+- `.node-version` + `engines.node` — pins **Node 22** (required by wrangler 4.x) on Cloudflare's build system
+- `package.json` scripts:
+  - `npm run deploy` — build + `wrangler deploy`
+  - `npm run cf:dev` — build + local Worker runtime preview
 
-### Option 1 — Deploy via Wrangler CLI (recommended)
+> **Important:** the `name` in `wrangler.toml` must match your app's name in the Cloudflare dashboard. If your Worker has a different name, update it there.
+
+### Option 1 — Git integration (auto-deploy on push)
+
+If you already connected the repo in the dashboard, make sure the build settings are:
+
+| Setting | Value |
+|---|---|
+| **Build command** | `npm run build` |
+| **Deploy command** | `npx wrangler deploy` |
+| **Branch control / Production branch** | `main` (or your preferred branch) |
+
+Cloudflare automatically runs `npx wrangler versions upload` for non-production branches (preview builds) and `npx wrangler deploy` for the production branch. Non-production branches also need **Node 22** — already handled by `.node-version` in this repo.
+
+### Option 2 — Deploy via Wrangler CLI
 
 ```bash
 # One-time: login to Cloudflare
 npx wrangler login
 
-# Build + deploy to Cloudflare Pages
+# Build + deploy
 npm run deploy
 ```
-
-The first `npm run deploy` will ask you to create a Pages project (name it `abedtex` or accept the default from `wrangler.toml`). After that, each run creates a new deployment and prints a `*.pages.dev` URL.
-
-### Option 2 — Connect the Git repository (auto-deploy on push)
-
-1. In the Cloudflare dashboard go to **Workers & Pages → Create → Pages → Connect to Git**.
-2. Select this repository.
-3. Build settings:
-   - **Framework preset:** Vite (or None)
-   - **Build command:** `npm run build`
-   - **Build output directory:** `dist`
-4. Save & Deploy. Every push to `main` now deploys automatically.
 
 ### Option 3 — GitHub Actions
 
@@ -90,7 +94,7 @@ cp docs/deploy-cloudflare.yml.example .github/workflows/deploy-cloudflare.yml
 
 Required secrets:
 
-- `CLOUDFLARE_API_TOKEN` — API token with **Cloudflare Pages: Edit** permission
+- `CLOUDFLARE_API_TOKEN` — API token with permission to edit Workers (and Deployments)
 - `CLOUDFLARE_ACCOUNT_ID` — your Cloudflare account ID
 
 Once added, every push to `main` deploys automatically.
@@ -98,8 +102,17 @@ Once added, every push to `main` deploys automatically.
 ### Local Cloudflare preview
 
 ```bash
-# Serves the production build through Wrangler's local Pages runtime
-npm run pages:dev
+# Serves the production build through Wrangler's local Worker runtime
+npm run cf:dev
+```
+
+### Classic Cloudflare Pages (alternative)
+
+Prefer the classic Pages product instead? Skip `wrangler.toml` entirely — in the dashboard create a **Pages** project (Connect to Git) with framework preset **Vite**, build command `npm run build`, output directory `dist`, or from your machine run:
+
+```bash
+npx wrangler login
+npm run deploy:pages   # build + wrangler pages deploy dist
 ```
 
 ## Project Structure
