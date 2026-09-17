@@ -1,0 +1,17 @@
+# Cloudflare configuration (Worker with static assets)
+# Docs: https://developers.cloudflare.com/workers/static-assets/
+#
+# NOTE: `name` must match your Worker's name in the Cloudflare dashboard
+# (Workers & Pages -> your app). If it differs, update it here, otherwise
+# `wrangler deploy` will target a different Worker.
+name = "abedtex"
+compatibility_date = "2025-01-01"
+
+[assets]
+directory = "./dist"
+
+# Serve index.html for any request that doesn't match a static asset (SPA fallback)
+not_found_handling = "single-page-application"
+
+# Deploy:    npm run deploy        (build + wrangler deploy)
+# Local:     npm run cf:dev        (build + local Worker runtime preview)

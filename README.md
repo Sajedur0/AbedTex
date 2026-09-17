@@ -48,6 +48,74 @@ npm run build
 npm run preview
 ```
 
+## Deployment (Cloudflare — Workers with static assets)
+
+The project is configured for **Cloudflare's unified Workers & Pages platform** (a Worker serving the Vite build as static assets):
+
+- `wrangler.toml` — Worker config: `[assets] directory = "./dist"` + `not_found_handling = "single-page-application"` (SPA fallback)
+- `public/_headers` — asset caching & security headers
+- `.node-version` + `engines.node` — pins **Node 22** (required by wrangler 4.x) on Cloudflare's build system
+- `package.json` scripts:
+  - `prepare` — **auto-builds on every `npm install`/`npm ci`**, so `dist/` always exists before the deploy command runs (this is what makes Cloudflare's build pipeline work even without a separate build command)
+  - `npm run deploy` — build + `wrangler deploy`
+  - `npm run cf:dev` — build + local Worker runtime preview
+
+> **Important:** the `name` in `wrangler.toml` must match your app's name in the Cloudflare dashboard. If your Worker has a different name, update it there.
+
+### Option 1 — Git integration (auto-deploy on push)
+
+Cloudflare's build pipeline (`npm clean-install` → deploy command) works out of the box because the `prepare` script builds `dist/` during dependency install. Still, the recommended dashboard settings (Workers & Pages → your app → Settings → Build) are:
+
+| Setting | Value |
+|---|---|
+| **Build command** | `npm run build` (optional — `prepare` covers it) |
+| **Deploy command** | `npx wrangler deploy` for production branch / `npx wrangler versions upload` for preview branches (Cloudflare defaults) |
+| **Production branch** | `main` |
+
+Preview (non-production) branches get a preview version URL via `versions upload`; pushing to the production branch runs `wrangler deploy`. Both need **Node 22** — already handled by `.node-version` in this repo.
+
+### Option 2 — Deploy via Wrangler CLI
+
+```bash
+# One-time: login to Cloudflare
+npx wrangler login
+
+# Build + deploy
+npm run deploy
+```
+
+### Option 3 — GitHub Actions
+
+A ready-made workflow template is included at `docs/deploy-cloudflare.yml.example`. Copy it into place and add the secrets to your repository (**Settings → Secrets and variables → Actions**):
+
+```bash
+mkdir -p .github/workflows
+cp docs/deploy-cloudflare.yml.example .github/workflows/deploy-cloudflare.yml
+```
+
+Required secrets:
+
+- `CLOUDFLARE_API_TOKEN` — API token with permission to edit Workers (and Deployments)
+- `CLOUDFLARE_ACCOUNT_ID` — your Cloudflare account ID
+
+Once added, every push to `main` deploys automatically.
+
+### Local Cloudflare preview
+
+```bash
+# Serves the production build through Wrangler's local Worker runtime
+npm run cf:dev
+```
+
+### Classic Cloudflare Pages (alternative)
+
+Prefer the classic Pages product instead? Skip `wrangler.toml` entirely — in the dashboard create a **Pages** project (Connect to Git) with framework preset **Vite**, build command `npm run build`, output directory `dist`, or from your machine run:
+
+```bash
+npx wrangler login
+npm run deploy:pages   # build + wrangler pages deploy dist
+```
+
 ## Project Structure
 
 ```
