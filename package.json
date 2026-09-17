@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "deploy": "npm run build && wrangler deploy",
     "cf:dev": "npm run build && wrangler dev",
-    "deploy:pages": "npm run build && wrangler pages deploy dist"
+    "deploy:pages": "npm run build && wrangler pages deploy dist",
+    "prepare": "npm run build"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",

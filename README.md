@@ -56,6 +56,7 @@ The project is configured for **Cloudflare's unified Workers & Pages platform** 
 - `public/_headers` — asset caching & security headers
 - `.node-version` + `engines.node` — pins **Node 22** (required by wrangler 4.x) on Cloudflare's build system
 - `package.json` scripts:
+  - `prepare` — **auto-builds on every `npm install`/`npm ci`**, so `dist/` always exists before the deploy command runs (this is what makes Cloudflare's build pipeline work even without a separate build command)
   - `npm run deploy` — build + `wrangler deploy`
   - `npm run cf:dev` — build + local Worker runtime preview
 
@@ -63,15 +64,15 @@ The project is configured for **Cloudflare's unified Workers & Pages platform** 
 
 ### Option 1 — Git integration (auto-deploy on push)
 
-If you already connected the repo in the dashboard, make sure the build settings are:
+Cloudflare's build pipeline (`npm clean-install` → deploy command) works out of the box because the `prepare` script builds `dist/` during dependency install. Still, the recommended dashboard settings (Workers & Pages → your app → Settings → Build) are:
 
 | Setting | Value |
 |---|---|
-| **Build command** | `npm run build` |
-| **Deploy command** | `npx wrangler deploy` |
-| **Branch control / Production branch** | `main` (or your preferred branch) |
+| **Build command** | `npm run build` (optional — `prepare` covers it) |
+| **Deploy command** | `npx wrangler deploy` for production branch / `npx wrangler versions upload` for preview branches (Cloudflare defaults) |
+| **Production branch** | `main` |
 
-Cloudflare automatically runs `npx wrangler versions upload` for non-production branches (preview builds) and `npx wrangler deploy` for the production branch. Non-production branches also need **Node 22** — already handled by `.node-version` in this repo.
+Preview (non-production) branches get a preview version URL via `versions upload`; pushing to the production branch runs `wrangler deploy`. Both need **Node 22** — already handled by `.node-version` in this repo.
 
 ### Option 2 — Deploy via Wrangler CLI
 
