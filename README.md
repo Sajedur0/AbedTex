@@ -48,6 +48,60 @@ npm run build
 npm run preview
 ```
 
+## Deployment (Cloudflare Pages)
+
+The project is configured to deploy to **Cloudflare Pages** out of the box:
+
+- `wrangler.toml` — Cloudflare Pages project config (`pages_build_output_dir = "dist"`)
+- `public/_redirects` — SPA fallback (`/* → /index.html 200`)
+- `public/_headers` — asset caching & security headers
+- `.node-version` — pins Node 20 for Cloudflare's build system
+
+### Option 1 — Deploy via Wrangler CLI (recommended)
+
+```bash
+# One-time: login to Cloudflare
+npx wrangler login
+
+# Build + deploy to Cloudflare Pages
+npm run deploy
+```
+
+The first `npm run deploy` will ask you to create a Pages project (name it `abedtex` or accept the default from `wrangler.toml`). After that, each run creates a new deployment and prints a `*.pages.dev` URL.
+
+### Option 2 — Connect the Git repository (auto-deploy on push)
+
+1. In the Cloudflare dashboard go to **Workers & Pages → Create → Pages → Connect to Git**.
+2. Select this repository.
+3. Build settings:
+   - **Framework preset:** Vite (or None)
+   - **Build command:** `npm run build`
+   - **Build output directory:** `dist`
+4. Save & Deploy. Every push to `main` now deploys automatically.
+
+### Option 3 — GitHub Actions
+
+A ready-made workflow template is included at `docs/deploy-cloudflare.yml.example`. Copy it into place and add the secrets to your repository (**Settings → Secrets and variables → Actions**):
+
+```bash
+mkdir -p .github/workflows
+cp docs/deploy-cloudflare.yml.example .github/workflows/deploy-cloudflare.yml
+```
+
+Required secrets:
+
+- `CLOUDFLARE_API_TOKEN` — API token with **Cloudflare Pages: Edit** permission
+- `CLOUDFLARE_ACCOUNT_ID` — your Cloudflare account ID
+
+Once added, every push to `main` deploys automatically.
+
+### Local Cloudflare preview
+
+```bash
+# Serves the production build through Wrangler's local Pages runtime
+npm run pages:dev
+```
+
 ## Project Structure
 
 ```

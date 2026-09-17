@@ -1,0 +1,10 @@
+# Cloudflare Pages configuration
+# Docs: https://developers.cloudflare.com/pages/functions/wrangler-configuration/
+name = "abedtex"
+compatibility_date = "2025-01-01"
+pages_build_output_dir = "dist"
+
+# Deploy with:
+#   npm run deploy          (build + wrangler pages deploy)
+# Local Cloudflare preview:
+#   npm run pages:dev
