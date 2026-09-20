@@ -64,8 +64,8 @@ export default function AboutPage() {
                   <h3 className="text-[20px] font-bold tracking-tight text-[#0f2a44]">{lang === 'bn' ? 'ব্যবসায়িক মডেল ও পটভূমি' : 'Business Model & Inception'}</h3>
                   <p className="mt-3 text-[15px] leading-relaxed text-stone-600 whitespace-pre-line">
                     {lang === 'bn'
-                      ? "আমাদের ব্যবসায়িক মডেল মূলত গুণগত মানের মার্চেন্ডাইজিং ও পণ্যের গুণগত মান, সময়মতো ডেলিভারি, উচ্চমানের কমপ্লায়েন্স এবং নিবেদিত গ্রাহকসেবার উপর কেন্দ্রীভূত।\n\nকোম্পানিটি প্রতিষ্ঠিত হয় এবং বাণিজ্যিক উৎপাদন শুরু হয় ১৯৯৩ সালে। বর্তমানে আমাদের মোট ৭২টি উৎপাদন মেশিনারি এবং ১০০০ জন কর্মীর একটি কর্মীবাহিনী রয়েছে। আমাদের মাসিক মোট সমন্বিত উৎপাদন ক্ষমতা ৪৫,০০,০০০ গজ।"
-                      : "Our business model focuses on Quality Merchandising and Product Quality, Timed Delivery, a High Standard of Compliance and Dedicated Customer Service.\n\nThe company was established and Commercial Production commenced in 1993. Currently we hold a total of 72 production machineries and a workforce of 1000 employees. Our Total Consolidated Production Capacity per month is 4,500,000 yards."}
+                      ? "আমাদের ব্যবসায়িক মডেল মূলত গুণগত মানের মার্চেন্ডাইজিং ও পণ্যের গুণগত মান, সময়মতো ডেলিভারি, উচ্চমানের কমপ্লায়েন্স এবং নিবেদিত গ্রাহকসেবার উপর কেন্দ্রীভূত।\n\nকোম্পানিটি প্রতিষ্ঠিত হয় এবং বাণিজ্যিক উৎপাদন শুরু হয় ১৯৯৩ সালে। বর্তমানে আমাদের মোট ৪২টি উৎপাদন মেশিনারি এবং ১০০০ জন কর্মীর একটি কর্মীবাহিনী রয়েছে। আমাদের মাসিক মোট সমন্বিত উৎপাদন ক্ষমতা ৪৫,০০,০০০ গজ।"
+                      : "Our business model focuses on Quality Merchandising and Product Quality, Timed Delivery, a High Standard of Compliance and Dedicated Customer Service.\n\nThe company was established and Commercial Production commenced in 1993. Currently we hold a total of 42 production machineries and a workforce of 1000 employees. Our Total Consolidated Production Capacity per month is 4,500,000 yards."}
                   </p>
                 </div>
               )}
