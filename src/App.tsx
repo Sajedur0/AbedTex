@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { Menu, X, Globe, ArrowUp, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Menu, X, ArrowUp, ChevronLeft, ChevronRight } from 'lucide-react';
 import { assets } from './assets';
 
 import HomePage from './pages/HomePage';
@@ -16,8 +16,6 @@ import ContactPage from './pages/ContactPage';
 type LightboxItem = { src: string; title?: string };
 
 interface AppContextType {
-  lang: string;
-  setLang: (l: string) => void;
   lightbox: { open: boolean; index: number; items: LightboxItem[] };
   setLightbox: (lb: { open: boolean; index: number; items: LightboxItem[] }) => void;
   openLightbox: (items: LightboxItem[], index: number) => void;
@@ -74,7 +72,6 @@ function Lightbox() {
 }
 
 function Navbar() {
-  const { lang, setLang } = useApp();
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -86,15 +83,15 @@ function Navbar() {
   useEffect(() => { setMobileOpen(false); }, [location.pathname]);
 
   const navLinks = [
-    { to: '/', labelEn: 'Home', labelBn: 'হোম' },
-    { to: '/about', labelEn: 'About', labelBn: 'কোম্পানি' },
-    { to: '/units', labelEn: 'Units', labelBn: 'প্রোডাকশন' },
-    { to: '/machinery', labelEn: 'Machinery', labelBn: 'মেশিনারি' },
-    { to: '/products', labelEn: 'Products', labelBn: 'পণ্যসমূহ' },
-    { to: '/compliance', labelEn: 'Compliance', labelBn: 'কমপ্লায়েন্স' },
-    { to: '/leadership', labelEn: 'Leadership', labelBn: 'পরিচালনা পর্ষদ' },
-    { to: '/gallery', labelEn: 'Gallery', labelBn: 'গ্যালারি' },
-    { to: '/contact', labelEn: 'Contact', labelBn: 'যোগাযোগ' },
+    { to: '/', label: 'Home' },
+    { to: '/about', label: 'About' },
+    { to: '/units', label: 'Units' },
+    { to: '/machinery', label: 'Machinery' },
+    { to: '/products', label: 'Products' },
+    { to: '/compliance', label: 'Compliance' },
+    { to: '/leadership', label: 'Leadership' },
+    { to: '/gallery', label: 'Gallery' },
+    { to: '/contact', label: 'Contact' },
   ];
 
   return (
@@ -108,8 +105,8 @@ function Navbar() {
                 <img src={assets.logo} alt="Abed Textile" className="w-full h-full object-contain" />
               </div>
               <div className="leading-none">
-                <div className="font-[800] tracking-[-0.02em] text-[15px] lg:text-[16px] text-[#0f2a44]">{lang === 'bn' ? 'আবেদ টেক্সটাইল' : 'ABED TEXTILE'}</div>
-                <div className="text-[11px] font-semibold tracking-[0.14em] text-[#b88a5a] mt-0.5 uppercase">{lang === 'bn' ? 'নোদী বাংলা গ্রুপ' : 'Processing Mills Ltd.'}</div>
+                <div className="font-[800] tracking-[-0.02em] text-[15px] lg:text-[16px] text-[#0f2a44]">ABED TEXTILE</div>
+                <div className="text-[11px] font-semibold tracking-[0.14em] text-[#b88a5a] mt-0.5 uppercase">Processing Mills Ltd.</div>
               </div>
             </a>
 
@@ -123,7 +120,7 @@ function Navbar() {
                     href={`#${link.to}`}
                     className={`px-3.5 py-1.5 rounded-full text-[13px] font-medium transition-all ${active ? 'bg-[#0f2a44] text-white shadow-sm' : 'text-[#0f2a44]/70 hover:text-[#0f2a44] hover:bg-[#0f2a44]/5'}`}
                   >
-                    {lang === 'bn' ? link.labelBn : link.labelEn}
+                    {link.label}
                   </a>
                 );
               })}
@@ -131,15 +128,8 @@ function Navbar() {
 
             {/* Right */}
             <div className="flex items-center gap-2">
-              <button
-                onClick={() => setLang(lang === 'en' ? 'bn' : 'en')}
-                className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white border border-[#0f2a44]/10 text-[13px] font-semibold text-[#0f2a44] hover:border-[#0f2a44]/15 hover:bg-[#0f2a44]/[0.03] transition-colors"
-              >
-                <Globe size={14} className="text-[#0f2a44]/60" />
-                {lang === 'en' ? 'বাংলা' : 'English'}
-              </button>
               <a href="#/contact" className="hidden lg:inline-flex items-center justify-center px-5 py-2 rounded-full bg-[#0f2a44] text-white text-[13px] font-semibold hover:bg-[#0c2238] transition-colors shadow-sm">
-                {lang === 'bn' ? 'যোগাযোগ করুন' : 'Get Quote'}
+                Get Quote
               </a>
               <button onClick={() => setMobileOpen(!mobileOpen)} className="xl:hidden w-9 h-9 rounded-full bg-white border border-[#0f2a44]/10 flex items-center justify-center text-[#0f2a44] shadow-sm">
                 {mobileOpen ? <X size={18} /> : <Menu size={18} />}
@@ -156,14 +146,9 @@ function Navbar() {
                 href={`#${link.to}`}
                 className={`px-4 py-3 rounded-2xl text-sm font-medium border transition-colors ${location.pathname === link.to ? 'bg-[#0f2a44] text-white border-[#0f2a44]' : 'bg-[#fdfbf7] text-[#0f2a44] border-[#0f2a44]/10'}`}
               >
-                {lang === 'bn' ? link.labelBn : link.labelEn}
+                {link.label}
               </a>
             ))}
-          </div>
-          <div className="px-4 pb-4 flex gap-2">
-            <button onClick={() => setLang(lang === 'en' ? 'bn' : 'en')} className="flex-1 py-3 rounded-full border border-[#0f2a44]/10 bg-white text-sm font-semibold flex items-center justify-center gap-2">
-              <Globe size={16} /> {lang === 'en' ? 'বাংলা দেখুন' : 'View in English'}
-            </button>
           </div>
         </div>
       </header>
@@ -173,7 +158,6 @@ function Navbar() {
 }
 
 function Footer() {
-  const { lang } = useApp();
   return (
     <footer className="relative bg-[#070d1a] text-stone-300">
       {/* top accent */}
@@ -186,12 +170,12 @@ function Footer() {
                 <img src={assets.logo} alt="logo" className="w-full h-full object-contain" />
               </div>
               <div>
-                <div className="font-bold text-white tracking-tight text-[15px]">{lang === 'bn' ? 'আবেদ টেক্সটাইল প্রোসেসিং মিলস লিঃ' : 'Abed Textile Processing Mills Ltd.'}</div>
+                <div className="font-bold text-white tracking-tight text-[15px]">Abed Textile Processing Mills Ltd.</div>
                 <div className="text-[11px] tracking-[0.14em] uppercase text-[#d4a574] font-semibold">Nodi Bangla Group • Since 1993</div>
               </div>
             </div>
             <p className="text-sm leading-relaxed text-stone-400 max-w-md">
-              {lang === 'bn' ? '১৯৯৩ সাল থেকে Oeko-Tex সার্টিফাইড ১০০% রপ্তানিমুখী আধুনিক টেক্সটাইল প্রসেসিং মিলস।' : 'An Oeko-Tex Certified 100% Export Oriented Manufacturer of Quality Processing Mills since 1993. 4.5M yards monthly, 42 machines, 1000+ workforce.'}
+              An Oeko-Tex Certified 100% Export Oriented Manufacturer of Quality Processing Mills since 1993. 4.5M yards monthly, 42 machines, 1000+ workforce.
             </p>
             <div className="flex gap-2 pt-1">
               <span className="px-3 py-1.5 rounded-full bg-white/[0.06] border border-white/10 text-xs font-medium text-stone-300">Oeko-Tex 100</span>
@@ -201,7 +185,7 @@ function Footer() {
           </div>
 
           <div className="lg:col-span-2">
-            <h4 className="text-xs font-bold tracking-[0.12em] uppercase text-white mb-4">{lang === 'bn' ? 'ন্যাভিগেশন' : 'Explore'}</h4>
+            <h4 className="text-xs font-bold tracking-[0.12em] uppercase text-white mb-4">Explore</h4>
             <ul className="space-y-2.5 text-sm text-stone-400">
               <li><a href="#/about" className="hover:text-white transition-colors">About</a></li>
               <li><a href="#/units" className="hover:text-white transition-colors">Units</a></li>
@@ -213,7 +197,7 @@ function Footer() {
           </div>
 
           <div className="lg:col-span-2">
-            <h4 className="text-xs font-bold tracking-[0.12em] uppercase text-white mb-4">{lang === 'bn' ? 'পণ্যসমূহ' : 'Fabrics'}</h4>
+            <h4 className="text-xs font-bold tracking-[0.12em] uppercase text-white mb-4">Fabrics</h4>
             <ul className="space-y-2.5 text-sm text-stone-400">
               <li>Exclusive Shari</li>
               <li>Three-Piece Suits</li>
@@ -224,7 +208,7 @@ function Footer() {
           </div>
 
           <div className="lg:col-span-3">
-            <h4 className="text-xs font-bold tracking-[0.12em] uppercase text-white mb-4">{lang === 'bn' ? 'যোগাযোগ' : 'Contact'}</h4>
+            <h4 className="text-xs font-bold tracking-[0.12em] uppercase text-white mb-4">Contact</h4>
             <div className="space-y-3 text-sm">
               <div className="flex gap-3">
                 <span className="w-8 h-8 rounded-full bg-white/[0.06] border border-white/10 flex items-center justify-center shrink-0">⌖</span>
@@ -245,7 +229,7 @@ function Footer() {
         <div className="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="text-xs text-stone-500">© {new Date().getFullYear()} Abed Textile Processing Mills Ltd. All rights reserved.</div>
           <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-[#070d1a] text-xs font-bold hover:bg-stone-100 transition-colors">
-            <ArrowUp size={14} /> {lang === 'bn' ? 'উপরে যান' : 'Back to top'}
+            <ArrowUp size={14} /> Back to top
           </button>
         </div>
       </div>
@@ -266,11 +250,10 @@ function Layout({ children }: { children: ReactNode }) {
 }
 
 export default function App() {
-  const [lang, setLang] = useState('en');
   const [lightbox, setLightbox] = useState<{ open: boolean; index: number; items: LightboxItem[] }>({ open: false, index: 0, items: [] });
   const openLightbox = (items: LightboxItem[], index: number) => setLightbox({ open: true, index, items });
   return (
-    <AppContext.Provider value={{ lang, setLang, lightbox, setLightbox, openLightbox }}>
+    <AppContext.Provider value={{ lightbox, setLightbox, openLightbox }}>
       <HashRouter>
         <ScrollToTop />
         <Layout>

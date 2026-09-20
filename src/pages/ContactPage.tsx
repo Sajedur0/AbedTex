@@ -1,9 +1,7 @@
 import { useState } from 'react';
-import { useApp } from '../App';
 import { Phone, Mail, MapPin, ArrowRight, CheckCircle2, Clock, Shield } from 'lucide-react';
 
 export default function ContactPage() {
-  const { lang } = useApp();
   const [formSent, setFormSent] = useState(false);
 
   return (
@@ -12,13 +10,13 @@ export default function ContactPage() {
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0f2a44]/5 border border-[#0f2a44]/10 text-[#0f2a44] text-xs font-bold">
             <span className="w-1.5 h-1.5 rounded-full bg-[#d4a574]" />
-            {lang === 'bn' ? 'যোগাযোগ ও সেবা কেন্দ্র' : 'Get in Touch with Us'}
+            Get in Touch with Us
           </div>
           <h1 className="mt-4 text-[30px] sm:text-[40px] font-[800] tracking-[-0.03em] leading-[0.95] text-[#0f2a44]">
-            {lang === 'bn' ? 'আমাদের সাথে সরাসরি যোগাযোগ করুন' : 'We are here to answer your queries'}
+            We are here to answer your queries
           </h1>
           <p className="mt-3 text-[15px] leading-relaxed text-stone-500">
-            {lang === 'bn' ? 'টেক্সটাইল কেনাকাটা, প্রিন্টিং ও প্রসেসিংয়ের জন্য সর্বোচ্চ মান ও পরিষেবার প্রতিশ্রুতি।' : 'For Bulk Merchandising, Digital Printing, Blanket Orders, Knit Fabrics & Contact.'}
+            For Bulk Merchandising, Digital Printing, Blanket Orders, Knit Fabrics & Contact.
           </p>
         </div>
 
@@ -26,48 +24,48 @@ export default function ContactPage() {
           {/* Form */}
           <div className="lg:col-span-7 card-modern rounded-[24px] p-6 sm:p-8">
             <div className="flex items-center justify-between gap-4 mb-6">
-              <h3 className="text-[18px] font-bold tracking-tight text-[#0f2a44]">{lang === 'bn' ? 'অনুগ্রহ করে আপনার তথ্য দিন' : 'Drop us a message'}</h3>
-              <span className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold text-stone-500"><Clock size={12} /> {lang === 'bn' ? '২৪ ঘণ্টায় উত্তর' : 'Reply in 24h'}</span>
+              <h3 className="text-[18px] font-bold tracking-tight text-[#0f2a44]">Drop us a message</h3>
+              <span className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold text-stone-500"><Clock size={12} /> Reply in 24h</span>
             </div>
 
             {formSent ? (
               <div className="rounded-[20px] bg-emerald-50 border border-emerald-200 p-8 text-center">
                 <div className="w-12 h-12 rounded-full bg-emerald-600 text-white flex items-center justify-center mx-auto"><CheckCircle2 size={22} /></div>
-                <h4 className="mt-4 text-lg font-bold text-emerald-900">{lang === 'bn' ? 'আপনার বার্তা সফলভাবে পাঠানো হয়েছে!' : 'Message sent successfully!'}</h4>
-                <p className="mt-1 text-sm text-emerald-700">{lang === 'bn' ? 'আমরা দ্রুত আপনার সাথে যোগাযোগ করব।' : 'We will get back to you shortly.'}</p>
+                <h4 className="mt-4 text-lg font-bold text-emerald-900">Message sent successfully!</h4>
+                <p className="mt-1 text-sm text-emerald-700">We will get back to you shortly.</p>
                 <button onClick={() => setFormSent(false)} className="mt-5 px-5 py-2.5 rounded-full bg-emerald-600 text-white text-sm font-bold hover:bg-emerald-700 transition-colors">
-                  {lang === 'bn' ? 'নতুন বার্তা পাঠান' : 'Send another'}
+                  Send another
                 </button>
               </div>
             ) : (
               <form onSubmit={(e) => { e.preventDefault(); setFormSent(true); }} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold tracking-wide text-[#0f2a44] mb-1.5">{lang === 'bn' ? 'আপনার নাম' : 'Your full name'}</label>
-                    <input type="text" required placeholder={lang === 'bn' ? 'আবুল হাসান' : 'Abul Hasan'} className="w-full px-4 py-3 rounded-full bg-[#fdfbf7] border border-stone-200 text-sm text-[#0f2a44] placeholder-stone-400 focus:outline-none focus:bg-white focus:border-[#0f2a44]/20 transition-colors" />
+                    <label className="block text-xs font-bold tracking-wide text-[#0f2a44] mb-1.5">Your full name</label>
+                    <input type="text" required placeholder="Abul Hasan" className="w-full px-4 py-3 rounded-full bg-[#fdfbf7] border border-stone-200 text-sm text-[#0f2a44] placeholder-stone-400 focus:outline-none focus:bg-white focus:border-[#0f2a44]/20 transition-colors" />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold tracking-wide text-[#0f2a44] mb-1.5">{lang === 'bn' ? 'ইমেইল ঠিকানা' : 'Email address'}</label>
+                    <label className="block text-xs font-bold tracking-wide text-[#0f2a44] mb-1.5">Email address</label>
                     <input type="email" required placeholder="example@email.com" className="w-full px-4 py-3 rounded-full bg-[#fdfbf7] border border-stone-200 text-sm text-[#0f2a44] placeholder-stone-400 focus:outline-none focus:bg-white focus:border-[#0f2a44]/20 transition-colors" />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-xs font-bold tracking-wide text-[#0f2a44] mb-1.5">{lang === 'bn' ? 'কোম্পানির নাম' : 'Company name'}</label>
-                  <input type="text" placeholder={lang === 'bn' ? 'আপনার কোম্পানির নাম' : 'Your company name'} className="w-full px-4 py-3 rounded-full bg-[#fdfbf7] border border-stone-200 text-sm text-[#0f2a44] placeholder-stone-400 focus:outline-none focus:bg-white focus:border-[#0f2a44]/20 transition-colors" />
+                  <label className="block text-xs font-bold tracking-wide text-[#0f2a44] mb-1.5">Company name</label>
+                  <input type="text" placeholder="Your company name" className="w-full px-4 py-3 rounded-full bg-[#fdfbf7] border border-stone-200 text-sm text-[#0f2a44] placeholder-stone-400 focus:outline-none focus:bg-white focus:border-[#0f2a44]/20 transition-colors" />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold tracking-wide text-[#0f2a44] mb-1.5">{lang === 'bn' ? 'বিষয়' : 'Subject'}</label>
-                  <input type="text" required placeholder={lang === 'bn' ? 'শাড়ি, থ্রি-পিস অর্ডার' : 'Shari, Three-Piece Order'} className="w-full px-4 py-3 rounded-full bg-[#fdfbf7] border border-stone-200 text-sm text-[#0f2a44] placeholder-stone-400 focus:outline-none focus:bg-white focus:border-[#0f2a44]/20 transition-colors" />
+                  <label className="block text-xs font-bold tracking-wide text-[#0f2a44] mb-1.5">Subject</label>
+                  <input type="text" required placeholder="Shari, Three-Piece Order" className="w-full px-4 py-3 rounded-full bg-[#fdfbf7] border border-stone-200 text-sm text-[#0f2a44] placeholder-stone-400 focus:outline-none focus:bg-white focus:border-[#0f2a44]/20 transition-colors" />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold tracking-wide text-[#0f2a44] mb-1.5">{lang === 'bn' ? 'আপনার বার্তা বা অর্ডার' : 'Your message or order'}</label>
-                  <textarea required rows={4} placeholder={lang === 'bn' ? 'বিস্তারিত অর্ডার বা প্রশ্ন লিখুন...' : 'Describe your bulk requirements...'} className="w-full px-4 py-3 rounded-[20px] bg-[#fdfbf7] border border-stone-200 text-sm text-[#0f2a44] placeholder-stone-400 focus:outline-none focus:bg-white focus:border-[#0f2a44]/20 transition-colors resize-none" />
+                  <label className="block text-xs font-bold tracking-wide text-[#0f2a44] mb-1.5">Your message or order</label>
+                  <textarea required rows={4} placeholder="Describe your bulk requirements..." className="w-full px-4 py-3 rounded-[20px] bg-[#fdfbf7] border border-stone-200 text-sm text-[#0f2a44] placeholder-stone-400 focus:outline-none focus:bg-white focus:border-[#0f2a44]/20 transition-colors resize-none" />
                 </div>
                 <button type="submit" className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-[#0f2a44] text-white text-sm font-bold hover:bg-[#0c2238] transition-colors shadow-sm">
-                  {lang === 'bn' ? 'যোগাযোগ করুন' : 'Send message'} <ArrowRight size={16} />
+                  Send message <ArrowRight size={16} />
                 </button>
                 <div className="flex items-center gap-2 text-xs text-stone-500 pt-1">
-                  <Shield size={12} /> {lang === 'bn' ? 'আপনার তথ্য নিরাপদ ও গোপন রাখা হবে' : 'Your information is kept confidential'}
+                  <Shield size={12} /> Your information is kept confidential
                 </div>
               </form>
             )}
@@ -82,7 +80,7 @@ export default function ContactPage() {
                   width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Google Map" className="grayscale hover:grayscale-0 transition-all duration-500"
                 />
                 <a href="https://maps.app.goo.gl/YourLink" target="_blank" rel="noopener noreferrer" className="absolute bottom-3 right-3 px-3.5 py-2 rounded-full bg-white text-[#0f2a44] text-xs font-bold shadow-lg border border-stone-200 hover:bg-stone-50">
-                  {lang === 'bn' ? 'বড় মানচিত্র' : 'View map'}
+                  View map
                 </a>
               </div>
             </div>
@@ -108,7 +106,7 @@ export default function ContactPage() {
                   <span className="w-10 h-10 rounded-full bg-[#fdfbf7] border border-stone-200 text-[#0f2a44] flex items-center justify-center shrink-0"><MapPin size={16} /></span>
                   <div>
                     <div className="text-xs font-semibold tracking-wide uppercase text-stone-400">Factory & Office</div>
-                    <div className="text-sm font-semibold text-[#0f2a44] leading-relaxed">{lang === 'bn' ? '৪৫৯/এ মাদ্রাপুর, তারাগোনা, নরসিংদী সদর' : '459/A Madrampur, Taragona, Narsingdi Sadar, Bangladesh'}</div>
+                    <div className="text-sm font-semibold text-[#0f2a44] leading-relaxed">459/A Madrampur, Taragona, Narsingdi Sadar, Bangladesh</div>
                     <div className="text-xs text-stone-500 mt-1">Ph: 88-02-9462750</div>
                   </div>
                 </div>
@@ -121,7 +119,7 @@ export default function ContactPage() {
               <div className="text-xs text-white/60 mt-1">Friday closed • Emergency line available</div>
               <div className="mt-4 h-[1px] bg-white/10" />
               <div className="mt-4 flex items-center gap-2 text-xs text-white/70">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" /> {lang === 'bn' ? 'সাধারণত ২৪ ঘণ্টার মধ্যে উত্তর দিই' : 'We typically reply within 24 hours'}
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" /> We typically reply within 24 hours
               </div>
             </div>
           </div>

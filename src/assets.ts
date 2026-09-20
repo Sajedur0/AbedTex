@@ -53,8 +53,7 @@ import gal16 from './assets/images/company-gallery/gallery-16.jpg';
 
 export interface GalleryItem {
   src: string;
-  titleEn: string;
-  titleBn: string;
+  title: string;
   cat: string;
 }
 
@@ -79,21 +78,21 @@ export const assets = {
   flatbed: [flatbed1, flatbed2, flatbed3, flatbed4, flatbed5, flatbed6],
   digital: [digital1, digital2, digital3],
   gallery: [
-    { src: gal1, titleEn: 'High Speed Weaving Floor', titleBn: 'উচ্চগতির উইভিং ফ্লোর', cat: 'Production' },
-    { src: gal2, titleEn: 'Fabric Inspection & Roll Check', titleBn: 'ফ্যাব্রিক কোয়ালিটি ইন্সপেকশন', cat: 'Quality' },
-    { src: gal3, titleEn: 'Automatic Flatbed Print Line', titleBn: 'অটোমেটিক ফ্ল্যাটবেড লাইন', cat: 'Printing' },
-    { src: gal4, titleEn: 'High Volume Dyeing Jiggers', titleBn: 'উচ্চ ক্ষমতার ডাইং জিগার', cat: 'Dyeing' },
-    { src: gal5, titleEn: 'Modern Stenter Heat Setting', titleBn: 'স্টেন্টার হিট সেটিং ইউনিট', cat: 'Finishing' },
-    { src: gal6, titleEn: 'Color Formulation Lab', titleBn: 'কালার কিচেন ল্যাব', cat: 'Quality' },
-    { src: gal7, titleEn: 'Continuous Washing Line', titleBn: 'কন্টিনিউয়াস ওয়াশিং রেঞ্জ', cat: 'Dyeing' },
-    { src: gal8, titleEn: 'Calendar Glazing Machine', titleBn: 'ক্যালেন্ডার গ্লেজিং সিস্টেম', cat: 'Finishing' },
-    { src: gal9, titleEn: 'Roller Mercerizing Setup', titleBn: 'রোলার মার্সারাইজিং লাইন', cat: 'Dyeing' },
-    { src: gal10, titleEn: 'Digital Textile Suite', titleBn: 'ডিজিটাল প্রিন্টিং স্যুট', cat: 'Printing' },
-    { src: gal11, titleEn: 'Export Packaging & Baling', titleBn: 'রপ্তানি প্যাকেজিং ও বেলিং', cat: 'Finishing' },
-    { src: gal12, titleEn: 'Factory Infrastructure', titleBn: 'ফ্যাক্টরি পরিকাঠামো দৃশ্য', cat: 'Facility' },
-    { src: gal13, titleEn: '2400 m³/day ETP Aeration Tank', titleBn: 'বায়োকেমিক্যাল ইটিপি প্ল্যান্ট', cat: 'Facility' },
-    { src: gal14, titleEn: 'Worker Safety Zone', titleBn: 'শ্রমিক নিরাপত্তা ও প্রশিক্ষণ এলাকা', cat: 'Compliance' },
-    { src: gal15, titleEn: 'Sharee & 3-Pcs Output', titleBn: 'শাড়ি ও থ্রি-পিস প্রিন্ট আউটপুট', cat: 'Products' },
-    { src: gal16, titleEn: 'Laboratory Testing Unit', titleBn: 'ল্যাবরেটরি টেস্টিং ও মান নিয়ন্ত্রণ', cat: 'Quality' },
+    { src: gal1, title: 'High Speed Weaving Floor', cat: 'Production' },
+    { src: gal2, title: 'Fabric Inspection & Roll Check', cat: 'Quality' },
+    { src: gal3, title: 'Automatic Flatbed Print Line', cat: 'Printing' },
+    { src: gal4, title: 'High Volume Dyeing Jiggers', cat: 'Dyeing' },
+    { src: gal5, title: 'Modern Stenter Heat Setting', cat: 'Finishing' },
+    { src: gal6, title: 'Color Formulation Lab', cat: 'Quality' },
+    { src: gal7, title: 'Continuous Washing Line', cat: 'Dyeing' },
+    { src: gal8, title: 'Calendar Glazing Machine', cat: 'Finishing' },
+    { src: gal9, title: 'Roller Mercerizing Setup', cat: 'Dyeing' },
+    { src: gal10, title: 'Digital Textile Suite', cat: 'Printing' },
+    { src: gal11, title: 'Export Packaging & Baling', cat: 'Finishing' },
+    { src: gal12, title: 'Factory Infrastructure', cat: 'Facility' },
+    { src: gal13, title: '2400 m³/day ETP Aeration Tank', cat: 'Facility' },
+    { src: gal14, title: 'Worker Safety Zone', cat: 'Compliance' },
+    { src: gal15, title: 'Sharee & 3-Pcs Output', cat: 'Products' },
+    { src: gal16, title: 'Laboratory Testing Unit', cat: 'Quality' },
   ] as GalleryItem[],
 };
