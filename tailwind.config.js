@@ -42,9 +42,8 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Outfit', 'Inter', 'Hind Siliguri', 'sans-serif'],
-        display: ['Outfit', 'sans-serif'],
-        bengali: ['Hind Siliguri', 'Outfit', 'sans-serif']
+        sans: ['Outfit', 'Inter', 'sans-serif'],
+        display: ['Outfit', 'sans-serif']
       },
       borderRadius: {
         '4xl': '2rem',

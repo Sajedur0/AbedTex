@@ -1,9 +1,7 @@
-import { useApp } from '../App';
 import { assets } from '../assets';
 import { ArrowRight, CheckCircle2, Factory, Users, Layers } from 'lucide-react';
 
 export default function HomePage() {
-  const { lang } = useApp();
   return (
     <div className="relative">
       {/* HERO */}
@@ -23,29 +21,23 @@ export default function HomePage() {
             <div className="relative z-10 flex-1 flex flex-col justify-center px-6 sm:px-10 lg:px-14 py-10 lg:py-12">
               <div className="inline-flex items-center gap-2 self-start px-3 py-1.5 rounded-full bg-white/10 backdrop-blur border border-white/15 text-white/90 text-xs font-semibold hero-animate" style={{ animationDelay: '0.05s' }}>
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                {lang === 'bn' ? '১৯৯৩ থেকে • Oeko-Tex Certified' : 'Since 1993 • Oeko-Tex Certified • 100% Export Oriented'}
+                Since 1993 • Oeko-Tex Certified • 100% Export Oriented
               </div>
 
               <h1 className="hero-animate mt-5 text-[32px] sm:text-[44px] lg:text-[56px] font-[800] tracking-[-0.03em] leading-[0.95] text-white text-balance" style={{ animationDelay: '0.12s' }}>
-                {lang === 'bn' ? (
-                  <>আবেদ টেক্সটাইল<br /><span className="font-light text-white/90">প্রোসেসিং মিলস লিমিটেড</span></>
-                ) : (
-                  <>Abed Textile<br /><span className="font-light text-white/85">Processing Mills Ltd.</span></>
-                )}
+                Abed Textile<br /><span className="font-light text-white/85">Processing Mills Ltd.</span>
               </h1>
 
               <p className="hero-animate mt-5 text-[15px] lg:text-[16px] leading-relaxed text-white/75 max-w-[560px]" style={{ animationDelay: '0.22s' }}>
-                {lang === 'bn'
-                  ? '১৯৯৩ সাল থেকে বাংলাদেশের টেক্সটাইল শিল্পে আস্থার প্রতীক। ৪২টি আধুনিক মেশিনারি, ১০০০+ দক্ষ কর্মী এবং প্রতি মাসে ৪৫ লক্ষ গজ উৎপাদন ক্ষমতাসম্পন্ন সর্বাধুনিক ডাইং, প্রিন্টিং ও ফিনিশিং প্ল্যান্ট।'
-                  : 'A trusted name in Bangladesh textile processing since 1993. Empowered by 42 modern imported machineries, 1,000+ skilled workforce, and 4.5M yards monthly capacity for world-class Shari, 3-Pcs, Poplin & Fancy Fabrics.'}
+                A trusted name in Bangladesh textile processing since 1993. Empowered by 42 modern imported machineries, 1,000+ skilled workforce, and 4.5M yards monthly capacity for world-class Shari, 3-Pcs, Poplin & Fancy Fabrics.
               </p>
 
               <div className="hero-animate flex flex-wrap gap-3 mt-8" style={{ animationDelay: '0.32s' }}>
                 <a href="#/units" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white text-[#0f2a44] font-bold text-sm hover:bg-stone-100 transition-colors shadow-lg">
-                  {lang === 'bn' ? 'উৎপাদন ইউনিটসমূহ দেখুন' : 'Explore Production Units'} <ArrowRight size={16} />
+                  Explore Production Units <ArrowRight size={16} />
                 </a>
                 <a href="#/contact" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white/10 backdrop-blur border border-white/20 text-white font-semibold text-sm hover:bg-white/15 transition-colors">
-                  {lang === 'bn' ? 'ফ্যাক্টরি ও অফিস' : 'Factory & Offices'}
+                  Factory & Offices
                 </a>
               </div>
 
@@ -103,7 +95,7 @@ export default function HomePage() {
                 </div>
                 <div className="px-6 pb-6">
                   <div className="rounded-full bg-stone-900 text-white text-xs font-semibold py-2.5 text-center">
-                    {lang === 'bn' ? '১০০% রপ্তানিমুখী' : '100% Export Oriented • Narsingdi, BD'}
+                    100% Export Oriented • Narsingdi, BD
                   </div>
                 </div>
               </div>
@@ -132,8 +124,8 @@ export default function HomePage() {
               <div className="flex gap-4 items-center">
                 <div className="w-10 h-10 rounded-full bg-[#0f2a44] text-white flex items-center justify-center shrink-0">✦</div>
                 <div>
-                  <div className="text-sm font-bold text-[#0f2a44]">{lang === 'bn' ? 'প্রিমিয়াম শাড়ি, থ্রি-পিস, পপলিন ও ভয়েল' : 'Premium Shari, 3-Piece, Poplin & Voile — woven for export quality'}</div>
-                  <div className="text-xs text-stone-500 mt-0.5">{lang === 'bn' ? 'ফ্ল্যাটবেড, রোটারি ও ডিজিটাল প্রিন্টিং • মার্সারাইজিং • স্টেন্টার ফিনিশিং' : 'Flatbed • Rotary • Digital • Mercerizing • Stenter Finishing • ETP 2,400 m³/day'}</div>
+                  <div className="text-sm font-bold text-[#0f2a44]">Premium Shari, 3-Piece, Poplin & Voile — woven for export quality</div>
+                  <div className="text-xs text-stone-500 mt-0.5">Flatbed • Rotary • Digital • Mercerizing • Stenter Finishing • ETP 2,400 m³/day</div>
                 </div>
               </div>
               <a href="#/products" className="shrink-0 inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-[#0f2a44]/10 bg-[#fdfbf7] text-xs font-bold text-[#0f2a44] hover:bg-white transition-colors">
@@ -159,11 +151,11 @@ export default function HomePage() {
         <div className="h-[1px] bg-[#0f2a44]/[0.06]" />
       </div>
 
-      {/* mini about teaser that links - keeps no extra info but gives modern closure */}
+      {/* mini about teaser that links */}
       <section className="py-10 lg:py-12">
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-between gap-4 text-xs text-stone-500">
-            <span className="inline-flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#d4a574]" /> {lang === 'bn' ? 'নোদী বাংলা গ্রুপের একটি প্রতিষ্ঠান' : 'A concern of Nodi Bangla Group'}</span>
+            <span className="inline-flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#d4a574]" /> A concern of Nodi Bangla Group</span>
             <span className="hidden sm:inline-flex items-center gap-2"> Oeko-Tex • ISO • BTMEA • NCCI • SA-8000 </span>
             <a href="#/about" className="inline-flex items-center gap-1.5 font-semibold text-[#0f2a44] hover:gap-2 transition-all">Discover our story <ArrowRight size={14} /></a>
           </div>
