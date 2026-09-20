@@ -1,6 +1,6 @@
-import { createContext, useContext, useState, ReactNode, useRef } from 'react';
+import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { Menu, X, Globe, ArrowUp, ChevronLeft, ChevronRight } from 'lucide-react';
 import { assets } from './assets';
 
 import HomePage from './pages/HomePage';
@@ -24,129 +24,66 @@ interface AppContextType {
 }
 
 export const AppContext = createContext<AppContextType>({} as AppContextType);
-
 export const useApp = () => useContext(AppContext);
 
-// Scroll to top on route change
 function ScrollToTop() {
   const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
   return null;
 }
 
-const TextileCanvasComponent = () => {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+// Subtle paper texture backdrop instead of canvas
+const AmbientBackdrop = () => (
+  <div className="fixed inset-0 pointer-events-none">
+    <div className="absolute inset-0 bg-[#fdfbf7]" />
+    <div className="absolute inset-0 opacity-[0.035]" style={{
+      backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+    }} />
+    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[700px] bg-gradient-to-b from-[#0f2a44]/[0.03] to-transparent rounded-full blur-3xl" />
+  </div>
+);
 
-  useEffect(() => {
-    const node = canvasRef.current;
-    if (!node) return;
-    const ctx = node.getContext('2d');
-    if (!ctx) return;
-
-    let animationFrameId = 0;
-    let width = (node.width = window.innerWidth);
-    let height = (node.height = window.innerHeight);
-
-    const handleResize = () => {
-      width = node.width = window.innerWidth;
-      height = node.height = window.innerHeight;
-    };
-    window.addEventListener('resize', handleResize);
-
-    let step = 0;
-    const lines = 16;
-
-    const render = () => {
-      ctx.clearRect(0, 0, width, height);
-      step += 0.012;
-      for (let i = 0; i < lines; i++) {
-        ctx.beginPath();
-        const yOffset = (height / lines) * i;
-        const alpha = 0.06 + (Math.sin(step + i * 0.4) + 1) * 0.03;
-        ctx.strokeStyle = i % 2 === 0 ? `rgba(56, 189, 248, ${alpha})` : `rgba(245, 158, 11, ${alpha * 0.8})`;
-        ctx.lineWidth = 1.2;
-        for (let x = 0; x < width; x += 20) {
-          const wave1 = Math.sin(x * 0.003 + step + i * 0.2) * 25;
-          const wave2 = Math.cos(x * 0.006 - step * 0.8 + i) * 12;
-          const y = yOffset + wave1 + wave2;
-          if (x === 0) ctx.moveTo(x, y);
-          else ctx.lineTo(x, y);
-        }
-        ctx.stroke();
-      }
-      animationFrameId = requestAnimationFrame(render);
-    };
-    render();
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, []);
-
-  return <canvas ref={canvasRef} className="fixed inset-0 pointer-events-none z-0 opacity-60" />;
-};
-
-// Lightbox Component
 function Lightbox() {
   const { lightbox, setLightbox } = useApp();
+  useEffect(() => {
+    if (lightbox.open) document.body.style.overflow = 'hidden';
+    else document.body.style.overflow = '';
+    return () => { document.body.style.overflow = ''; };
+  }, [lightbox.open]);
   if (!lightbox.open) return null;
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md p-4"
-      onClick={() => setLightbox({ ...lightbox, open: false })}
-    >
-      <button
-        onClick={() => setLightbox({ ...lightbox, open: false })}
-        className="absolute top-5 right-5 z-10 p-3 rounded-full bg-white/10 text-white text-lg"
-      >
-        ✕
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#070d1a]/90 backdrop-blur-xl p-4 md:p-8" onClick={() => setLightbox({ ...lightbox, open: false })}>
+      <button onClick={() => setLightbox({ ...lightbox, open: false })} className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/10 hover:bg-white/15 text-white flex items-center justify-center backdrop-blur">
+        <X size={18} />
       </button>
-      <button
-        onClick={(e) => {
-          e.stopPropagation();
-          setLightbox({
-            ...lightbox,
-            index: lightbox.index > 0 ? lightbox.index - 1 : lightbox.items.length - 1,
-          });
-        }}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/10 text-white text-xl"
-      >
-        ‹
+      <button onClick={(e) => { e.stopPropagation(); setLightbox({ ...lightbox, index: lightbox.index > 0 ? lightbox.index - 1 : lightbox.items.length - 1 }); }} className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-10 h-10 md:w-11 md:h-11 rounded-full bg-white text-[#0f2a44] flex items-center justify-center shadow-xl hover:scale-105 transition-transform">
+        <ChevronLeft size={20} />
       </button>
-      <button
-        onClick={(e) => {
-          e.stopPropagation();
-          setLightbox({
-            ...lightbox,
-            index: lightbox.index < lightbox.items.length - 1 ? lightbox.index + 1 : 0,
-          });
-        }}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white/10 text-white text-xl"
-      >
-        ›
+      <button onClick={(e) => { e.stopPropagation(); setLightbox({ ...lightbox, index: lightbox.index < lightbox.items.length - 1 ? lightbox.index + 1 : 0 }); }} className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-10 h-10 md:w-11 md:h-11 rounded-full bg-white text-[#0f2a44] flex items-center justify-center shadow-xl hover:scale-105 transition-transform">
+        <ChevronRight size={20} />
       </button>
-      <div className="max-w-5xl max-h-[85vh] flex flex-col items-center" onClick={(e) => e.stopPropagation()}>
-        <img
-          src={lightbox.items[lightbox.index].src}
-          alt="Enlarged"
-          className="max-h-[75vh] w-auto max-w-full rounded-xl border border-white/20 shadow-2xl object-contain"
-        />
-        <div className="mt-3 text-center text-white">
-          <h4 className="font-bold">{lightbox.items[lightbox.index].title || ''}</h4>
-          <span className="text-xs text-slate-400">{lightbox.index + 1} / {lightbox.items.length}</span>
+      <div className="max-w-[92vw] md:max-w-5xl max-h-[86vh] flex flex-col items-center" onClick={(e) => e.stopPropagation()}>
+        <img src={lightbox.items[lightbox.index].src} alt="" className="max-h-[74vh] w-auto max-w-full rounded-2xl object-contain bg-white shadow-2xl" />
+        <div className="mt-4 flex items-center gap-3 text-white/90">
+          <span className="text-sm font-medium tracking-tight">{lightbox.items[lightbox.index].title || ''}</span>
+          <span className="text-xs bg-white/15 px-2.5 py-1 rounded-full">{lightbox.index + 1} / {lightbox.items.length}</span>
         </div>
       </div>
     </div>
   );
 }
 
-// Navbar
 function Navbar() {
   const { lang, setLang } = useApp();
   const location = useLocation();
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+  useEffect(() => { setMobileOpen(false); }, [location.pathname]);
 
   const navLinks = [
     { to: '/', labelEn: 'Home', labelBn: 'হোম' },
@@ -161,116 +98,154 @@ function Navbar() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 glass-panel py-3 shadow-2xl border-b border-sky-500/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        <a href="#/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-amber-400 p-0.5 shadow-lg group-hover:scale-105 transition-transform">
-            <div className="w-full h-full bg-white rounded-[10px] flex items-center justify-center p-1">
-              <img src={assets.logo} alt="Logo" className="w-full h-full object-contain" />
+    <>
+      <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled ? 'glass-nav shadow-[0_1px_0_rgba(15,42,68,0.06),0_8px_24px_rgba(15,42,68,0.06)]' : 'bg-white/0 border-b border-transparent'}`}>
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-[68px] lg:h-[76px]">
+            {/* Logo */}
+            <a href="#/" className="flex items-center gap-3.5 group shrink-0">
+              <div className="w-[42px] h-[42px] rounded-[12px] bg-white border border-[#0f2a44]/10 shadow-sm flex items-center justify-center p-1.5 group-hover:border-[#0f2a44]/15 transition-colors">
+                <img src={assets.logo} alt="Abed Textile" className="w-full h-full object-contain" />
+              </div>
+              <div className="leading-none">
+                <div className="font-[800] tracking-[-0.02em] text-[15px] lg:text-[16px] text-[#0f2a44]">{lang === 'bn' ? 'আবেদ টেক্সটাইল' : 'ABED TEXTILE'}</div>
+                <div className="text-[11px] font-semibold tracking-[0.14em] text-[#b88a5a] mt-0.5 uppercase">{lang === 'bn' ? 'নোদী বাংলা গ্রুপ' : 'Processing Mills Ltd.'}</div>
+              </div>
+            </a>
+
+            {/* Center nav - desktop */}
+            <nav className="hidden xl:flex items-center gap-1 bg-white border border-[#0f2a44]/[0.06] rounded-full p-1 shadow-sm">
+              {navLinks.map((link) => {
+                const active = location.pathname === link.to;
+                return (
+                  <a
+                    key={link.to}
+                    href={`#${link.to}`}
+                    className={`px-3.5 py-1.5 rounded-full text-[13px] font-medium transition-all ${active ? 'bg-[#0f2a44] text-white shadow-sm' : 'text-[#0f2a44]/70 hover:text-[#0f2a44] hover:bg-[#0f2a44]/5'}`}
+                  >
+                    {lang === 'bn' ? link.labelBn : link.labelEn}
+                  </a>
+                );
+              })}
+            </nav>
+
+            {/* Right */}
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setLang(lang === 'en' ? 'bn' : 'en')}
+                className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white border border-[#0f2a44]/10 text-[13px] font-semibold text-[#0f2a44] hover:border-[#0f2a44]/15 hover:bg-[#0f2a44]/[0.03] transition-colors"
+              >
+                <Globe size={14} className="text-[#0f2a44]/60" />
+                {lang === 'en' ? 'বাংলা' : 'English'}
+              </button>
+              <a href="#/contact" className="hidden lg:inline-flex items-center justify-center px-5 py-2 rounded-full bg-[#0f2a44] text-white text-[13px] font-semibold hover:bg-[#0c2238] transition-colors shadow-sm">
+                {lang === 'bn' ? 'যোগাযোগ করুন' : 'Get Quote'}
+              </a>
+              <button onClick={() => setMobileOpen(!mobileOpen)} className="xl:hidden w-9 h-9 rounded-full bg-white border border-[#0f2a44]/10 flex items-center justify-center text-[#0f2a44] shadow-sm">
+                {mobileOpen ? <X size={18} /> : <Menu size={18} />}
+              </button>
             </div>
           </div>
-          <div>
-            <span className="font-black text-lg tracking-tight bg-gradient-to-r from-slate-900 via-slate-800 to-sky-600 bg-clip-text text-transparent block leading-tight">
-              {lang === 'bn' ? 'আবেদ টেক্সটাইল' : 'ABED TEXTILE'}
-            </span>
-            <span className="text-[10px] font-bold tracking-widest text-amber-600 uppercase block -mt-0.5">
-              {lang === 'bn' ? 'নোদী বাংলা গ্রুপ' : 'Processing Mills Ltd.'}
-            </span>
-          </div>
-        </a>
-
-        <nav className="hidden xl:flex items-center space-x-1 text-xs lg:text-sm font-medium text-slate-900">
-          {navLinks.map((link) => (
-            <a
-              key={link.to}
-              href={`#${link.to}`}
-              className={`px-3 py-1.5 rounded-lg transition-colors ${
-                location.pathname === link.to
-                  ? 'text-sky-600 bg-sky-500/10 font-bold'
-                  : 'hover:text-sky-600 hover:bg-slate-900/5'
-              }`}
-            >
-              {lang === 'bn' ? link.labelBn : link.labelEn}
-            </a>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-3">
-          <button
-            onClick={() => setLang(lang === 'en' ? 'bn' : 'en')}
-            className="px-3 py-1.5 rounded-lg bg-white border border-sky-500/40 text-xs font-bold text-sky-600 hover:bg-sky-500/10 transition-all flex items-center gap-1.5 cursor-pointer shadow-md"
-          >
-            <span className="text-sm">🌐</span>
-            <span>{lang === 'en' ? 'বাংলা' : 'English'}</span>
-          </button>
         </div>
-      </div>
-    </header>
+        {/* Mobile drawer */}
+        <div className={`xl:hidden overflow-hidden border-t border-[#0f2a44]/5 bg-white/95 backdrop-blur-xl transition-all ${mobileOpen ? 'max-h-[520px] opacity-100' : 'max-h-0 opacity-0'}`}>
+          <div className="px-4 py-4 grid grid-cols-2 gap-2">
+            {navLinks.map((link) => (
+              <a
+                key={link.to}
+                href={`#${link.to}`}
+                className={`px-4 py-3 rounded-2xl text-sm font-medium border transition-colors ${location.pathname === link.to ? 'bg-[#0f2a44] text-white border-[#0f2a44]' : 'bg-[#fdfbf7] text-[#0f2a44] border-[#0f2a44]/10'}`}
+              >
+                {lang === 'bn' ? link.labelBn : link.labelEn}
+              </a>
+            ))}
+          </div>
+          <div className="px-4 pb-4 flex gap-2">
+            <button onClick={() => setLang(lang === 'en' ? 'bn' : 'en')} className="flex-1 py-3 rounded-full border border-[#0f2a44]/10 bg-white text-sm font-semibold flex items-center justify-center gap-2">
+              <Globe size={16} /> {lang === 'en' ? 'বাংলা দেখুন' : 'View in English'}
+            </button>
+          </div>
+        </div>
+      </header>
+      <div className="h-[68px] lg:h-[76px]" />
+    </>
   );
 }
 
-// Footer
 function Footer() {
   const { lang } = useApp();
   return (
-    <footer className="relative bg-white border-t border-slate-200 text-slate-600 text-xs">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
-          <div className="lg:col-span-4 space-y-4">
+    <footer className="relative bg-[#070d1a] text-stone-300">
+      {/* top accent */}
+      <div className="h-[1px] bg-gradient-to-r from-transparent via-[#d4a574]/30 to-transparent" />
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-amber-400 p-0.5 shadow-md">
-                <div className="w-full h-full bg-white rounded-[10px] flex items-center justify-center p-1">
-                  <img src={assets.logo} alt="Logo" className="w-full h-full object-contain" />
-                </div>
+              <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center p-1.5">
+                <img src={assets.logo} alt="logo" className="w-full h-full object-contain" />
               </div>
               <div>
-                <h3 className="font-bold text-base text-slate-900">
-                  {lang === 'bn' ? 'আবেদ টেক্সটাইল প্রোসেসিং মিলস লিঃ' : 'Abed Textile Processing Mills Ltd.'}
-                </h3>
-                <p className="text-[11px] text-amber-600 font-medium">Nodi Bangla Group</p>
+                <div className="font-bold text-white tracking-tight text-[15px]">{lang === 'bn' ? 'আবেদ টেক্সটাইল প্রোসেসিং মিলস লিঃ' : 'Abed Textile Processing Mills Ltd.'}</div>
+                <div className="text-[11px] tracking-[0.14em] uppercase text-[#d4a574] font-semibold">Nodi Bangla Group • Since 1993</div>
               </div>
             </div>
-            <p className="text-slate-600 text-xs leading-relaxed">
-              {lang === 'bn'
-                ? '১৯৯৩ সাল থেকে Oeko-Tex সার্টিফাইড ১০০% রপ্তানিমুখী আধুনিক টেক্সটাইল প্রসেসিং মিলস।'
-                : 'An Oeko-Tex Certified 100% Export Oriented Manufacturer of Quality Processing Mills since 1993.'}
+            <p className="text-sm leading-relaxed text-stone-400 max-w-md">
+              {lang === 'bn' ? '১৯৯৩ সাল থেকে Oeko-Tex সার্টিফাইড ১০০% রপ্তানিমুখী আধুনিক টেক্সটাইল প্রসেসিং মিলস।' : 'An Oeko-Tex Certified 100% Export Oriented Manufacturer of Quality Processing Mills since 1993. 4.5M yards monthly, 72 machines, 1000+ workforce.'}
             </p>
+            <div className="flex gap-2 pt-1">
+              <span className="px-3 py-1.5 rounded-full bg-white/[0.06] border border-white/10 text-xs font-medium text-stone-300">Oeko-Tex 100</span>
+              <span className="px-3 py-1.5 rounded-full bg-white/[0.06] border border-white/10 text-xs font-medium text-stone-300">ISO Certified</span>
+              <span className="px-3 py-1.5 rounded-full bg-[#d4a574] text-[#070d1a] text-xs font-bold">ATPML</span>
+            </div>
           </div>
-          <div className="lg:col-span-2 space-y-2">
-            <h4 className="font-bold text-sm text-slate-900 uppercase">{lang === 'bn' ? 'ন্যাভিগেশন' : 'Navigation'}</h4>
-            <ul className="space-y-1.5">
-              <li><a href="#/about" className="hover:text-sky-600">{lang === 'bn' ? 'পরিচিতি' : 'About'}</a></li>
-              <li><a href="#/units" className="hover:text-sky-600">{lang === 'bn' ? 'ইউনিটসমূহ' : 'Units'}</a></li>
-              <li><a href="#/machinery" className="hover:text-sky-600">{lang === 'bn' ? 'মেশিনারি' : 'Machinery'}</a></li>
-              <li><a href="#/products" className="hover:text-sky-600">{lang === 'bn' ? 'পণ্যসমূহ' : 'Products'}</a></li>
-              <li><a href="#/compliance" className="hover:text-sky-600">{lang === 'bn' ? 'কমপ্লায়েন্স' : 'Compliance'}</a></li>
-              <li><a href="#/gallery" className="hover:text-sky-600">{lang === 'bn' ? 'গ্যালারি' : 'Gallery'}</a></li>
+
+          <div className="lg:col-span-2">
+            <h4 className="text-xs font-bold tracking-[0.12em] uppercase text-white mb-4">{lang === 'bn' ? 'ন্যাভিগেশন' : 'Explore'}</h4>
+            <ul className="space-y-2.5 text-sm text-stone-400">
+              <li><a href="#/about" className="hover:text-white transition-colors">About</a></li>
+              <li><a href="#/units" className="hover:text-white transition-colors">Units</a></li>
+              <li><a href="#/machinery" className="hover:text-white transition-colors">Machinery</a></li>
+              <li><a href="#/products" className="hover:text-white transition-colors">Products</a></li>
+              <li><a href="#/compliance" className="hover:text-white transition-colors">Compliance</a></li>
+              <li><a href="#/gallery" className="hover:text-white transition-colors">Gallery</a></li>
             </ul>
           </div>
-          <div className="lg:col-span-3 space-y-2">
-            <h4 className="font-bold text-sm text-slate-900 uppercase">{lang === 'bn' ? 'প্রধান পণ্যসমূহ' : 'Fabrics'}</h4>
-            <ul className="space-y-1.5">
-              <li>Exclusive Shari (Sharee)</li>
-              <li>Three-Piece (3 Pcs) Suits</li>
-              <li>Poplin & Voile (Boil)</li>
-              <li>Lillian & Knit Fancy Prints</li>
-              <li>Flatbed Screen & Digital Prints</li>
+
+          <div className="lg:col-span-2">
+            <h4 className="text-xs font-bold tracking-[0.12em] uppercase text-white mb-4">{lang === 'bn' ? 'পণ্যসমূহ' : 'Fabrics'}</h4>
+            <ul className="space-y-2.5 text-sm text-stone-400">
+              <li>Exclusive Shari</li>
+              <li>Three-Piece Suits</li>
+              <li>Poplin & Voile</li>
+              <li>Lillian & Knit</li>
+              <li>Flatbed & Digital</li>
             </ul>
           </div>
-          <div className="lg:col-span-3 space-y-2">
-            <h4 className="font-bold text-sm text-slate-900 uppercase">{lang === 'bn' ? 'যোগাযোগ' : 'Contact'}</h4>
-            <div className="text-slate-700">Ghoradia, Narsingdi Sador, Bangladesh</div>
-            <div>Ph: 88-02-9462750</div>
-            <div>Email: info@nodibanglagroup.com</div>
+
+          <div className="lg:col-span-3">
+            <h4 className="text-xs font-bold tracking-[0.12em] uppercase text-white mb-4">{lang === 'bn' ? 'যোগাযোগ' : 'Contact'}</h4>
+            <div className="space-y-3 text-sm">
+              <div className="flex gap-3">
+                <span className="w-8 h-8 rounded-full bg-white/[0.06] border border-white/10 flex items-center justify-center shrink-0">⌖</span>
+                <span className="text-stone-300 leading-relaxed">Ghoradia, Narsingdi Sadar<br />Narsingdi, Bangladesh</span>
+              </div>
+              <div className="flex gap-3 items-center text-stone-300">
+                <span className="w-8 h-8 rounded-full bg-white/[0.06] border border-white/10 flex items-center justify-center shrink-0 text-xs">✆</span>
+                88-02-9462750
+              </div>
+              <div className="flex gap-3 items-center text-stone-400 text-[13px]">
+                <span className="w-8 h-8 rounded-full bg-white/[0.06] border border-white/10 flex items-center justify-center shrink-0 text-xs">@</span>
+                info@nodibanglagroup.com
+              </div>
+            </div>
           </div>
         </div>
-        <div className="mt-12 pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div>© {new Date().getFullYear()} Abed Textile Processing Mills Ltd. All rights reserved.</div>
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-700 hover:text-slate-900"
-          >
-            ↑ {lang === 'bn' ? 'উপরে যান' : 'Back to Top'}
+
+        <div className="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="text-xs text-stone-500">© {new Date().getFullYear()} Abed Textile Processing Mills Ltd. All rights reserved.</div>
+          <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-[#070d1a] text-xs font-bold hover:bg-stone-100 transition-colors">
+            <ArrowUp size={14} /> {lang === 'bn' ? 'উপরে যান' : 'Back to top'}
           </button>
         </div>
       </div>
@@ -278,15 +253,12 @@ function Footer() {
   );
 }
 
-// Layout
 function Layout({ children }: { children: ReactNode }) {
   return (
-    <div className="relative min-h-screen text-slate-900 bg-white font-sans">
-      <TextileCanvasComponent />
-      <div className="glow-orb w-96 h-96 bg-sky-500/20 top-20 -left-20" />
-      <div className="glow-orb w-96 h-96 bg-amber-500/15 top-[1200px] -right-20" />
+    <div className="relative min-h-screen bg-[#fdfbf7] font-sans selection:bg-[#0f2a44] selection:text-white">
+      <AmbientBackdrop />
       <Navbar />
-      {children}
+      <main className="relative">{children}</main>
       <Footer />
       <Lightbox />
     </div>
@@ -296,11 +268,7 @@ function Layout({ children }: { children: ReactNode }) {
 export default function App() {
   const [lang, setLang] = useState('en');
   const [lightbox, setLightbox] = useState<{ open: boolean; index: number; items: LightboxItem[] }>({ open: false, index: 0, items: [] });
-
-  const openLightbox = (items: LightboxItem[], index: number) => {
-    setLightbox({ open: true, index, items });
-  };
-
+  const openLightbox = (items: LightboxItem[], index: number) => setLightbox({ open: true, index, items });
   return (
     <AppContext.Provider value={{ lang, setLang, lightbox, setLightbox, openLightbox }}>
       <HashRouter>

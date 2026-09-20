@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { useApp } from '../App';
+import { Search, SlidersHorizontal, LayoutGrid, Table2, MapPin, CheckCircle2 } from 'lucide-react';
 
 export default function MachineryPage() {
   const { lang } = useApp();
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState('All');
-  const [viewMode, setViewMode] = useState('card');
+  const [viewMode, setViewMode] = useState<'card' | 'table'>('card');
 
   const machineries = [
     { id: 1, nameEn: 'Mini Jigger', nameBn: 'মিনি জিগার', count: 17, cat: 'Dyeing', origin: 'Taiwan / India', descEn: 'Precision batch dyeing for sample and medium run fabrics.', descBn: 'স্যাম্পল ও মাঝারি পরিমাণের কাপড়ে সুষম রঙের জন্য জিগার।' },
@@ -41,92 +42,114 @@ export default function MachineryPage() {
   });
 
   return (
-    <section className="pt-28 pb-20 relative bg-slate-50 textile-grid border-t border-slate-100 section-3d">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-12" data-reveal>
-          <span className="px-3.5 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-600 text-xs font-bold uppercase tracking-wider mb-3 inline-block">
-            {lang === 'bn' ? 'মেশিনারি ও প্রযুক্তি বহর' : 'State-of-the-Art Machineries'}
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900">
-            {lang === 'bn' ? 'মোট ৭২টি আমদানিকৃত আধুনিক মেশিনারি' : '72 Heavy-Duty Units of World-Class Machinery'}
-          </h2>
+    <div className="pt-8 lg:pt-10 pb-14">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0f2a44]/5 border border-[#0f2a44]/10 text-[#0f2a44] text-xs font-bold">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#d4a574]" />
+              {lang === 'bn' ? 'মেশিনারি ও প্রযুক্তি বহর' : 'State-of-the-Art Machineries'}
+            </div>
+            <h1 className="mt-4 text-[30px] sm:text-[40px] font-[800] tracking-[-0.03em] leading-[0.95] text-[#0f2a44]">
+              {lang === 'bn' ? 'মোট ৭২টি আমদানিকৃত আধুনিক মেশিনারি' : '72 heavy-duty units of world-class machinery'}
+            </h1>
+          </div>
+          <div className="hidden lg:block text-right">
+            <div className="text-xs font-bold tracking-widest uppercase text-stone-400">Showing</div>
+            <div className="text-2xl font-[800] text-[#0f2a44]">{filtered.reduce((a, b) => a + b.count, 0)} <span className="text-sm font-semibold text-stone-400">/ 72 units</span></div>
+          </div>
         </div>
 
-        <div className="glass-panel p-4 rounded-2xl border border-slate-200 mb-8 space-y-4 shadow-xl">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="w-full md:w-80">
-              <input type="text" placeholder={lang === 'bn' ? 'মেশিনের নাম বা দেশ খুঁজুন...' : 'Search machine name, origin...'}
-                value={search} onChange={(e) => setSearch(e.target.value)}
-                className="w-full px-4 py-2 rounded-xl bg-white/80 border border-slate-200 text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-sky-400" />
+        {/* Controls */}
+        <div className="mt-7 card-modern rounded-[20px] p-4 flex flex-col lg:flex-row gap-4">
+          <div className="relative flex-1">
+            <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400" />
+            <input
+              type="text"
+              placeholder={lang === 'bn' ? 'মেশিনের নাম বা দেশ খুঁজুন...' : 'Search machine name, origin...'}
+              value={search} onChange={(e) => setSearch(e.target.value)}
+              className="w-full pl-10 pr-4 py-2.5 rounded-full bg-[#fdfbf7] border border-stone-200 text-sm text-[#0f2a44] placeholder-stone-400 focus:outline-none focus:border-[#0f2a44]/20 focus:bg-white transition-colors"
+            />
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="lg:hidden text-xs font-semibold text-stone-600">
+              {filtered.reduce((a, b) => a + b.count, 0)} / 72
             </div>
-            <div className="flex items-center justify-between w-full md:w-auto gap-4">
-              <div className="text-xs text-slate-700 font-medium">
-                {lang === 'bn' ? 'প্রদর্শিত:' : 'Showing:'} <span className="font-bold text-amber-600 text-sm">{filtered.reduce((a, b) => a + b.count, 0)}</span> / 72
-              </div>
-              <div className="flex items-center p-1 rounded-xl bg-white border border-slate-200">
-                <button onClick={() => setViewMode('card')} className={`px-3 py-1 text-xs font-semibold rounded-lg transition-colors ${viewMode === 'card' ? 'bg-sky-500 text-white' : 'text-slate-600'}`}>Card</button>
-                <button onClick={() => setViewMode('table')} className={`px-3 py-1 text-xs font-semibold rounded-lg transition-colors ${viewMode === 'table' ? 'bg-sky-500 text-white' : 'text-slate-600'}`}>Table</button>
-              </div>
+            <div className="flex items-center gap-1 p-1 rounded-full bg-[#fdfbf7] border border-stone-200">
+              <button onClick={() => setViewMode('card')} className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold transition-colors ${viewMode === 'card' ? 'bg-[#0f2a44] text-white' : 'text-stone-600'}`}>
+                <LayoutGrid size={14} /> Card
+              </button>
+              <button onClick={() => setViewMode('table')} className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold transition-colors ${viewMode === 'table' ? 'bg-[#0f2a44] text-white' : 'text-stone-600'}`}>
+                <Table2 size={14} /> Table
+              </button>
             </div>
           </div>
-          <div className="flex flex-wrap gap-2 pt-2 border-t border-slate-200/80">
-            {['All', 'Dyeing', 'Printing', 'Finishing', 'Pre-Treatment', 'Utilities'].map((cat) => (
-              <button key={cat} onClick={() => setCategory(cat)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all border cursor-pointer ${category === cat ? 'bg-sky-500 text-white border-sky-400' : 'bg-white/60 text-slate-600 border-slate-200'}`}>{cat}</button>
-            ))}
-          </div>
+        </div>
+
+        <div className="mt-4 flex flex-wrap gap-2">
+          {['All', 'Dyeing', 'Printing', 'Finishing', 'Pre-Treatment', 'Utilities'].map((cat) => (
+            <button key={cat} onClick={() => setCategory(cat)} className={`px-4 py-2 rounded-full text-xs font-bold border transition-all ${category === cat ? 'bg-[#0f2a44] text-white border-[#0f2a44]' : 'bg-white text-stone-600 border-stone-200 hover:border-stone-300'}`}>
+              {cat}
+            </button>
+          ))}
         </div>
 
         {viewMode === 'card' ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {filtered.map((m) => (
-              <div key={m.id} className="glass-card p-5 rounded-xl border border-slate-200 hover:border-sky-500/40 flex flex-col justify-between group tilt-card">
+              <div key={m.id} className="card-modern rounded-[20px] p-5 flex flex-col justify-between group">
                 <div>
-                  <div className="flex items-start justify-between gap-2 mb-2">
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-sky-500/10 text-sky-600 border border-sky-500/20">{m.cat}</span>
-                    <span className="text-sm font-black px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-700 border border-amber-500/30">{m.count} {lang === 'bn' ? 'টি' : 'Pcs'}</span>
+                  <div className="flex items-start justify-between gap-2">
+                    <span className="px-2.5 py-1 rounded-full bg-[#fdfbf7] border border-stone-200 text-[11px] font-bold tracking-wide text-[#0f2a44]">{m.cat}</span>
+                    <span className="px-2.5 py-1 rounded-full bg-[#0f2a44] text-white text-xs font-[800]">{m.count} pcs</span>
                   </div>
-                  <h4 className="text-sm sm:text-base font-bold text-slate-900 group-hover:text-sky-600 transition-colors">{lang === 'bn' ? m.nameBn : m.nameEn}</h4>
-                  <div className="text-xs text-slate-600 font-medium mt-0.5">{lang === 'bn' ? m.nameEn : m.nameBn}</div>
-                  <p className="text-xs text-slate-700 mt-2 leading-relaxed line-clamp-3">{lang === 'bn' ? m.descBn : m.descEn}</p>
+                  <h4 className="mt-3 text-[15px] font-bold tracking-tight text-[#0f2a44] group-hover:text-black transition-colors leading-tight">{lang === 'bn' ? m.nameBn : m.nameEn}</h4>
+                  <div className="text-xs text-stone-500 font-medium">{lang === 'bn' ? m.nameEn : m.nameBn}</div>
+                  <p className="text-[13px] leading-relaxed text-stone-600 mt-3 line-clamp-2">{lang === 'bn' ? m.descBn : m.descEn}</p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-slate-200/80 flex items-center justify-between text-[11px] text-slate-600">
-                  <span>🌐 {m.origin}</span>
-                  <span className="text-emerald-600 font-semibold">✓ 100% Brand-New</span>
+                <div className="mt-5 pt-3 border-t border-stone-100 flex items-center justify-between text-[11px]">
+                  <span className="inline-flex items-center gap-1 text-stone-500"><MapPin size={12} /> {m.origin}</span>
+                  <span className="inline-flex items-center gap-1 font-semibold text-emerald-700"><CheckCircle2 size={12} /> New</span>
                 </div>
               </div>
             ))}
           </div>
         ) : (
-          <div className="glass-panel rounded-2xl border border-slate-200 overflow-x-auto shadow-xl">
-            <table className="w-full text-left text-xs sm:text-sm text-slate-700">
-              <thead className="bg-white/90 text-xs font-bold uppercase text-slate-600 border-b border-slate-200">
-                <tr>
-                  <th className="px-5 py-3.5">#</th>
-                  <th className="px-5 py-3.5">{lang === 'bn' ? 'মেশিনের নাম' : 'Machine Name'}</th>
-                  <th className="px-5 py-3.5">{lang === 'bn' ? 'ক্যাটাগরি' : 'Category'}</th>
-                  <th className="px-5 py-3.5">{lang === 'bn' ? 'উৎপত্তি' : 'Origin'}</th>
-                  <th className="px-5 py-3.5 text-right">{lang === 'bn' ? 'পরিমাণ' : 'Quantity'}</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-200">
-                {filtered.map((m, i) => (
-                  <tr key={m.id} className="hover:bg-sky-500/5 transition-colors">
-                    <td className="px-5 py-3.5 text-slate-500">{i + 1}</td>
-                    <td className="px-5 py-3.5 font-semibold text-slate-900">
-                      <div>{lang === 'bn' ? m.nameBn : m.nameEn}</div>
-                      <div className="text-[11px] text-slate-600 font-normal">{lang === 'bn' ? m.nameEn : m.nameBn}</div>
-                    </td>
-                    <td className="px-5 py-3.5"><span className="px-2 py-0.5 rounded text-[11px] bg-white border border-slate-200 text-sky-600">{m.cat}</span></td>
-                    <td className="px-5 py-3.5">{m.origin}</td>
-                    <td className="px-5 py-3.5 text-right font-bold text-amber-600">{m.count} Pcs</td>
+          <div className="mt-6 card-modern rounded-[20px] overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-sm">
+                <thead className="bg-[#fdfbf7] text-xs font-bold tracking-widest uppercase text-stone-500 border-b border-stone-200">
+                  <tr>
+                    <th className="px-6 py-3.5">#</th>
+                    <th className="px-6 py-3.5">{lang === 'bn' ? 'মেশিনের নাম' : 'Machine Name'}</th>
+                    <th className="px-6 py-3.5">Category</th>
+                    <th className="px-6 py-3.5">Origin</th>
+                    <th className="px-6 py-3.5 text-right">Qty</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody className="divide-y divide-stone-100">
+                  {filtered.map((m, i) => (
+                    <tr key={m.id} className="hover:bg-[#fdfbf7]/60 transition-colors">
+                      <td className="px-6 py-3.5 text-stone-400 text-xs">{String(i + 1).padStart(2, '0')}</td>
+                      <td className="px-6 py-3.5">
+                        <div className="font-semibold text-[#0f2a44]">{lang === 'bn' ? m.nameBn : m.nameEn}</div>
+                        <div className="text-xs text-stone-500">{lang === 'bn' ? m.nameEn : m.nameBn}</div>
+                      </td>
+                      <td className="px-6 py-3.5"><span className="px-2.5 py-1 rounded-full bg-white border border-stone-200 text-xs font-semibold text-[#0f2a44]">{m.cat}</span></td>
+                      <td className="px-6 py-3.5 text-stone-600 text-xs">{m.origin}</td>
+                      <td className="px-6 py-3.5 text-right font-[800] text-[#0f2a44]">{m.count}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         )}
+
+        <div className="mt-6 flex items-center gap-2 text-xs text-stone-500">
+          <SlidersHorizontal size={14} /> {lang === 'bn' ? 'সকল মেশিন ১০০% ব্র্যান্ড নিউ আমদানিকৃত • জার্মানি, জাপান, তাইওয়ান, ভারত' : 'All machines 100% brand-new imported • Germany, Japan, Taiwan, India, China'}
+        </div>
       </div>
-    </section>
+    </div>
   );
 }

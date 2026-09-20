@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useApp } from '../App';
 import { assets } from '../assets';
+import { ArrowUpRight, Factory, Droplets, Printer, Layers, Sparkles, Recycle } from 'lucide-react';
 
 export default function UnitsPage() {
   const { lang, openLightbox } = useApp();
@@ -10,6 +11,7 @@ export default function UnitsPage() {
     weaving: {
       titleEn: 'Weaving Section', titleBn: 'উইভিং (বুনন) সেকশন',
       banner: assets.banners.weaving,
+      icon: Layers,
       shortEn: 'High-speed automated loom infrastructure producing premium greige fabric.', shortBn: 'উচ্চগতির স্বয়ংক্রিয় লুম পরিকাঠামো যা প্রিমিয়াম গ্রেজ ফ্যাব্রিক তৈরি করে।',
       fullEn: 'Our weaving division utilizes advanced high-speed looms with automated tension control and precision yarn alignment. We weave premium poplin, voile, twill, fine cotton, and blends tailored for sensitive printing and dyeing.',
       fullBn: 'আমাদের উইভিং বিভাগ স্বয়ংক্রিয় টেনশন কন্ট্রোল এবং সুনির্দিষ্ট সুতা সারিবদ্ধকরণ সহ উন্নত হাই-স্পিড লুম ব্যবহার করে।',
@@ -17,8 +19,9 @@ export default function UnitsPage() {
       gallery: assets.weaving
     },
     flatbed: {
-      titleEn: 'Flat Bed Screen & Rotary Printing', titleBn: 'ফ্ল্যাট বেড স্ক্রিন ও রোটারি প্রিন্টিং',
+      titleEn: 'Flat Bed Screen & Rotary', titleBn: 'ফ্ল্যাট বেড স্ক্রিন ও রোটারি',
       banner: assets.banners.flatbed,
+      icon: Printer,
       shortEn: 'Industrial heavy-duty flatbed and rotary screen printing lines.', shortBn: 'শিল্পমানের হেভি-ডিউটি ফ্ল্যাটবেড ও রোটারি প্রিন্টিং লাইন।',
       fullEn: 'Engineered for high-volume execution of Sarees, 3-Piece ladies wear, and boutique ethnic prints.',
       fullBn: 'শাড়ি, থ্রি-পিস লেডিস পোশাক এবং বুটিক এথনিক প্রিন্টের বিশাল পরিমাণের জন্য প্রস্তুত।',
@@ -28,6 +31,7 @@ export default function UnitsPage() {
     digital: {
       titleEn: 'Digital Textile Printing', titleBn: 'ডিজিটাল টেক্সটাইল প্রিন্টিং',
       banner: assets.banners.digital,
+      icon: Sparkles,
       shortEn: 'Ultra high-definition direct-to-fabric digital printing.', shortBn: 'আল্ট্রা হাই-ডেফিনিশন ডিজিটাল প্রিন্টিং।',
       fullEn: 'Our digital printing wing offers unlimited color spectrums, photo-grade resolution (up to 2400 DPI).',
       fullBn: 'আমাদের ডিজিটাল প্রিন্টিং উইং ২৪০০ ডিপিআই পর্যন্ত রেজোলিউশন দেয়।',
@@ -35,8 +39,9 @@ export default function UnitsPage() {
       gallery: assets.digital
     },
     dyeing: {
-      titleEn: 'Dyeing & Pre-Treatment Section', titleBn: 'ডাইং ও প্রি-ট্রিটমেন্ট সেকশন',
+      titleEn: 'Dyeing & Pre-Treatment', titleBn: 'ডাইং ও প্রি-ট্রিটমেন্ট',
       banner: assets.banners.dyeing,
+      icon: Droplets,
       shortEn: 'Comprehensive Jigger, Pad Batch, and Mercerizing units.', shortBn: 'জিগার, প্যাড ব্যাচ এবং মার্সারাইজিং ইউনিট।',
       fullEn: 'Equipped with 39+ specialized jiggers for uniform shade consistency.',
       fullBn: '৩৯টিরও বেশি বিশেষায়িত জিগারে সজ্জিত।',
@@ -44,8 +49,9 @@ export default function UnitsPage() {
       gallery: [assets.banners.dyeing, assets.gallery[3].src, assets.gallery[6].src, assets.gallery[8].src]
     },
     finishing: {
-      titleEn: 'Finishing & Stenter Section', titleBn: 'ফিনিশিং ও স্টেন্টার সেকশন',
+      titleEn: 'Finishing & Stenter', titleBn: 'ফিনিশিং ও স্টেন্টার',
       banner: assets.banners.finishing,
+      icon: Factory,
       shortEn: 'Bruckner Stenters, Calendars, and Super Wash units.', shortBn: 'ব্রুকনার স্টেন্টার, ক্যালেন্ডার ও সুপার ওয়াশ।',
       fullEn: 'German-engineered Bruckner Stenters, Thermo Stenters, and Calendars.',
       fullBn: 'জার্মান প্রযুক্তির ব্রুকনার স্টেন্টার ও ক্যালেন্ডার।',
@@ -53,8 +59,9 @@ export default function UnitsPage() {
       gallery: [assets.banners.finishing, assets.gallery[4].src, assets.gallery[7].src, assets.gallery[10].src]
     },
     etp: {
-      titleEn: 'Effluent Treatment Plant (ETP)', titleBn: 'বর্জ্য পরিশোধনাগার (ইটিপি)',
+      titleEn: 'Effluent Treatment Plant', titleBn: 'বর্জ্য পরিশোধনাগার (ইটিপি)',
       banner: assets.aboutBg,
+      icon: Recycle,
       shortEn: '2,400 m³/day biochemical effluent treatment plant.', shortBn: 'দৈনিক ২৪০০ ঘনমিটার ইটিপি।',
       fullEn: 'A massive 16,000 sq.ft Biochemical ETP facility.',
       fullBn: '১৬,০০০ বর্গফুটের বিশাল বায়োকেমিক্যাল ইটিপি।',
@@ -63,72 +70,103 @@ export default function UnitsPage() {
     }
   };
 
-  const currentUnitData = units[activeUnit];
+  const current = units[activeUnit];
+  const Icon = current.icon;
 
   return (
-    <section className="pt-28 pb-20 relative bg-white section-3d">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-12" data-reveal>
-          <span className="px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 text-xs font-bold uppercase tracking-wider mb-3 inline-block">
+    <div className="pt-8 lg:pt-10 pb-14">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0f2a44]/5 border border-[#0f2a44]/10 text-[#0f2a44] text-xs font-bold">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#d4a574]" />
             {lang === 'bn' ? 'উৎপাদন ও প্রসেসিং বিভাগ' : 'Full-Scale Manufacturing Wings'}
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900">
-            {lang === 'bn' ? 'আমাদের সমন্বিত প্রোডাকশন সুবিধাসমূহ' : 'Integrated Industrial Production Infrastructure'}
-          </h2>
+          </div>
+          <h1 className="mt-4 text-[30px] sm:text-[40px] font-[800] tracking-[-0.03em] leading-[0.95] text-[#0f2a44]">
+            {lang === 'bn' ? 'আমাদের সমন্বিত প্রোডাকশন সুবিধাসমূহ' : 'Integrated industrial production infrastructure'}
+          </h1>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10">
+        {/* Tabs */}
+        <div className="mt-7 flex flex-wrap gap-2">
           {Object.keys(units).map((key) => {
             const u = units[key];
+            const active = activeUnit === key;
             return (
-              <button key={key} onClick={() => setActiveUnit(key)}
-                className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all border cursor-pointer ${activeUnit === key ? 'bg-gradient-to-r from-sky-500 to-blue-600 text-white border-sky-400 shadow-lg shadow-sky-500/25 scale-105' : 'bg-white/80 text-slate-700 border-slate-200 hover:border-slate-300'}`}>
+              <button
+                key={key}
+                onClick={() => setActiveUnit(key)}
+                className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-[13px] font-semibold border transition-all ${active ? 'bg-[#0f2a44] text-white border-[#0f2a44] shadow-sm' : 'bg-white text-stone-700 border-stone-200 hover:border-stone-300'}`}
+              >
                 {lang === 'bn' ? u.titleBn : u.titleEn}
               </button>
             );
           })}
         </div>
 
-        <div className="glass-card rounded-2xl border border-slate-200 overflow-hidden shadow-2xl">
-          <div className="relative h-64 sm:h-80 md:h-96 w-full overflow-hidden">
-            <img src={currentUnitData.banner} alt="Banner" className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-              <div>
-                <span className="text-xs font-bold text-amber-600 uppercase tracking-widest">{lang === 'bn' ? 'বিভাগীয় পরিকাঠামো' : 'Specialized Facility Unit'}</span>
-                <h3 className="text-2xl sm:text-4xl font-extrabold text-slate-900 mt-1">{lang === 'bn' ? currentUnitData.titleBn : currentUnitData.titleEn}</h3>
-                <p className="text-xs sm:text-sm text-slate-700 max-w-xl mt-1">{lang === 'bn' ? currentUnitData.shortBn : currentUnitData.shortEn}</p>
-              </div>
-              <div className="flex gap-2">
-                {currentUnitData.stats.map((st: any, i: number) => (
-                  <div key={i} className="px-3.5 py-2 rounded-xl glass-panel border border-sky-500/30 text-center">
-                    <div className="text-xs sm:text-sm font-bold text-sky-600">{st.val}</div>
-                    <div className="text-[10px] text-slate-600">{lang === 'bn' ? st.labelBn : st.labelEn}</div>
+        {/* Main card */}
+        <div className="mt-6 card-modern rounded-[24px] overflow-hidden">
+          <div className="relative h-[320px] sm:h-[380px] lg:h-[420px] overflow-hidden bg-stone-200">
+            <img src={current.banner} alt="Banner" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#070d1a]/80 via-[#070d1a]/20 to-transparent" />
+            {/* floating header */}
+            <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8">
+              <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-5">
+                <div className="flex gap-4">
+                  <div className="hidden sm:flex w-11 h-11 rounded-full bg-white text-[#0f2a44] items-center justify-center shrink-0">
+                    <Icon size={18} />
                   </div>
-                ))}
+                  <div>
+                    <div className="text-[11px] font-bold tracking-[0.14em] uppercase text-white/70">{lang === 'bn' ? 'বিভাগীয় পরিকাঠামো' : 'Specialized Facility Unit'}</div>
+                    <h2 className="text-[24px] sm:text-[30px] font-[800] tracking-tight text-white mt-1 leading-none">{lang === 'bn' ? current.titleBn : current.titleEn}</h2>
+                    <p className="text-sm text-white/75 max-w-xl mt-2 leading-relaxed">{lang === 'bn' ? current.shortBn : current.shortEn}</p>
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  {current.stats.map((st: any, i: number) => (
+                    <div key={i} className="px-4 py-3 rounded-2xl bg-white/95 backdrop-blur border border-white/20 text-center min-w-[110px]">
+                      <div className="text-sm font-[800] text-[#0f2a44]">{st.val}</div>
+                      <div className="text-[11px] font-medium text-stone-500">{lang === 'bn' ? st.labelBn : st.labelEn}</div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <div className="lg:col-span-6 space-y-4">
-              <h4 className="text-lg font-bold text-slate-900">{lang === 'bn' ? 'কার্যক্রম ও প্রযুক্তিগত সক্ষমতা' : 'Operations & Technical Capacity'}</h4>
-              <p className="text-slate-700 text-sm leading-relaxed">{lang === 'bn' ? currentUnitData.fullBn : currentUnitData.fullEn}</p>
+          <div className="p-6 lg:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div className="lg:col-span-5">
+              <div className="text-xs font-bold tracking-[0.12em] uppercase text-[#b88a5a]">Operations & Technical Capacity</div>
+              <h3 className="text-[18px] font-bold text-[#0f2a44] mt-2 leading-tight">{lang === 'bn' ? 'কার্যক্রম ও প্রযুক্তিগত সক্ষমতা' : 'Operations & Technical Capacity'}</h3>
+              <p className="text-[14px] leading-relaxed text-stone-600 mt-3">{lang === 'bn' ? current.fullBn : current.fullEn}</p>
+              <div className="mt-5 inline-flex items-center gap-2 text-xs font-semibold text-[#0f2a44]">
+                <span className="w-6 h-6 rounded-full bg-[#fdfbf7] border border-stone-200 flex items-center justify-center"><ArrowUpRight size={12} /></span>
+                {lang === 'bn' ? 'সকল মেশিন ১০০% ব্র্যান্ড নিউ আমদানিকৃত' : 'All machines 100% brand-new imported'}
+              </div>
             </div>
-            <div className="lg:col-span-6 space-y-3">
-              <h4 className="text-sm font-bold text-slate-900">{lang === 'bn' ? 'ইউনিটের ছবি' : 'Unit Gallery'}</h4>
-              <div className="grid grid-cols-3 gap-2.5">
-                {currentUnitData.gallery.map((img: string, idx: number) => (
-                  <div key={idx} onClick={() => openLightbox(currentUnitData.gallery.map((g: string) => ({ src: g })), idx)}
-                    className="relative aspect-video rounded-lg overflow-hidden border border-slate-200 hover:border-sky-400 cursor-pointer group shadow-md">
-                    <img src={img} alt="Thumb" className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110" />
-                  </div>
+            <div className="lg:col-span-7">
+              <div className="flex items-center justify-between mb-3">
+                <h4 className="text-sm font-bold text-[#0f2a44]">{lang === 'bn' ? 'ইউনিটের ছবি' : 'Unit gallery'}</h4>
+                <span className="text-xs text-stone-400">{current.gallery.length} photos</span>
+              </div>
+              <div className="grid grid-cols-3 gap-3">
+                {current.gallery.map((img: string, idx: number) => (
+                  <button
+                    key={idx}
+                    onClick={() => openLightbox(current.gallery.map((g: string) => ({ src: g })), idx)}
+                    className="group relative aspect-[4/3] rounded-2xl overflow-hidden border border-stone-200 bg-stone-100"
+                  >
+                    <img src={img} alt="" className="w-full h-full object-cover img-zoom" />
+                    <div className="absolute inset-0 bg-[#0f2a44]/0 group-hover:bg-[#0f2a44]/10 transition-colors" />
+                    <div className="absolute bottom-2 right-2 w-6 h-6 rounded-full bg-white/90 backdrop-blur flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                      <ArrowUpRight size={12} className="text-[#0f2a44]" />
+                    </div>
+                  </button>
                 ))}
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

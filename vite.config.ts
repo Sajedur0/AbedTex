@@ -8,6 +8,10 @@ export default defineConfig({
   server: {
     port: 3000,
     open: false,
-    host: true
-  }
+    host: '0.0.0.0',
+    allowedHosts: true as any,
+    hmr: { host: 'localhost' },
+    headers: { 'X-Frame-Options': 'ALLOWALL' }
+  },
+  preview: { host: '0.0.0.0' }
 });
