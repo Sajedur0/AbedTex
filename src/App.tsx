@@ -191,7 +191,7 @@ function Footer() {
               </div>
             </div>
             <p className="text-sm leading-relaxed text-stone-400 max-w-md">
-              {lang === 'bn' ? '১৯৯৩ সাল থেকে Oeko-Tex সার্টিফাইড ১০০% রপ্তানিমুখী আধুনিক টেক্সটাইল প্রসেসিং মিলস।' : 'An Oeko-Tex Certified 100% Export Oriented Manufacturer of Quality Processing Mills since 1993. 4.5M yards monthly, 72 machines, 1000+ workforce.'}
+              {lang === 'bn' ? '১৯৯৩ সাল থেকে Oeko-Tex সার্টিফাইড ১০০% রপ্তানিমুখী আধুনিক টেক্সটাইল প্রসেসিং মিলস।' : 'An Oeko-Tex Certified 100% Export Oriented Manufacturer of Quality Processing Mills since 1993. 4.5M yards monthly, 42 machines, 1000+ workforce.'}
             </p>
             <div className="flex gap-2 pt-1">
               <span className="px-3 py-1.5 rounded-full bg-white/[0.06] border border-white/10 text-xs font-medium text-stone-300">Oeko-Tex 100</span>

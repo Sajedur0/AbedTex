@@ -36,8 +36,8 @@ export default function HomePage() {
 
               <p className="hero-animate mt-5 text-[15px] lg:text-[16px] leading-relaxed text-white/75 max-w-[560px]" style={{ animationDelay: '0.22s' }}>
                 {lang === 'bn'
-                  ? '১৯৯৩ সাল থেকে বাংলাদেশের টেক্সটাইল শিল্পে আস্থার প্রতীক। ৭২টি আধুনিক মেশিনারি, ১০০০+ দক্ষ কর্মী এবং প্রতি মাসে ৪৫ লক্ষ গজ উৎপাদন ক্ষমতাসম্পন্ন সর্বাধুনিক ডাইং, প্রিন্টিং ও ফিনিশিং প্ল্যান্ট।'
-                  : 'A trusted name in Bangladesh textile processing since 1993. Empowered by 72 modern imported machineries, 1,000+ skilled workforce, and 4.5M yards monthly capacity for world-class Shari, 3-Pcs, Poplin & Fancy Fabrics.'}
+                  ? '১৯৯৩ সাল থেকে বাংলাদেশের টেক্সটাইল শিল্পে আস্থার প্রতীক। ৪২টি আধুনিক মেশিনারি, ১০০০+ দক্ষ কর্মী এবং প্রতি মাসে ৪৫ লক্ষ গজ উৎপাদন ক্ষমতাসম্পন্ন সর্বাধুনিক ডাইং, প্রিন্টিং ও ফিনিশিং প্ল্যান্ট।'
+                  : 'A trusted name in Bangladesh textile processing since 1993. Empowered by 42 modern imported machineries, 1,000+ skilled workforce, and 4.5M yards monthly capacity for world-class Shari, 3-Pcs, Poplin & Fancy Fabrics.'}
               </p>
 
               <div className="hero-animate flex flex-wrap gap-3 mt-8" style={{ animationDelay: '0.32s' }}>
@@ -70,7 +70,7 @@ export default function HomePage() {
                   <div className="text-[11px] font-bold tracking-[0.14em] uppercase text-[#b88a5a]">At a glance</div>
                   <div className="mt-4 grid grid-cols-3 gap-4">
                     <div>
-                      <div className="text-2xl font-[800] tracking-tight text-[#0f2a44]">72</div>
+                      <div className="text-2xl font-[800] tracking-tight text-[#0f2a44]">42</div>
                       <div className="text-[11px] font-medium text-stone-500 leading-tight">Machineries</div>
                     </div>
                     <div className="border-l border-stone-200 pl-4">
@@ -111,7 +111,7 @@ export default function HomePage() {
               {/* mobile stats */}
               <div className="lg:hidden grid grid-cols-3 gap-2 mt-2">
                 <div className="rounded-2xl bg-white p-3 text-center shadow-lg">
-                  <div className="text-lg font-[800] text-[#0f2a44]">72</div>
+                  <div className="text-lg font-[800] text-[#0f2a44]">42</div>
                   <div className="text-[10px] text-stone-500 font-medium">Machineries</div>
                 </div>
                 <div className="rounded-2xl bg-white p-3 text-center shadow-lg">

@@ -9,12 +9,9 @@ export default function MachineryPage() {
   const [viewMode, setViewMode] = useState<'card' | 'table'>('card');
 
   const machineries = [
-    { id: 1, nameEn: 'Mini Jigger', nameBn: 'মিনি জিগার', count: 17, cat: 'Dyeing', origin: 'Taiwan / India', descEn: 'Precision batch dyeing for sample and medium run fabrics.', descBn: 'স্যাম্পল ও মাঝারি পরিমাণের কাপড়ে সুষম রঙের জন্য জিগার।' },
     { id: 2, nameEn: 'Jumbo Jigger', nameBn: 'জাম্বো জিগার', count: 15, cat: 'Dyeing', origin: 'India / China', descEn: 'High capacity automated jigger dyeing.', descBn: 'বৃহৎ উৎপাদনের জন্য অটোমেটিক জিগার।' },
-    { id: 3, nameEn: 'Cover Jigger', nameBn: 'কভার জিগার', count: 7, cat: 'Dyeing', origin: 'India', descEn: 'Enclosed pressurized dyeing environment.', descBn: 'এনক্লোজড প্রেশারাইজড ডাইং।' },
     { id: 4, nameEn: 'Batch Mercerize', nameBn: 'ব্যাচ মার্সারাইজ', count: 4, cat: 'Pre-Treatment', origin: 'India', descEn: 'Caustic soda impregnation for improving luster.', descBn: 'উজ্জ্বলতা বাড়াতে মার্সারাইজেশন।' },
     { id: 5, nameEn: 'Folding', nameBn: 'ফোল্ডিং মেশিন', count: 3, cat: 'Finishing', origin: 'Japan', descEn: 'Automated fabric inspection and folding.', descBn: 'স্বয়ংক্রিয় ফ্যাব্রিক পরিদর্শন ও ফোল্ডিং।' },
-    { id: 6, nameEn: 'Semi Auto', nameBn: 'সেমি অটো', count: 3, cat: 'Utilities', origin: 'China', descEn: 'Semi-automated handling for intermediate processing.', descBn: 'মধ্যবর্তী প্রক্রিয়াকরণের জন্য সেমি-স্বয়ংক্রিয়।' },
     { id: 7, nameEn: 'Boiler Unit', nameBn: 'বয়লার ইউনিট', count: 3, cat: 'Utilities', origin: 'Japan / India', descEn: 'High-pressure clean steam generation.', descBn: 'উচ্চ চাপের বাষ্প উৎপাদন।' },
     { id: 8, nameEn: 'Bruckner Stenter', nameBn: 'ব্রুকনার স্টেন্টার', count: 2, cat: 'Finishing', origin: 'Germany / Japan', descEn: 'World renowned stenter for heat setting.', descBn: 'হিট সেটিংয়ের জন্য বিশ্বমানের স্টেন্টার।' },
     { id: 9, nameEn: 'Single Folding', nameBn: 'সিঙ্গেল ফোল্ডিং', count: 2, cat: 'Finishing', origin: 'Japan', descEn: 'Single sheet fabric rolling and measuring.', descBn: 'একক শিট ফ্যাব্রিক রোলিং।' },
@@ -29,10 +26,7 @@ export default function MachineryPage() {
     { id: 18, nameEn: 'Sharee Calendar', nameBn: 'শাড়ি ক্যালেন্ডার', count: 1, cat: 'Finishing', origin: 'Japan', descEn: 'Specially engineered calender for sarees.', descBn: 'শাড়ির জন্য বিশেষায়িত ক্যালেন্ডার।' },
     { id: 19, nameEn: 'Pad Batch (CPP)', nameBn: 'প্যাড ব্যাচ (সিপিপি)', count: 1, cat: 'Dyeing', origin: 'Taiwan', descEn: 'Cold pad-batch reactive dyeing.', descBn: 'কোল্ড প্যাড-ব্যাচ রিয়্যাক্টিভ ডাইং।' },
     { id: 20, nameEn: 'Super Wash', nameBn: 'সুপার ওয়াশ', count: 1, cat: 'Finishing', origin: 'Taiwan', descEn: 'Post-dyeing rapid washing.', descBn: 'ডাইং পরবর্তী দ্রুত ওয়াশিং।' },
-    { id: 21, nameEn: 'Cylinder Dryer', nameBn: 'সিলিন্ডার ড্রায়ার', count: 1, cat: 'Finishing', origin: 'China', descEn: 'Steam heated multi-cylinder drying.', descBn: 'বাষ্প উত্তপ্ত ড্রাইং।' },
-    { id: 22, nameEn: 'Fell-Folding', nameBn: 'ফেল-ফোল্ডিং', count: 1, cat: 'Finishing', origin: 'Japan', descEn: 'Specialized packaging fold machine.', descBn: 'বিশেষায়িত প্যাকেজিং ফোল্ড।' },
-    { id: 23, nameEn: 'Foot Dyer', nameBn: 'ফুট ডায়ার', count: 1, cat: 'Dyeing', origin: 'India', descEn: 'Auxiliary dyeing station.', descBn: 'সহায়ক ডাইং স্টেশন।' },
-    { id: 24, nameEn: 'Sun Frizzing', nameBn: 'সান ফ্রিজিং', count: 1, cat: 'Finishing', origin: 'China', descEn: 'Surface texturing system.', descBn: 'সারফেস টেক্সচারিং।' }
+    { id: 21, nameEn: 'Cylinder Dryer', nameBn: 'সিলিন্ডার ড্রায়ার', count: 1, cat: 'Finishing', origin: 'China', descEn: 'Steam heated multi-cylinder drying.', descBn: 'বাষ্প উত্তপ্ত ড্রাইং।' }
   ];
 
   const filtered = machineries.filter(m => {
@@ -51,12 +45,12 @@ export default function MachineryPage() {
               {lang === 'bn' ? 'মেশিনারি ও প্রযুক্তি বহর' : 'State-of-the-Art Machineries'}
             </div>
             <h1 className="mt-4 text-[30px] sm:text-[40px] font-[800] tracking-[-0.03em] leading-[0.95] text-[#0f2a44]">
-              {lang === 'bn' ? 'মোট ৭২টি আমদানিকৃত আধুনিক মেশিনারি' : '72 heavy-duty units of world-class machinery'}
+              {lang === 'bn' ? 'মোট ৪২টি আমদানিকৃত আধুনিক মেশিনারি' : '42 heavy-duty units of world-class machinery'}
             </h1>
           </div>
           <div className="hidden lg:block text-right">
             <div className="text-xs font-bold tracking-widest uppercase text-stone-400">Showing</div>
-            <div className="text-2xl font-[800] text-[#0f2a44]">{filtered.reduce((a, b) => a + b.count, 0)} <span className="text-sm font-semibold text-stone-400">/ 72 units</span></div>
+            <div className="text-2xl font-[800] text-[#0f2a44]">{filtered.reduce((a, b) => a + b.count, 0)} <span className="text-sm font-semibold text-stone-400">/ 42 units</span></div>
           </div>
         </div>
 
@@ -73,7 +67,7 @@ export default function MachineryPage() {
           </div>
           <div className="flex items-center gap-3">
             <div className="lg:hidden text-xs font-semibold text-stone-600">
-              {filtered.reduce((a, b) => a + b.count, 0)} / 72
+              {filtered.reduce((a, b) => a + b.count, 0)} / 42
             </div>
             <div className="flex items-center gap-1 p-1 rounded-full bg-[#fdfbf7] border border-stone-200">
               <button onClick={() => setViewMode('card')} className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold transition-colors ${viewMode === 'card' ? 'bg-[#0f2a44] text-white' : 'text-stone-600'}`}>

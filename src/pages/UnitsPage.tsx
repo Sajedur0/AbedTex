@@ -43,9 +43,9 @@ export default function UnitsPage() {
       banner: assets.banners.dyeing,
       icon: Droplets,
       shortEn: 'Comprehensive Jigger, Pad Batch, and Mercerizing units.', shortBn: 'জিগার, প্যাড ব্যাচ এবং মার্সারাইজিং ইউনিট।',
-      fullEn: 'Equipped with 39+ specialized jiggers for uniform shade consistency.',
-      fullBn: '৩৯টিরও বেশি বিশেষায়িত জিগারে সজ্জিত।',
-      stats: [{ val: '39 Units', labelEn: 'Total Jiggers', labelBn: 'মোট জিগার' }, { val: 'Grade 4-5', labelEn: 'Color Fastness', labelBn: 'কালার ফাস্টনেস' }],
+      fullEn: 'Equipped with 15 specialized jiggers for uniform shade consistency.',
+      fullBn: '১৫টি বিশেষায়িত জিগারে সজ্জিত।',
+      stats: [{ val: '15 Units', labelEn: 'Total Jiggers', labelBn: 'মোট জিগার' }, { val: 'Grade 4-5', labelEn: 'Color Fastness', labelBn: 'কালার ফাস্টনেস' }],
       gallery: [assets.banners.dyeing, assets.gallery[3].src, assets.gallery[6].src, assets.gallery[8].src]
     },
     finishing: {
