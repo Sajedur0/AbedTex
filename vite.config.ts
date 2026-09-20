@@ -8,8 +8,10 @@ export default defineConfig({
   server: {
     port: 3000,
     open: false,
-    host: true,
-    // Allow the sandbox preview host (dev server only)
-    allowedHosts: true,
+    host: '0.0.0.0',
+    allowedHosts: true as any,
+    hmr: { host: 'localhost' },
+    headers: { 'X-Frame-Options': 'ALLOWALL' }
   },
+  preview: { host: '0.0.0.0' }
 });

@@ -1,192 +1,97 @@
 import { useState } from 'react';
-import { Check, ArrowRight, Sparkles } from 'lucide-react';
 import { useApp } from '../App';
-import PageHeader from '../components/PageHeader';
+import { Check, ArrowRight, Sparkles } from 'lucide-react';
 
-interface Product {
-  nameEn: string; nameBn: string;
-  catEn: string; catBn: string;
-  descEn: string; descBn: string;
-  badgeEn: string; badgeBn: string;
-  specsEn: string[]; specsBn: string[];
-  swatch: string;
-  pattern: string;
-}
-
-const products: Product[] = [
-  {
-    nameEn: 'Exclusive Shari', nameBn: 'এক্সক্লুসিভ শাড়ি', catEn: 'Ethnic & Traditional Wear', catBn: 'ঐতিহ্যবাহী পোশাক',
-    descEn: 'Renowned for exquisite print repeats, buttery soft fall, vibrant colorfast hues.', descBn: 'নিখুঁত প্রিন্ট রিপিট, মসৃণ ড্র্যাপ ও উজ্জ্বল রঙের জন্য সমাদৃত।',
-    badgeEn: 'Best Seller', badgeBn: 'সর্বাধিক জনপ্রিয়',
-    specsEn: ['100% Cotton, Voile, Silk Blend', 'Flatbed & Digital Print', '12-14 Haath length', 'Shrinkage controlled'],
-    specsBn: ['১০০% কটন, ভয়েল, সিল্ক ব্লেন্ড', 'ফ্ল্যাটবেড ও ডিজিটাল প্রিন্ট', '১২-১৪ হাত দৈর্ঘ্য', 'শ্রিনকেজ মুক্ত'],
-    swatch: 'linear-gradient(120deg, #7f1d1d 0%, #b91c1c 35%, #dc2626 60%, #f59e0b 100%)',
-    pattern: 'pattern-wave',
-  },
-  {
-    nameEn: 'Three-Piece Suits', nameBn: 'থ্রি-পিস ফেব্রিক্স', catEn: 'Ladies Fashion', catBn: 'লেডিস ফ্যাশন',
-    descEn: 'Full matching sets of Kameez, Salwar, and Dupatta.', descBn: 'কামিজ, সালোয়ার ও ওড়নার সম্পূর্ণ ম্যাচিং সেট।',
-    badgeEn: 'Trending', badgeBn: 'ট্রেন্ডিং',
-    specsEn: ['Matching set', 'Fine yarn: 60s-80s', 'Anti-fading wash', 'Ultra-breathable'],
-    specsBn: ['ম্যাচিং সেট', 'ফাইন কাউন্ট ৬০s-৮০s', 'অ্যান্টি-ফেডিং ওয়াশ', 'আরামদায়ক'],
-    swatch: 'linear-gradient(120deg, #1e3a8a 0%, #1d4ed8 45%, #0ea5e9 100%)',
-    pattern: 'pattern-check',
-  },
-  {
-    nameEn: 'Premium Poplin', nameBn: 'প্রিমিয়াম পপলিন', catEn: 'Apparel & Shirting', catBn: 'পোশাক ও শার্টিং',
-    descEn: 'Crisp, tightly woven plain weave cotton fabric.', descBn: 'উচ্চ ঘনত্বের পপলিন ফ্যাব্রিক।',
-    badgeEn: 'Export Standard', badgeBn: 'রপ্তানি মানদণ্ড',
-    specsEn: ['100% Combed Cotton', 'GSM: 100-140', 'Mercerized', 'Zero skew'],
-    specsBn: ['১০০% কম্বড কটন', 'জিএসএম: ১০০-১৪০', 'মার্সারাইজড', 'নিখুঁত বুনন'],
-    swatch: 'linear-gradient(120deg, #334155 0%, #64748b 50%, #cbd5e1 100%)',
-    pattern: 'pattern-stripe',
-  },
-  {
-    nameEn: 'Soft Voile', nameBn: 'নরম ভয়েল', catEn: 'Lightweight Textiles', catBn: 'হালকা টেক্সটাইল',
-    descEn: 'Feather-light, semi-sheer plain weave with silky hand feel.', descBn: 'পালকের মতো হালকা, সিল্কি ভয়েল ফ্যাব্রিক।',
-    badgeEn: 'Signature', badgeBn: 'সিগনেচার',
-    specsEn: ['High-twist cotton', 'GSM: 65-85', 'Exceptional drape', 'Quick-drying'],
-    specsBn: ['হাই-টুইস্ট কটন', 'জিএসএম: ৬৫-৮৫', 'চমৎকার ড্র্যাপ', 'দ্রুত শুকায়'],
-    swatch: 'linear-gradient(120deg, #065f46 0%, #10b981 55%, #6ee7b7 100%)',
-    pattern: 'pattern-dots',
-  },
-  {
-    nameEn: 'Lillian Fabric', nameBn: 'লিলিয়ান ফেব্রিক', catEn: 'Fashion & Draped Wear', catBn: 'ফ্যাশন পোশাক',
-    descEn: 'High-tenacity blended drape fabric with lustrous flow.', descBn: 'উচ্চ শক্তির ব্লেন্ডেড ড্র্যাপ ফ্যাব্রিক।',
-    badgeEn: 'High Demand', badgeBn: 'ব্যাপক চাহিদা',
-    specsEn: ['Polyester-Viscose blend', 'Reactive printed motifs', 'Silky wash finish', 'High vibrancy'],
-    specsBn: ['পলিয়েস্টার-ভিসকোস ব্লেন্ড', 'রিয়্যাক্টিভ প্রিন্টেড', 'সিল্কি ওয়াশ ফিনিশ', 'উজ্জ্বল রঙ'],
-    swatch: 'linear-gradient(120deg, #581c87 0%, #9333ea 50%, #e879f9 100%)',
-    pattern: 'pattern-wave',
-  },
-  {
-    nameEn: 'Knit Fabrics & Fancy Print', nameBn: 'নিট ফেব্রিক্স ও ফ্যান্সি প্রিন্ট', catEn: 'Knitwear', catBn: 'নিটওয়্যার',
-    descEn: 'Single jersey, rib, interlock with supreme elasticity.', descBn: 'সিঙ্গেল জার্সি, রিব, ইন্টারলক।',
-    badgeEn: 'Eco-Friendly', badgeBn: 'পরিবেশবান্ধব',
-    specsEn: ['Single Jersey, Rib, Interlock', 'Reactive all-over print', 'Enzyme soft wash', 'Anti-pilling Grade 4'],
-    specsBn: ['সিঙ্গেল জার্সি, রিব', 'রিয়্যাক্টিভ প্রিন্ট', 'এনজাইম সফট ওয়াশ', 'পিলিং মুক্ত'],
-    swatch: 'linear-gradient(120deg, #ea580c 0%, #f59e0b 50%, #fde047 100%)',
-    pattern: 'pattern-dots',
-  },
+const products = [
+  { nameEn: 'Exclusive Shari', nameBn: 'এক্সক্লুসিভ শাড়ি', catEn: 'Ethnic & Traditional Wear', catBn: 'ঐতিহ্যবাহী পোশাক', descEn: 'Renowned for exquisite print repeats, buttery soft fall, vibrant colorfast hues.', descBn: 'নিখুঁত প্রিন্ট রিপিট, মসৃণ ড্র্যাপ ও উজ্জ্বল রঙের জন্য সমাদৃত।', badgeEn: 'Best Seller', badgeBn: 'সর্বাধিক জনপ্রিয়', specsEn: ['100% Cotton, Voile, Silk Blend', 'Flatbed & Digital Print', '12-14 Haath length', 'Shrinkage controlled'], specsBn: ['১০০% কটন, ভয়েল, সিল্ক ব্লেন্ড', 'ফ্ল্যাটবেড ও ডিজিটাল প্রিন্ট', '১২-১৪ হাত দৈর্ঘ্য', 'শ্রিনকেজ মুক্ত'] },
+  { nameEn: 'Three-Piece Suits', nameBn: 'থ্রি-পিস ফেব্রিক্স', catEn: 'Ladies Fashion', catBn: 'লেডিস ফ্যাশন', descEn: 'Full matching sets of Kameez, Salwar, and Dupatta.', descBn: 'কামিজ, সালোয়ার ও ওড়নার সম্পূর্ণ ম্যাচিং সেট।', badgeEn: 'Trending', badgeBn: 'ট্রেন্ডিং', specsEn: ['Matching set', 'Fine yarn: 60s-80s', 'Anti-fading wash', 'Ultra-breathable'], specsBn: ['ম্যাচিং সেট', 'ফাইন কাউন্ট ৬০s-৮০s', 'অ্যান্টি-ফেডিং ওয়াশ', 'আরামদায়ক'] },
+  { nameEn: 'Premium Poplin', nameBn: 'প্রিমিয়াম পপলিন', catEn: 'Apparel & Shirting', catBn: 'পোশাক ও শার্টিং', descEn: 'Crisp, tightly woven plain weave cotton fabric.', descBn: 'উচ্চ ঘনত্বের পপলিন ফ্যাব্রিক।', badgeEn: 'Export Standard', badgeBn: 'রপ্তানি মানদণ্ড', specsEn: ['100% Combed Cotton', 'GSM: 100-140', 'Mercerized', 'Zero skew'], specsBn: ['১০০% কম্বড কটন', 'জিএসএম: ১০০-১৪০', 'মার্সারাইজড', 'নিখুঁত বুনন'] },
+  { nameEn: 'Soft Voile', nameBn: 'নরম ভয়েল', catEn: 'Lightweight Textiles', catBn: 'হালকা টেক্সটাইল', descEn: 'Feather-light, semi-sheer plain weave with silky hand feel.', descBn: 'পালকের মতো হালকা, সিল্কি ভয়েল ফ্যাব্রিক।', badgeEn: 'Signature', badgeBn: 'সিগনেচার', specsEn: ['High-twist cotton', 'GSM: 65-85', 'Exceptional drape', 'Quick-drying'], specsBn: ['হাই-টুইস্ট কটন', 'জিএসএম: ৬৫-৮৫', 'চমৎকার ড্র্যাপ', 'দ্রুত শুকায়'] },
+  { nameEn: 'Lillian Fabric', nameBn: 'লিলিয়ান ফেব্রিক', catEn: 'Fashion & Draped Wear', catBn: 'ফ্যাশন পোশাক', descEn: 'High-tenacity blended drape fabric with lustrous flow.', descBn: 'উচ্চ শক্তির ব্লেন্ডেড ড্র্যাপ ফ্যাব্রিক।', badgeEn: 'High Demand', badgeBn: 'ব্যাপক চাহিদা', specsEn: ['Polyester-Viscose blend', 'Reactive printed motifs', 'Silky wash finish', 'High vibrancy'], specsBn: ['পলিয়েস্টার-ভিসকোস ব্লেন্ড', 'রিয়্যাক্টিভ প্রিন্টেড', 'সিল্কি ওয়াশ ফিনিশ', 'উজ্জ্বল রঙ'] },
+  { nameEn: 'Knit Fabrics & Fancy Print', nameBn: 'নিট ফেব্রিক্স ও ফ্যান্সি প্রিন্ট', catEn: 'Knitwear', catBn: 'নিটওয়্যার', descEn: 'Single jersey, rib, interlock with supreme elasticity.', descBn: 'সিঙ্গেল জার্সি, রিব, ইন্টারলক।', badgeEn: 'Eco-Friendly', badgeBn: 'পরিবেশবান্ধব', specsEn: ['Single Jersey, Rib, Interlock', 'Reactive all-over print', 'Enzyme soft wash', 'Anti-pilling Grade 4'], specsBn: ['সিঙ্গেল জার্সি, রিব', 'রিয়্যাক্টিভ প্রিন্ট', 'এনজাইম সফট ওয়াশ', 'পিলিং মুক্ত'] }
 ];
 
 export default function ProductsPage() {
   const { lang } = useApp();
-  const bn = lang === 'bn';
   const [selected, setSelected] = useState(0);
-  const active = products[selected];
+  const p = products[selected];
 
   return (
-    <>
-      <PageHeader
-        eyebrowEn="Premium Textile Portfolio"
-        eyebrowBn="পণ্য ও টেক্সটাইল সম্ভার"
-        titleEn="Our Manufactured Fabrics & Products"
-        titleBn="আমাদের প্রস্তুতকৃত প্রিমিয়াম ফেব্রিক্স"
-        subEn="Six signature collections — each backed by Oeko-Tex certified dyeing, printing and finishing."
-        subBn="ছয়টি সিগনেচার কালেকশন — প্রতিটি Oeko-Tex সার্টিফাইড ডাইং, প্রিন্টিং ও ফিনিশিংয়ে সমৃদ্ধ।"
-      />
-
-      <section className="py-16 sm:py-20 bg-white">
-        <div className="container-x">
-          {/* Product cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12" data-reveal>
-            {products.map((p, idx) => (
-              <div
-                key={p.nameEn}
-                onClick={() => setSelected(idx)}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => e.key === 'Enter' && setSelected(idx)}
-                className={`card card-hover overflow-hidden cursor-pointer group flex flex-col ${
-                  selected === idx ? 'border-sky-400 shadow-card-hover ring-2 ring-sky-400/40' : ''
-                }`}
-              >
-                <div className={`swatch h-36 ${p.pattern}`} style={{ backgroundImage: p.swatch }}>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
-                  <span className="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-black/30 backdrop-blur text-white text-[11px] font-bold tracking-wide">
-                    {bn ? p.catBn : p.catEn}
-                  </span>
-                  {selected === idx && (
-                    <span className="absolute top-3 right-3 w-7 h-7 rounded-full bg-white text-sky-600 flex items-center justify-center shadow-lg">
-                      <Check className="w-4 h-4" />
-                    </span>
-                  )}
-                </div>
-                <div className="p-5 flex flex-col flex-1">
-                  <div className="flex items-center justify-between gap-2 mb-2">
-                    <h3 className="text-base font-extrabold text-slate-900 group-hover:text-sky-600 transition-colors leading-snug">
-                      {bn ? p.nameBn : p.nameEn}
-                    </h3>
-                    <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-500/15 text-amber-700 border border-amber-500/25 whitespace-nowrap shrink-0">
-                      {bn ? p.badgeBn : p.badgeEn}
-                    </span>
-                  </div>
-                  <p className="text-[13px] text-slate-600 leading-relaxed flex-1">{bn ? p.descBn : p.descEn}</p>
-                  <div className="pt-3 mt-3 border-t border-slate-100 space-y-1.5">
-                    {(bn ? p.specsBn : p.specsEn).slice(0, 2).map((sp, i) => (
-                      <div key={i} className="text-xs text-slate-600 flex items-center gap-1.5">
-                        <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-                        <span className="truncate">{sp}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
+    <div className="pt-8 lg:pt-10 pb-14">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0f2a44]/5 border border-[#0f2a44]/10 text-[#0f2a44] text-xs font-bold">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#d4a574]" />
+            {lang === 'bn' ? 'পণ্য ও টেক্সটাইল সম্ভার' : 'Premium Textile Portfolio'}
           </div>
+          <h1 className="mt-4 text-[30px] sm:text-[40px] font-[800] tracking-[-0.03em] leading-[0.95] text-[#0f2a44]">
+            {lang === 'bn' ? 'আমাদের প্রস্তুতকৃত প্রিমিয়াম ফেব্রিক্স' : 'Our manufactured fabrics & products'}
+          </h1>
+        </div>
 
-          {/* Detail panel */}
-          <div className="card border-sky-200 shadow-2xl overflow-hidden" data-reveal>
-            <div className="grid grid-cols-1 lg:grid-cols-12">
-              {/* Swatch side */}
-              <div className="lg:col-span-4">
-                <div className={`swatch h-44 lg:h-full min-h-[220px] ${active.pattern}`} style={{ backgroundImage: active.swatch }}>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                  <div className="absolute bottom-5 left-5 right-5">
-                    <div className="flex items-center gap-2 text-white/90 text-[11px] font-bold uppercase tracking-[0.16em]">
-                      <Sparkles className="w-4 h-4 text-amber-300" />
-                      {bn ? active.catBn : active.catEn}
-                    </div>
-                    <div className="text-white font-extrabold text-xl mt-1 leading-snug">{bn ? active.nameBn : active.nameEn}</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Details side */}
-              <div className="lg:col-span-8 p-7 sm:p-9 space-y-5">
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {products.map((prod, idx) => {
+            const active = selected === idx;
+            return (
+              <button
+                key={idx}
+                onClick={() => setSelected(idx)}
+                className={`text-left rounded-[20px] p-6 border transition-all flex flex-col justify-between min-h-[210px] group ${active ? 'bg-[#0f2a44] border-[#0f2a44] text-white shadow-xl' : 'card-modern hover:border-[#0f2a44]/15'}`}
+              >
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900">{bn ? active.nameBn : active.nameEn}</h3>
-                  <p className="mt-2 text-sm sm:text-[15px] text-slate-600 leading-relaxed">{bn ? active.descBn : active.descEn}</p>
+                  <div className="flex items-center justify-between gap-2">
+                    <span className={`text-[11px] font-bold tracking-widest uppercase ${active ? 'text-white/60' : 'text-[#b88a5a]'}`}>{lang === 'bn' ? prod.catBn : prod.catEn}</span>
+                    <span className={`px-2.5 py-1 rounded-full text-[11px] font-bold border ${active ? 'bg-white text-[#0f2a44] border-white' : 'bg-[#fdfbf7] text-[#0f2a44] border-stone-200'}`}>{lang === 'bn' ? prod.badgeBn : prod.badgeEn}</span>
+                  </div>
+                  <h3 className={`mt-3 text-[18px] font-bold tracking-tight leading-tight ${active ? 'text-white' : 'text-[#0f2a44]'}`}>{lang === 'bn' ? prod.nameBn : prod.nameEn}</h3>
+                  <p className={`text-[13px] leading-relaxed mt-2 line-clamp-2 ${active ? 'text-white/70' : 'text-stone-600'}`}>{lang === 'bn' ? prod.descBn : prod.descEn}</p>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  {(bn ? active.specsBn : active.specsEn).map((sp, i) => (
-                    <div key={i} className="p-3 rounded-xl bg-slate-50 border border-slate-100 text-[13px] text-slate-700 flex items-center gap-2.5">
-                      <Check className="w-4 h-4 text-emerald-500 shrink-0" />
-                      <span>{sp}</span>
+                <div className={`mt-5 pt-4 border-t flex flex-col gap-1.5 ${active ? 'border-white/10' : 'border-stone-100'}`}>
+                  {(lang === 'bn' ? prod.specsBn : prod.specsEn).slice(0, 2).map((sp, i) => (
+                    <div key={i} className={`inline-flex items-center gap-1.5 text-xs ${active ? 'text-white/80' : 'text-stone-700'}`}>
+                      <span className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 ${active ? 'bg-white/15 text-white' : 'bg-emerald-50 text-emerald-700 border border-emerald-100'}`}>
+                        <Check size={12} />
+                      </span>
+                      <span className="truncate">{sp}</span>
                     </div>
                   ))}
                 </div>
-                <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 bg-gradient-to-r from-sky-50 to-amber-50 rounded-xl p-4 border border-sky-100">
-                  <div className="text-center sm:text-left">
-                    <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
-                      {bn ? 'বাল্ক অর্ডার ও স্যাম্পল' : 'Bulk Order & Sampling'}
-                    </div>
-                    <div className="text-sm font-extrabold text-slate-900 mt-0.5">
-                      {bn ? 'কাস্টমাইজড ফ্যাব্রিক কোটেশন চান?' : 'Need Custom Specifications?'}
-                    </div>
-                  </div>
-                  <a href="#/contact" className="btn-primary !py-2.5 shrink-0">
-                    {bn ? 'যোগাযোগ করুন' : 'Contact Us'}
-                    <ArrowRight className="w-4 h-4" />
-                  </a>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Detail */}
+        <div className="mt-6 card-modern rounded-[24px] overflow-hidden grid grid-cols-1 lg:grid-cols-12">
+          <div className="lg:col-span-8 p-6 sm:p-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#fdfbf7] border border-stone-200 text-xs font-bold tracking-wide text-[#0f2a44]">
+              <Sparkles size={12} className="text-[#b88a5a]" /> {lang === 'bn' ? p.catBn : p.catEn}
+            </div>
+            <h3 className="mt-3 text-[26px] sm:text-[30px] font-[800] tracking-tight text-[#0f2a44] leading-none">{lang === 'bn' ? p.nameBn : p.nameEn}</h3>
+            <p className="mt-3 text-[15px] leading-relaxed text-stone-600 max-w-2xl">{lang === 'bn' ? p.descBn : p.descEn}</p>
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {(lang === 'bn' ? p.specsBn : p.specsEn).map((sp, i) => (
+                <div key={i} className="flex items-center gap-3 px-4 py-3 rounded-2xl bg-[#fdfbf7] border border-stone-200">
+                  <span className="w-7 h-7 rounded-full bg-white border border-stone-200 text-emerald-700 flex items-center justify-center shrink-0"><Check size={14} /></span>
+                  <span className="text-sm font-medium text-[#0f2a44]">{sp}</span>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
-
+          <div className="lg:col-span-4 bg-[#0f2a44] p-6 sm:p-8 flex flex-col justify-center text-white relative overflow-hidden">
+            <div className="absolute -right-16 -top-16 w-48 h-48 bg-white/5 rounded-full blur-2xl" />
+            <div className="relative">
+              <div className="text-xs font-bold tracking-[0.14em] uppercase text-white/60">{lang === 'bn' ? 'বাল্ক অর্ডার ও স্যাম্পল' : 'Bulk order & sampling'}</div>
+              <div className="mt-2 text-[20px] font-bold tracking-tight leading-tight">{lang === 'bn' ? 'কাস্টমাইজড ফ্যাব্রিক কোটেশন চান?' : 'Need custom specifications?'}</div>
+              <p className="mt-2 text-sm text-white/60 leading-relaxed">{lang === 'bn' ? 'আমাদের মার্চেন্ডাইজিং টিম ২৪ ঘণ্টার মধ্যে কোটেশন দেবে।' : 'Our merchandising team replies within 24 hours with GSM, count & pricing.'}</p>
+              <a href="#/contact" className="mt-6 inline-flex items-center justify-center gap-2 w-full py-3 rounded-full bg-white text-[#0f2a44] text-sm font-bold hover:bg-stone-100 transition-colors">
+                {lang === 'bn' ? 'যোগাযোগ করুন' : 'Contact us'} <ArrowRight size={16} />
+              </a>
+              <div className="mt-3 text-center text-xs text-white/50">info@nodibanglagroup.com • 88-02-9462750</div>
+            </div>
+          </div>
         </div>
-      </section>
-    </>
+      </div>
+    </div>
   );
 }

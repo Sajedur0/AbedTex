@@ -1,17 +1,16 @@
 import { useState } from 'react';
-import { Award, ShieldCheck, HeartPulse, Flame, Check, Droplets } from 'lucide-react';
 import { useApp } from '../App';
-import PageHeader from '../components/PageHeader';
+import { ShieldCheck, Heart, Flame, Droplets, Award, Check } from 'lucide-react';
 
 const complianceData = [
   {
-    icon: ShieldCheck,
+    icon: Heart,
     titleEn: 'Labor Standards & Human Rights', titleBn: 'শ্রম মানদণ্ড ও মানবাধিকার',
     itemsEn: ['Strict No Child Labor policy', 'No Forced Labor', 'Guaranteed Minimum Wages', 'Standard 8-hour workday', '100% Voluntary Overtime', 'Paid Weekly Holidays', 'Festival Holidays & Bonuses', 'Comprehensive Maternity Protection'],
     itemsBn: ['কঠোর শিশুশ্রম বিরোধী নীতি', 'কোনো বাধ্যতামূলক শ্রম নয়', 'ন্যূনতম মজুরি নিশ্চিত', '৮ ঘণ্টার কর্মঘণ্টা', '১০০% স্বেচ্ছাসেবী ওভারটাইম', 'পেইড সাপ্তাহিক ছুটি', 'উৎসব ছুটি ও বোনাস', 'পেইড মাতৃত্বকালীন ছুটি']
   },
   {
-    icon: HeartPulse,
+    icon: ShieldCheck,
     titleEn: 'Health, Safety & Environment', titleBn: 'স্বাস্থ্য, নিরাপত্তা ও পরিবেশ',
     itemsEn: ['100% full-time doctor & clinic', 'First Aid Boxes on all floors', 'Pure Drinking Water dispensers', 'Hygienic sanitation facilities', 'Workers Welfare Committee', 'Subsidized Canteen Service', 'Day Care Centre', 'Free recreational activities'],
     itemsBn: ['১০০% ফুল-টাইম ডাক্তার ও ক্লিনিক', 'সকল ফ্লোরে ফার্স্ট এইড বক্স', 'বিশুদ্ধ পানীয় পানি', 'স্বাস্থ্যকর স্যানিটারি সুবিধা', 'শ্রমিক কল্যাণ কমিটি', 'ভর্তুকিযুক্ত ক্যান্টিন', 'ডে কেয়ার সেন্টার', 'বিনামূল্যে বিনোদন']
@@ -24,117 +23,102 @@ const complianceData = [
   }
 ];
 
-const certifications = [
-  { code: 'OEKO-TEX 100', title: 'Confidence in Textiles' },
-  { code: 'ISO Certified', title: 'Quality Management' },
-  { code: 'ATPML Certified', title: 'Abed Textile Processing' },
-  { code: 'BTMEA Registered', title: 'Bangladesh Textile Exporters' },
-  { code: 'NCCI Member', title: 'Narsingdi Chamber of Commerce' },
-];
-
 export default function CompliancePage() {
   const { lang } = useApp();
-  const bn = lang === 'bn';
   const [idx, setIdx] = useState(0);
   const ActiveIcon = complianceData[idx].icon;
 
   return (
-    <>
-      <PageHeader
-        eyebrowEn="Compliance & Social Responsibility"
-        eyebrowBn="কমপ্লায়েন্স ও শ্রমিক কল্যাণ"
-        titleEn="Global Standards & SA-8000 Compliance"
-        titleBn="আন্তর্জাতিক মানদণ্ড ও SA-8000 কমপ্লায়েন্স"
-        subEn="Ethical manufacturing is not a checkbox for us — it is the foundation of every yard we process."
-        subBn="নৈতিক উৎপাদন আমাদের জন্য কেবল নিয়ম নয় — এটিই প্রতিটি গজ প্রসেসিংয়ের ভিত্তি।"
-      />
-
-      <section className="py-16 sm:py-20 bg-slate-50 textile-grid">
-        <div className="container-x">
-          {/* Certification badges */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-14" data-reveal>
-            {certifications.map((cert) => (
-              <div key={cert.code} className="card card-hover p-5 text-center flex flex-col items-center justify-center group">
-                <span className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-amber-400 to-amber-500 text-white flex items-center justify-center shadow-lg shadow-amber-500/30 mb-3 group-hover:scale-110 group-hover:rotate-3 transition-transform">
-                  <Award className="w-5 h-5" />
-                </span>
-                <div className="font-extrabold text-sm text-slate-900">{cert.code}</div>
-                <div className="text-[11px] text-slate-500 mt-1 leading-snug">{cert.title}</div>
-              </div>
-            ))}
+    <div className="pt-8 lg:pt-10 pb-14">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            {lang === 'bn' ? 'কমপ্লায়েন্স ও শ্রমিক কল্যাণ' : 'Compliance & Social Responsibility'}
           </div>
+          <h1 className="mt-4 text-[30px] sm:text-[40px] font-[800] tracking-[-0.03em] leading-[0.95] text-[#0f2a44]">
+            {lang === 'bn' ? 'আন্তর্জাতিক মানদণ্ড ও SA-8000 কমপ্লায়েন্স' : 'Global standards & SA-8000 compliance'}
+          </h1>
+        </div>
 
-          {/* Tab buttons */}
-          <div className="flex flex-wrap justify-center gap-3 mb-10" data-reveal>
-            {complianceData.map((c, i) => {
-              const Icon = c.icon;
-              const active = idx === i;
-              return (
-                <button
-                  key={i}
-                  onClick={() => setIdx(i)}
-                  className={`inline-flex items-center gap-2 px-5 py-3 rounded-xl text-xs sm:text-sm font-bold transition-all border cursor-pointer ${
-                    active
-                      ? 'bg-gradient-to-r from-emerald-600 to-emerald-500 text-white border-emerald-400 shadow-lg shadow-emerald-600/25 scale-[1.04]'
-                      : 'bg-white text-slate-600 border-slate-200 hover:border-emerald-300 hover:text-emerald-600'
-                  }`}
-                >
-                  <Icon className={`w-4 h-4 ${active ? 'text-amber-300' : 'text-emerald-500'}`} />
-                  {bn ? c.titleBn : c.titleEn}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Active policy panel */}
-          <div key={idx} className="card p-6 sm:p-9 shadow-2xl hero-animate">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-7 pb-5 border-b border-slate-100">
-              <div className="flex items-center gap-4">
-                <span className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-600 to-emerald-500 text-white flex items-center justify-center shadow-lg shadow-emerald-600/25">
-                  <ActiveIcon className="w-6 h-6" />
-                </span>
-                <div>
-                  <h3 className="text-lg sm:text-xl font-extrabold text-slate-900">{bn ? complianceData[idx].titleBn : complianceData[idx].titleEn}</h3>
-                  <p className="text-xs text-slate-500 mt-0.5">{bn ? '১০০% কার্যকর ও নিয়মিত মনিটরিংকৃত' : '100% Implemented & audited on site'}</p>
-                </div>
+        <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+          {[
+            { code: 'OEKO-TEX 100', title: 'Confidence in Textiles' },
+            { code: 'ISO Certified', title: 'Quality Management' },
+            { code: 'ATPML Certified', title: 'Abed Textile Processing' },
+            { code: 'BTMEA', title: 'Bangladesh Textile Exporters' },
+            { code: 'NCCI Member', title: 'Narsingdi Chamber' }
+          ].map((cert, i) => (
+            <div key={i} className="card-modern rounded-[16px] p-4 text-center flex flex-col items-center justify-center gap-2">
+              <div className="w-8 h-8 rounded-full bg-[#fdfbf7] border border-stone-200 flex items-center justify-center text-[#0f2a44]">
+                <Award size={14} />
               </div>
-              <span className="px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-600 text-xs font-bold">
-                {(bn ? complianceData[idx].itemsBn : complianceData[idx].itemsEn).length} {bn ? 'টি ধারা' : 'Points'}
-              </span>
+              <div className="font-[800] text-sm tracking-tight text-[#0f2a44]">{cert.code}</div>
+              <div className="text-[11px] leading-tight text-stone-500">{cert.title}</div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5">
-              {(bn ? complianceData[idx].itemsBn : complianceData[idx].itemsEn).map((item, i) => (
-                <div key={i} className="p-4 rounded-xl bg-slate-50 border border-slate-100 flex items-start gap-3 hover:border-emerald-300 hover:bg-emerald-50/40 transition-colors">
-                  <span className="w-5 h-5 rounded-full bg-emerald-500/15 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
-                    <Check className="w-3 h-3" strokeWidth={3} />
+          ))}
+        </div>
+
+        <div className="mt-8 flex flex-wrap gap-2">
+          {complianceData.map((c, i) => {
+            const Icon = c.icon;
+            const active = idx === i;
+            return (
+              <button
+                key={i}
+                onClick={() => setIdx(i)}
+                className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold border transition-all ${active ? 'bg-[#0f2a44] text-white border-[#0f2a44] shadow-sm' : 'bg-white text-stone-700 border-stone-200 hover:border-stone-300'}`}
+              >
+                <Icon size={16} className={active ? 'text-white' : 'text-stone-400'} />
+                {lang === 'bn' ? c.titleBn : c.titleEn}
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="mt-6 card-modern rounded-[24px] overflow-hidden">
+          <div className="px-6 sm:px-8 py-6 border-b border-stone-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#fdfbf7]/50">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center">
+                <ActiveIcon size={18} />
+              </div>
+              <div>
+                <h3 className="text-[18px] font-bold tracking-tight text-[#0f2a44]">{lang === 'bn' ? complianceData[idx].titleBn : complianceData[idx].titleEn}</h3>
+                <p className="text-xs text-stone-500 mt-0.5">{lang === 'bn' ? '১০০% কার্যকর ও নিয়মিত মনিটরিংকৃত' : '100% Implemented & audited on site'}</p>
+              </div>
+            </div>
+            <span className="self-start sm:self-auto px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold">
+              {(lang === 'bn' ? complianceData[idx].itemsBn : complianceData[idx].itemsEn).length} {lang === 'bn' ? 'টি ধারা' : 'Points'}
+            </span>
+          </div>
+
+          <div className="p-6 sm:p-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+              {(lang === 'bn' ? complianceData[idx].itemsBn : complianceData[idx].itemsEn).map((item, i) => (
+                <div key={i} className="flex items-start gap-3 px-4 py-3.5 rounded-2xl bg-white border border-stone-200">
+                  <span className="w-6 h-6 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
+                    <Check size={12} strokeWidth={3} />
                   </span>
-                  <span className="text-[13px] text-slate-700 leading-relaxed">{item}</span>
+                  <span className="text-sm text-[#0f2a44] font-medium leading-snug">{item}</span>
                 </div>
               ))}
             </div>
 
-            {/* ETP banner */}
-            <div className="mt-8 p-5 rounded-2xl bg-gradient-to-r from-emerald-50 via-sky-50 to-sky-50 border border-emerald-200 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-4">
-                <span className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-sky-500 to-emerald-500 text-white flex items-center justify-center shadow-lg shadow-sky-500/25 shrink-0">
-                  <Droplets className="w-6 h-6" />
-                </span>
+            <div className="mt-6 rounded-[16px] bg-[#0f2a44] p-5 flex flex-col sm:flex-row items-center justify-between gap-4 text-white">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-white/10 border border-white/15 flex items-center justify-center">
+                  <Droplets size={18} className="text-emerald-300" />
+                </div>
                 <div>
-                  <h4 className="text-sm font-extrabold text-slate-900">
-                    {bn ? 'পরিবেশ সুরক্ষা ও ইটিপি' : 'Environmental Protection & ETP'}
-                  </h4>
-                  <p className="text-xs text-slate-600 mt-0.5">
-                    {bn ? 'দৈনিক ২,৪০০ ঘনমিটার বায়োকেমিক্যাল ইটিপি' : '2,400 m³/day Biochemical Effluent Treatment'}
-                  </p>
+                  <div className="text-sm font-bold">{lang === 'bn' ? 'পরিবেশ সুরক্ষা ও ইটিপি' : 'Environmental Protection & ETP'}</div>
+                  <div className="text-xs text-white/60">{lang === 'bn' ? 'দৈনিক ২৪০০ ঘনমিটার বায়োকেমিক্যাল ইটিপি' : '2,400 m³/day Biochemical ETP • 16,000 sq.ft. facility'}</div>
                 </div>
               </div>
-              <span className="px-4 py-2 rounded-xl bg-white text-emerald-700 text-xs font-black border border-emerald-200 shadow-sm whitespace-nowrap">
-                16,000 Sq.Ft.
-              </span>
+              <span className="px-4 py-2 rounded-full bg-white text-[#0f2a44] text-xs font-[800]">16,000 Sq.Ft.</span>
             </div>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </div>
   );
 }
