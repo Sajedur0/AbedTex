@@ -92,7 +92,7 @@ export default function ProductsPage() {
                 <a href="#/contact" className="mt-6 inline-flex items-center justify-center gap-2 w-full py-3 rounded-full bg-white text-[#0f2a44] text-sm font-bold hover:bg-stone-100 transition-colors">
                   Contact us <ArrowRight size={16} />
                 </a>
-                <div className="mt-3 text-center text-xs text-white/50">info@nodibanglagroup.com • 88-02-9462750</div>
+                <div className="mt-3 text-center text-xs text-white/50">info@abedtextile.com • 88-02-9462750</div>
               </div>
             </div>
           </div>

@@ -2,8 +2,8 @@ import { assets } from '../assets';
 import { Phone, Mail, Crown } from 'lucide-react';
 
 const leaders = [
-  { name: 'Alhaj Md. Abed Ali', role: 'Founder & Visionary Pioneer', img: assets.leaders.abedAli, mobile: '+880 1713-562042', email: 'info@nodibanglagroup.com', bio: 'The visionary foundation of Abed Textile Processing Mills Ltd.' },
-  { name: 'Monjur Elahi', role: 'Managing Director', img: assets.leaders.manjurElahi, mobile: '01713-562042', email: 'info@nodibanglagroup.com', bio: 'Dynamic leader steering towards international excellence.' },
+  { name: 'Alhaj Md. Abed Ali', role: 'Founder & Visionary Pioneer', img: assets.leaders.abedAli, mobile: '+880 1713-562042', email: 'info@abedtextile.com', bio: 'The visionary foundation of Abed Textile Processing Mills Ltd.' },
+  { name: 'Monjur Elahi', role: 'Managing Director', img: assets.leaders.manjurElahi, mobile: '01713-562042', email: 'info@abedtextile.com', bio: 'Dynamic leader steering towards international excellence.' },
   { name: 'Abdullah Al Mamun', role: 'Director', img: assets.leaders.abdulMamun, mobile: '01713-519783', email: 'abedmamun@hotmail.com', bio: 'Overseeing global operations and supply chain logistics.' },
   { name: 'Mahbubur Rahman (Monir)', role: 'Director', img: assets.leaders.mahbuburRahman, mobile: '01711-707403', email: 'abedmonir@hotmail.com', bio: 'Leading technical innovations and machinery modernization.' }
 ];
@@ -65,7 +65,7 @@ export default function LeadershipPage() {
 
           <div className="mt-8 rounded-[20px] p-6 lg:p-7 flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#0f2a44] text-white">
             <div className="text-sm leading-relaxed">
-              <span className="font-bold">Nodi Bangla Group</span> <span className="text-white/60">— Building textiles for the world since 1993. Family-led, professionally run.</span>
+              <span className="font-bold">Abed Textile Processing Mills Ltd.</span> <span className="text-white/60">— Building textiles for the world since 1993. Family-led, professionally run.</span>
             </div>
             <a href="#/contact" className="shrink-0 px-5 py-2.5 rounded-full bg-white text-[#0f2a44] text-sm font-bold hover:bg-stone-100 transition-colors">
               Contact leadership

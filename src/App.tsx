@@ -103,7 +103,7 @@ function Navbar() {
             <a href="tel:+8802462750" className="inline-flex items-center gap-1.5 hover:text-white transition-colors">
               <Phone size={12} /> 88-02-9462750
             </a>
-            <a href="mailto:info@nodibanglagroup.com" className="hover:text-white transition-colors">info@nodibanglagroup.com</a>
+            <a href="mailto:info@abedtextile.com" className="hover:text-white transition-colors">info@abedtextile.com</a>
           </div>
         </div>
       </div>
@@ -203,7 +203,7 @@ function Footer() {
               </div>
               <div>
                 <div className="font-bold text-white tracking-tight text-[15px] leading-none">Abed Textile Processing Mills Ltd.</div>
-                <div className="text-[11px] tracking-[0.14em] uppercase text-[#d4a574] font-semibold mt-1">Nodi Bangla Group • Since 1993</div>
+                <div className="text-[11px] tracking-[0.14em] uppercase text-[#d4a574] font-semibold mt-1">Since 1993 • 100% Export Oriented</div>
               </div>
             </div>
             <p className="text-sm leading-relaxed text-stone-400 max-w-[560px]">
@@ -258,9 +258,9 @@ function Footer() {
                 <span className="w-9 h-9 rounded-full bg-white/[0.06] border border-white/10 flex items-center justify-center shrink-0 text-xs">✆</span>
                 <span className="font-medium">88-02-9462750 • +880 1713-562042</span>
               </div>
-              <a href="mailto:info@nodibanglagroup.com" className="flex gap-3 items-center text-stone-400 hover:text-white transition-colors">
+              <a href="mailto:info@abedtextile.com" className="flex gap-3 items-center text-stone-400 hover:text-white transition-colors">
                 <span className="w-9 h-9 rounded-full bg-white/[0.06] border border-white/10 flex items-center justify-center shrink-0 text-xs">@</span>
-                info@nodibanglagroup.com
+                info@abedtextile.com
               </a>
             </div>
             <div className="mt-5 grid grid-cols-3 gap-2">
@@ -282,7 +282,7 @@ function Footer() {
 
         <div className="mt-10 pt-6 border-t border-white/10 flex flex-col lg:flex-row items-center justify-between gap-4">
           <div className="text-xs text-stone-500 text-center lg:text-left">
-            © {new Date().getFullYear()} Abed Textile Processing Mills Ltd. • A Concern of Nodi Bangla Group • All rights reserved.
+            © {new Date().getFullYear()} Abed Textile Processing Mills Ltd. • All rights reserved.
           </div>
           <div className="flex items-center gap-3">
             <span className="hidden sm:inline text-xs text-stone-500">Crafted for export excellence</span>

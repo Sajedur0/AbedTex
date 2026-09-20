@@ -100,11 +100,11 @@ export default function ContactPage() {
                       <div className="text-sm font-bold text-[#0f2a44]">+880 1713-562042</div>
                     </div>
                   </a>
-                  <a href="mailto:info@nodibanglagroup.com" className="flex items-center gap-3 group">
+                  <a href="mailto:info@abedtextile.com" className="flex items-center gap-3 group">
                     <span className="w-10 h-10 rounded-full bg-[#fdfbf7] border border-stone-200 text-[#0f2a44] flex items-center justify-center shrink-0 group-hover:bg-white transition-colors"><Mail size={16} /></span>
                     <div>
                       <div className="text-xs font-semibold tracking-wide uppercase text-stone-400">Email</div>
-                      <div className="text-sm font-bold text-[#0f2a44]">info@nodibanglagroup.com</div>
+                      <div className="text-sm font-bold text-[#0f2a44]">info@abedtextile.com</div>
                     </div>
                   </a>
                   <div className="flex items-start gap-3">

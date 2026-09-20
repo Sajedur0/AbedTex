@@ -160,7 +160,7 @@ export default function HomePage() {
               { k: '4.5M yards', v: 'Monthly Capacity', d: 'Consolidated across 6 units' },
               { k: '42 Units', v: 'Imported Machines', d: 'Germany • Japan • Taiwan' },
               { k: '1000+', v: 'Skilled Workforce', d: 'SA-8000 compliant' },
-              { k: '32 Years', v: 'Since 1993', d: 'Nodi Bangla Group' },
+              { k: '32 Years', v: 'Since 1993', d: 'Heritage & Trust' },
             ].map((s, i) => (
               <div key={i} className="bg-white border border-[#0f2a44]/[0.07] rounded-[20px] p-5 flex gap-4 items-start">
                 <div className="w-10 h-10 rounded-full bg-[#0f2a44]/5 border border-[#0f2a44]/10 flex items-center justify-center text-[#0f2a44] shrink-0">
@@ -274,7 +274,7 @@ export default function HomePage() {
           </div>
           <div className="mt-4 flex flex-wrap items-center justify-center lg:justify-between gap-3 text-xs text-stone-500">
             <span className="inline-flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> 32 years of export excellence</span>
-            <span className="hidden sm:inline">A concern of Nodi Bangla Group • Ghoradia, Narsingdi</span>
+            <span className="hidden sm:inline">Abed Textile Processing Mills Ltd. • Ghoradia, Narsingdi</span>
             <a href="#/about" className="inline-flex items-center gap-1.5 font-semibold text-[#0f2a44] hover:gap-2 transition-all">Discover our story <ArrowRight size={14} /></a>
           </div>
         </div>
