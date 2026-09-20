@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { Menu, X, ArrowUp, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Menu, X, ArrowUp, ChevronLeft, ChevronRight, Phone } from 'lucide-react';
 import { assets } from './assets';
 
 import HomePage from './pages/HomePage';
@@ -29,17 +29,6 @@ function ScrollToTop() {
   useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
   return null;
 }
-
-// Subtle paper texture backdrop instead of canvas
-const AmbientBackdrop = () => (
-  <div className="fixed inset-0 pointer-events-none">
-    <div className="absolute inset-0 bg-[#fdfbf7]" />
-    <div className="absolute inset-0 opacity-[0.035]" style={{
-      backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-    }} />
-    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[700px] bg-gradient-to-b from-[#0f2a44]/[0.03] to-transparent rounded-full blur-3xl" />
-  </div>
-);
 
 function Lightbox() {
   const { lightbox, setLightbox } = useApp();
@@ -71,12 +60,16 @@ function Lightbox() {
   );
 }
 
+// ─────────────────────────────────────────────────────────────────
+// NEW FULL-WIDTH NAVBAR — edge to edge, no 1280 max
+// ─────────────────────────────────────────────────────────────────
 function Navbar() {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
+    const onScroll = () => setScrolled(window.scrollY > 8);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -96,31 +89,51 @@ function Navbar() {
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled ? 'glass-nav shadow-[0_1px_0_rgba(15,42,68,0.06),0_8px_24px_rgba(15,42,68,0.06)]' : 'bg-white/0 border-b border-transparent'}`}>
-        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-[68px] lg:h-[76px]">
+      {/* Top strip — full bleed */}
+      <div className="w-full bg-[#0f2a44] text-white/90 text-[12px] hidden lg:block">
+        <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12 h-8 flex items-center justify-between">
+          <div className="flex items-center gap-6">
+            <span className="inline-flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" /> Oeko-Tex Certified • Since 1993 • 100% Export Oriented
+            </span>
+            <span className="opacity-30">|</span>
+            <span className="text-white/60">Ghoradia, Narsingdi — 153,372 sq.ft. • 45 mins from Dhaka</span>
+          </div>
+          <div className="flex items-center gap-4">
+            <a href="tel:+8802462750" className="inline-flex items-center gap-1.5 hover:text-white transition-colors">
+              <Phone size={12} /> 88-02-9462750
+            </a>
+            <a href="mailto:info@abedtextile.com" className="hover:text-white transition-colors">info@abedtextile.com</a>
+          </div>
+        </div>
+      </div>
+
+      <header className={`sticky top-0 z-40 transition-all ${scrolled ? 'bg-white/95 backdrop-blur-xl shadow-[0_1px_0_rgba(15,42,68,0.07),0_8px_24px_rgba(15,42,68,0.06)]' : 'bg-white border-b border-[#0f2a44]/[0.07]'}`}>
+        <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
+          <div className="flex items-center justify-between h-[64px] lg:h-[68px] gap-4">
             {/* Logo */}
-            <a href="#/" className="flex items-center gap-3.5 group shrink-0">
-              <div className="w-[42px] h-[42px] rounded-[12px] bg-white border border-[#0f2a44]/10 shadow-sm flex items-center justify-center p-1.5 group-hover:border-[#0f2a44]/15 transition-colors">
+            <a href="#/" className="flex items-center gap-3 shrink-0 group">
+              <div className="w-[42px] h-[42px] rounded-[11px] bg-white border border-[#0f2a44]/10 shadow-sm flex items-center justify-center p-1.5 group-hover:border-[#0f2a44]/15 transition-colors">
                 <img src={assets.logo} alt="Abed Textile" className="w-full h-full object-contain" />
               </div>
               <div className="leading-none">
                 <div className="font-[800] tracking-[-0.02em] text-[15px] lg:text-[16px] text-[#0f2a44]">ABED TEXTILE</div>
-                <div className="text-[11px] font-semibold tracking-[0.14em] text-[#b88a5a] mt-0.5 uppercase">Processing Mills Ltd.</div>
+                <div className="text-[11px] font-semibold tracking-[0.13em] text-[#b88a5a] mt-0.5 uppercase">Processing Mills Ltd.</div>
               </div>
             </a>
 
-            {/* Center nav - desktop */}
-            <nav className="hidden xl:flex items-center gap-1 bg-white border border-[#0f2a44]/[0.06] rounded-full p-1 shadow-sm">
+            {/* Center nav — desktop, underline style (no pill) */}
+            <nav className="hidden xl:flex items-center gap-1">
               {navLinks.map((link) => {
                 const active = location.pathname === link.to;
                 return (
                   <a
                     key={link.to}
                     href={`#${link.to}`}
-                    className={`px-3.5 py-1.5 rounded-full text-[13px] font-medium transition-all ${active ? 'bg-[#0f2a44] text-white shadow-sm' : 'text-[#0f2a44]/70 hover:text-[#0f2a44] hover:bg-[#0f2a44]/5'}`}
+                    className={`relative px-3.5 py-2 text-[13.5px] font-medium transition-colors ${active ? 'text-[#0f2a44]' : 'text-[#0f2a44]/60 hover:text-[#0f2a44]'}`}
                   >
                     {link.label}
+                    {active && <span className="absolute left-3.5 right-3.5 -bottom-[1px] h-[2px] bg-[#0f2a44] rounded-full" />}
                   </a>
                 );
               })}
@@ -128,18 +141,27 @@ function Navbar() {
 
             {/* Right */}
             <div className="flex items-center gap-2">
-              <a href="#/contact" className="hidden lg:inline-flex items-center justify-center px-5 py-2 rounded-full bg-[#0f2a44] text-white text-[13px] font-semibold hover:bg-[#0c2238] transition-colors shadow-sm">
+              <div className="hidden lg:flex items-center gap-2 text-xs">
+                <span className="hidden 2xl:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 font-semibold">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" /> Live Production
+                </span>
+              </div>
+              <a href="#/contact" className="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-[#0f2a44] text-white text-[13px] font-semibold hover:bg-[#0c2238] transition-colors shadow-sm">
                 Get Quote
               </a>
-              <button onClick={() => setMobileOpen(!mobileOpen)} className="xl:hidden w-9 h-9 rounded-full bg-white border border-[#0f2a44]/10 flex items-center justify-center text-[#0f2a44] shadow-sm">
+              <a href="tel:+8801713562042" className="hidden lg:inline-flex w-10 h-10 rounded-full bg-[#fdfbf7] border border-[#0f2a44]/10 items-center justify-center text-[#0f2a44] hover:bg-white transition-colors">
+                <Phone size={16} />
+              </a>
+              <button onClick={() => setMobileOpen(!mobileOpen)} className="xl:hidden w-10 h-10 rounded-full bg-[#0f2a44] text-white flex items-center justify-center shadow-sm">
                 {mobileOpen ? <X size={18} /> : <Menu size={18} />}
               </button>
             </div>
           </div>
         </div>
-        {/* Mobile drawer */}
-        <div className={`xl:hidden overflow-hidden border-t border-[#0f2a44]/5 bg-white/95 backdrop-blur-xl transition-all ${mobileOpen ? 'max-h-[520px] opacity-100' : 'max-h-0 opacity-0'}`}>
-          <div className="px-4 py-4 grid grid-cols-2 gap-2">
+
+        {/* Mobile drawer — full width, edge to edge */}
+        <div className={`xl:hidden overflow-hidden bg-white border-t border-[#0f2a44]/[0.06] transition-all ${mobileOpen ? 'max-h-[560px] opacity-100' : 'max-h-0 opacity-0'}`}>
+          <div className="w-full px-4 py-4 grid grid-cols-2 gap-2">
             {navLinks.map((link) => (
               <a
                 key={link.to}
@@ -150,87 +172,124 @@ function Navbar() {
               </a>
             ))}
           </div>
+          <div className="px-4 pb-4">
+            <a href="#/contact" className="flex items-center justify-center gap-2 w-full py-3 rounded-full bg-[#0f2a44] text-white text-sm font-bold">
+              Get Free Consultation <ArrowUp className="rotate-45" size={14} />
+            </a>
+          </div>
         </div>
       </header>
-      <div className="h-[68px] lg:h-[76px]" />
     </>
   );
 }
 
+// ─────────────────────────────────────────────────────────────────
+// NEW FULL-WIDTH FOOTER — 12-col bleed
+// ─────────────────────────────────────────────────────────────────
 function Footer() {
   return (
     <footer className="relative bg-[#070d1a] text-stone-300">
-      {/* top accent */}
       <div className="h-[1px] bg-gradient-to-r from-transparent via-[#d4a574]/30 to-transparent" />
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-          <div className="lg:col-span-5 space-y-4">
+
+      {/* Main footer — full bleed */}
+      <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12 pt-12 lg:pt-14 pb-8">
+        {/* Top grid — stretch to edges */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-12 gap-10 xl:gap-8">
+          {/* Brand — 5 cols */}
+          <div className="xl:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center p-1.5">
+              <div className="w-11 h-11 rounded-xl bg-white flex items-center justify-center p-1.5 shrink-0">
                 <img src={assets.logo} alt="logo" className="w-full h-full object-contain" />
               </div>
               <div>
-                <div className="font-bold text-white tracking-tight text-[15px]">Abed Textile Processing Mills Ltd.</div>
-                <div className="text-[11px] tracking-[0.14em] uppercase text-[#d4a574] font-semibold">Nodi Bangla Group • Since 1993</div>
+                <div className="font-bold text-white tracking-tight text-[15px] leading-none">Abed Textile Processing Mills Ltd.</div>
+                <div className="text-[11px] tracking-[0.14em] uppercase text-[#d4a574] font-semibold mt-1">Since 1993 • 100% Export Oriented</div>
               </div>
             </div>
-            <p className="text-sm leading-relaxed text-stone-400 max-w-md">
-              An Oeko-Tex Certified 100% Export Oriented Manufacturer of Quality Processing Mills since 1993. 4.5M yards monthly, 42 machines, 1000+ workforce.
+            <p className="text-sm leading-relaxed text-stone-400 max-w-[560px]">
+              An Oeko-Tex Certified 100% Export Oriented Manufacturer of Quality Processing Mills since 1993. 4.5M yards monthly capacity, 42 modern imported machineries, 1000+ skilled workforce. Premium Shari, 3-Pcs, Poplin, Voile & Fancy Fabrics for global export.
             </p>
-            <div className="flex gap-2 pt-1">
+            <div className="flex flex-wrap gap-2 pt-1">
               <span className="px-3 py-1.5 rounded-full bg-white/[0.06] border border-white/10 text-xs font-medium text-stone-300">Oeko-Tex 100</span>
               <span className="px-3 py-1.5 rounded-full bg-white/[0.06] border border-white/10 text-xs font-medium text-stone-300">ISO Certified</span>
+              <span className="px-3 py-1.5 rounded-full bg-white/[0.06] border border-white/10 text-xs font-medium text-stone-300">BTMEA</span>
               <span className="px-3 py-1.5 rounded-full bg-[#d4a574] text-[#070d1a] text-xs font-bold">ATPML</span>
             </div>
           </div>
 
-          <div className="lg:col-span-2">
+          {/* Explore — 2 cols */}
+          <div className="xl:col-span-2">
             <h4 className="text-xs font-bold tracking-[0.12em] uppercase text-white mb-4">Explore</h4>
-            <ul className="space-y-2.5 text-sm text-stone-400">
-              <li><a href="#/about" className="hover:text-white transition-colors">About</a></li>
-              <li><a href="#/units" className="hover:text-white transition-colors">Units</a></li>
-              <li><a href="#/machinery" className="hover:text-white transition-colors">Machinery</a></li>
-              <li><a href="#/products" className="hover:text-white transition-colors">Products</a></li>
+            <ul className="grid grid-cols-2 xl:grid-cols-1 gap-2.5 text-sm text-stone-400">
+              <li><a href="#/about" className="hover:text-white transition-colors">About Company</a></li>
+              <li><a href="#/units" className="hover:text-white transition-colors">Production Units</a></li>
+              <li><a href="#/machinery" className="hover:text-white transition-colors">Machineries (42)</a></li>
+              <li><a href="#/products" className="hover:text-white transition-colors">Products & Fabrics</a></li>
               <li><a href="#/compliance" className="hover:text-white transition-colors">Compliance</a></li>
               <li><a href="#/gallery" className="hover:text-white transition-colors">Gallery</a></li>
+              <li><a href="#/leadership" className="hover:text-white transition-colors">Leadership</a></li>
             </ul>
           </div>
 
-          <div className="lg:col-span-2">
-            <h4 className="text-xs font-bold tracking-[0.12em] uppercase text-white mb-4">Fabrics</h4>
+          {/* Fabrics — 2 cols */}
+          <div className="xl:col-span-2">
+            <h4 className="text-xs font-bold tracking-[0.12em] uppercase text-white mb-4">Our Fabrics</h4>
             <ul className="space-y-2.5 text-sm text-stone-400">
-              <li>Exclusive Shari</li>
-              <li>Three-Piece Suits</li>
-              <li>Poplin & Voile</li>
-              <li>Lillian & Knit</li>
-              <li>Flatbed & Digital</li>
+              <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-[#d4a574]" /> Exclusive Shari</li>
+              <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-[#d4a574]" /> Three-Piece Suits</li>
+              <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-[#d4a574]" /> Poplin & Voile</li>
+              <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-[#d4a574]" /> Lillian & Fancy</li>
+              <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-[#d4a574]" /> Knit & Jersey</li>
+              <li className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-[#d4a574]" /> Digital • Flatbed • Rotary</li>
             </ul>
           </div>
 
-          <div className="lg:col-span-3">
-            <h4 className="text-xs font-bold tracking-[0.12em] uppercase text-white mb-4">Contact</h4>
-            <div className="space-y-3 text-sm">
+          {/* Contact — 3 cols */}
+          <div className="xl:col-span-3">
+            <h4 className="text-xs font-bold tracking-[0.12em] uppercase text-white mb-4">Factory & Contact</h4>
+            <div className="space-y-3.5 text-sm">
               <div className="flex gap-3">
-                <span className="w-8 h-8 rounded-full bg-white/[0.06] border border-white/10 flex items-center justify-center shrink-0">⌖</span>
-                <span className="text-stone-300 leading-relaxed">Ghoradia, Narsingdi Sadar<br />Narsingdi, Bangladesh</span>
+                <span className="w-9 h-9 rounded-full bg-white/[0.06] border border-white/10 flex items-center justify-center shrink-0 text-xs">⌖</span>
+                <span className="text-stone-300 leading-relaxed">
+                  459/A Madrampur, Taragona, Ghoradia<br />Narsingdi Sadar, Narsingdi, Bangladesh
+                </span>
               </div>
               <div className="flex gap-3 items-center text-stone-300">
-                <span className="w-8 h-8 rounded-full bg-white/[0.06] border border-white/10 flex items-center justify-center shrink-0 text-xs">✆</span>
-                88-02-9462750
+                <span className="w-9 h-9 rounded-full bg-white/[0.06] border border-white/10 flex items-center justify-center shrink-0 text-xs">✆</span>
+                <span className="font-medium">88-02-9462750 • +880 1713-562042</span>
               </div>
-              <div className="flex gap-3 items-center text-stone-400 text-[13px]">
-                <span className="w-8 h-8 rounded-full bg-white/[0.06] border border-white/10 flex items-center justify-center shrink-0 text-xs">@</span>
-                info@nodibanglagroup.com
+              <a href="mailto:info@abedtextile.com" className="flex gap-3 items-center text-stone-400 hover:text-white transition-colors">
+                <span className="w-9 h-9 rounded-full bg-white/[0.06] border border-white/10 flex items-center justify-center shrink-0 text-xs">@</span>
+                info@abedtextile.com
+              </a>
+            </div>
+            <div className="mt-5 grid grid-cols-3 gap-2">
+              <div className="rounded-xl bg-white/[0.06] border border-white/10 p-3 text-center">
+                <div className="text-white font-[800] text-sm">4.5M</div>
+                <div className="text-[10px] text-stone-500 uppercase tracking-wide font-semibold">Yards/mo</div>
+              </div>
+              <div className="rounded-xl bg-white/[0.06] border border-white/10 p-3 text-center">
+                <div className="text-white font-[800] text-sm">42</div>
+                <div className="text-[10px] text-stone-500 uppercase tracking-wide font-semibold">Machines</div>
+              </div>
+              <div className="rounded-xl bg-[#d4a574] p-3 text-center">
+                <div className="text-[#070d1a] font-[800] text-sm">1993</div>
+                <div className="text-[10px] text-[#070d1a]/70 uppercase tracking-wide font-bold">Since</div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="text-xs text-stone-500">© {new Date().getFullYear()} Abed Textile Processing Mills Ltd. All rights reserved.</div>
-          <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-[#070d1a] text-xs font-bold hover:bg-stone-100 transition-colors">
-            <ArrowUp size={14} /> Back to top
-          </button>
+        <div className="mt-10 pt-6 border-t border-white/10 flex flex-col lg:flex-row items-center justify-between gap-4">
+          <div className="text-xs text-stone-500 text-center lg:text-left">
+            © {new Date().getFullYear()} Abed Textile Processing Mills Ltd. • All rights reserved.
+          </div>
+          <div className="flex items-center gap-3">
+            <span className="hidden sm:inline text-xs text-stone-500">Crafted for export excellence</span>
+            <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-[#070d1a] text-xs font-bold hover:bg-stone-100 transition-colors">
+              <ArrowUp size={14} /> Back to top
+            </button>
+          </div>
         </div>
       </div>
     </footer>
@@ -240,7 +299,6 @@ function Footer() {
 function Layout({ children }: { children: ReactNode }) {
   return (
     <div className="relative min-h-screen bg-[#fdfbf7] font-sans selection:bg-[#0f2a44] selection:text-white">
-      <AmbientBackdrop />
       <Navbar />
       <main className="relative">{children}</main>
       <Footer />
