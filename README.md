@@ -12,25 +12,45 @@ An Oeko-Tex Certified 100% Export Oriented Manufacturer of Quality Processing Mi
 - **Build Tool:** Vite 5
 - **Styling:** Tailwind CSS 3
 - **Icons:** Lucide React
-- **Fonts:** Outfit, Inter, Hind Siliguri (Bengali)
+- **Routing:** React Router (hash router) with route-level code splitting
+- **Fonts:** Bodoni Moda + DM Sans — self-hosted variable WOFF2 subsets
 
 ## Features
 
-- Bilingual support (English / Bengali)
-- Animated canvas background with wave patterns
-- 3D scroll perspective effects
-- Tilt-hover interactive cards
-- Scroll reveal animations
-- Fullscreen image lightbox
-- 72+ machinery database with search & filter
-- 6 product categories with detailed specs
-- 5 production unit showcases with gallery
-- Compliance & labor standards section
-- Company leadership profiles
-- RFQ (Request for Quotation) form
-- Company gallery with category filter
-- Responsive design (Mobile + Desktop)
-- Glassmorphism UI components
+- Fullscreen image lightbox with keyboard + swipe-free paging and neighbour preloading
+- 24 machinery types (72 units) with instant search
+- 6 product categories with lead-time specs
+- Printing / dyeing / finishing production showcases
+- Compliance, worker welfare and ETP sections
+- Leadership profiles with direct contact links
+- Scroll reveal animations and blur-up image loading
+- Responsive design (mobile → ultra-wide)
+
+## Performance
+
+The site is deliberately tuned for slow mobile connections and repeat visits:
+
+| Area | What we do |
+|---|---|
+| **Images** | Every photo is shipped as WebP in 2–3 responsive sizes (600/900/1500px …) with `srcSet` + `sizes`, `loading="lazy"` and a ~500 byte LQIP blur-up placeholder. 343 MB of source photos → **8 MB** of WebP derivatives; a typical page transfers a few hundred KB. |
+| **Hero (LCP)** | `/img/hero-*.webp` uses stable URLs so `index.html` can `<link rel="preload" imagesrcset ... fetchpriority="high">` it while the JS bundle is still downloading. |
+| **Fonts** | Self-hosted variable subsets (83 KB total) served from our own origin and preloaded — no third-party DNS/TLS handshake, no render-blocking Google Fonts request. |
+| **JS** | Route-level `React.lazy` chunks, idle-time prefetch of the likely next pages, and hover prefetch on nav links. Entry bundle ≈ 78 kB gzip. |
+| **CSS** | One 25 kB (5.5 kB gzip) Tailwind stylesheet, animations limited to `opacity`/`transform` so they stay on the compositor. |
+| **Caching** | Content-hashed assets are immutable for a year (`public/_headers`), fonts for a year, hero images 30 days + `stale-while-revalidate`, HTML always revalidated. |
+| **Smoothness** | A single shared `IntersectionObserver` for all reveal animations, instant scroll-reset on route change (instead of animated), no `backdrop-filter` on the sticky header, `useDeferredValue` for the machinery search. |
+
+### Regenerating images
+
+Source photographs live in `src/assets/images/**` and are never bundled. Whenever a photo
+is added or replaced, regenerate the derivatives:
+
+```bash
+npm run images     # requires ImageMagick (`convert`) on PATH
+```
+
+This writes `src/assets/opt/**` (build assets) and `public/img/**` (preloaded hero) and
+prints a before/after size report.
 
 ## Getting Started
 
@@ -38,14 +58,18 @@ An Oeko-Tex Certified 100% Export Oriented Manufacturer of Quality Processing Mi
 # Install dependencies
 npm install
 
-# Start dev server
+# Start dev server (http://localhost:3000)
 npm run dev
 
 # Build for production
 npm run build
 
-# Preview production build
+# Preview the production build (http://localhost:4173) — use this to check real
+# bundle sizes, code splitting and caching behaviour
 npm run preview
+
+# Regenerate optimized WebP derivatives after adding photos
+npm run images
 ```
 
 ## Deployment (Cloudflare — Workers with static assets)
@@ -124,7 +148,11 @@ src/
 ├── main.tsx             # Entry point
 ├── index.css            # Global styles & Tailwind config
 ├── assets.ts            # Image & asset imports
+├── routes.ts            # Lazy route chunks + prefetch helpers
+├── hooks/useReveal.ts   # Shared IntersectionObserver reveal hook
+├── components/SmartImg.tsx  # Responsive WebP + LQIP image component
 ├── assets/
+│   ├── opt/             # Generated WebP derivatives (used by the app)
 │   ├── logos/           # Company logo
 │   └── images/
 │       ├── about/       # About section images
@@ -150,11 +178,12 @@ src/
 ## Run with Server
 
 ```bash
-# Start the production server
+# Lightweight Node static file server for the source tree (http://localhost:3000)
 node server.js
-```
 
-Server runs at `http://localhost:3000`
+# To serve the *optimized* production build instead, use:
+npm run preview
+```
 
 ## License
 

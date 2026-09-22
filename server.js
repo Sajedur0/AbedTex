@@ -53,6 +53,15 @@ const server = http.createServer((req, res) => {
     const ext = path.extname(filePath);
     const contentType = MIME_TYPES[ext] || 'application/octet-stream';
 
+    // Immutable caching for hashed build output plus the stable /img and /fonts files,
+    // so repeat visits don't re-validate every photo and font.
+    const cacheControl =
+      ext === '.html'
+        ? 'public, max-age=0, must-revalidate'
+        : /[\\/](img|fonts)[\\/]/.test(filePath) || /-[A-Za-z0-9_-]{8}\.[a-z0-9]+$/.test(filePath)
+          ? 'public, max-age=31536000, immutable'
+          : 'public, max-age=3600';
+
     fs.readFile(filePath, (readErr, content) => {
       if (readErr) {
         res.writeHead(500, { 'Content-Type': 'text/plain' });
@@ -62,7 +71,7 @@ const server = http.createServer((req, res) => {
 
       res.writeHead(200, {
         'Content-Type': contentType,
-        'Cache-Control': 'no-cache',
+        'Cache-Control': cacheControl,
         'Access-Control-Allow-Origin': '*'
       });
       res.end(content);

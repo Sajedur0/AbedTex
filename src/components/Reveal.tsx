@@ -9,7 +9,7 @@ interface RevealProps {
 }
 
 export default function Reveal({ children, delay = 0, className = '', direction = 'up' }: RevealProps) {
-  const { ref, visible } = useReveal(0.12);
+  const { ref, visible } = useReveal();
 
   const directionMap = {
     up: 'reveal-up',

@@ -5,11 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Abed Textile Processing Mills Ltd.</title>
   <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
   <meta name="description" content="An Oeko-Tex Certified 100% Export Oriented Manufacturer of Quality Processing Mills in Bangladesh. Since 1993." />
+  <meta name="theme-color" content="#182722" />
+  <meta name="color-scheme" content="light" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600;6..96,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- LCP: the hero photo is fetched in parallel with the JavaScript bundle instead
+       of waiting for React to render it. Keep these URLs in sync with src/assets.ts. -->
+  <link rel="preload" as="image" href="/img/hero-1440.webp" fetchpriority="high"
+        imagesrcset="/img/hero-960.webp 960w, /img/hero-1440.webp 1440w, /img/hero-1920.webp 1920w"
+        imagesizes="100vw" />
+  <!-- Self-hosted fonts: preloaded so text paints with the real typeface, no FOUT jiggle. -->
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/bodoni-moda-latin-var.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/dm-sans-latin-var.woff2" crossorigin />
 </head>
 <body class="selection:bg-sky-500 selection:text-white">
   <div id="root"></div>
