@@ -1,66 +1,9 @@
-import { useApp } from '../App';
+import { ArrowUpRight } from 'lucide-react';
 import { assets } from '../assets';
-import { Expand, Image as ImageIcon } from 'lucide-react';
+import { useApp } from '../App';
+import { PageHero, Shell } from '../components/Site';
 import Reveal from '../components/Reveal';
 
-export default function GalleryPage() {
-  const { openLightbox } = useApp();
-
-  return (
-    <div className="w-full">
-      <section className="w-full bg-white border-b border-[#0f2a44]/[0.06] relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[200px] h-[200px] rounded-full bg-[#d4a574]/[0.04] blur-[60px]" />
-        <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12 py-8 lg:py-10 relative">
-          <Reveal>
-            <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0f2a44]/[0.05] border border-[#0f2a44]/[0.08] text-[#0f2a44] text-xs font-bold">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#d4a574]" />
-                Factory Floor Visual Showcase
-              </div>
-              <h1 className="mt-4 text-[30px] sm:text-[40px] xl:text-[44px] font-[800] tracking-[-0.03em] leading-[0.93] text-[#0f2a44]">
-                Abed textile production visual gallery
-              </h1>
-              <p className="mt-3 text-sm text-stone-500 flex items-center gap-2">
-                <ImageIcon size={14} /> {assets.gallery.length} photos • click to expand • edge-to-edge masonry
-              </p>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="w-full bg-[#fdfbf7]">
-        <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12 py-6 lg:py-8">
-          <div className="columns-2 sm:columns-3 lg:columns-4 xl:columns-5 2xl:columns-6 gap-3 sm:gap-4 space-y-3 sm:space-y-4">
-            {assets.gallery.map((item, idx) => (
-              <Reveal key={idx} delay={Math.min(idx * 40, 400)} direction="fade">
-                <button
-                  onClick={() => openLightbox(assets.gallery.map((g) => ({ src: g.src, title: g.title })), idx)}
-                  className="group relative w-full overflow-hidden rounded-[16px] border border-stone-200/80 bg-stone-100 break-inside-avoid text-left block"
-                >
-                  <img
-                    src={item.src}
-                    alt={item.title}
-                    className="w-full h-auto object-cover img-zoom"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#070d1a]/75 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="px-2.5 py-1 rounded-full bg-white text-[#0f2a44] text-xs font-bold shadow-lg leading-none max-w-[150px] truncate">
-                        {item.title}
-                      </span>
-                      <span className="w-7 h-7 rounded-full bg-white flex items-center justify-center shadow-lg shrink-0">
-                        <Expand size={12} className="text-[#0f2a44]" />
-                      </span>
-                    </div>
-                    <span className="mt-1.5 inline-block px-2 py-0.5 rounded-full bg-white/15 backdrop-blur border border-white/20 text-[11px] font-semibold text-white">{item.cat}</span>
-                  </div>
-                </button>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-}
+export default function GalleryPage(){const {openLightbox}=useApp();const items=assets.gallery.map((x,i)=>({...x,title:`Facility view ${String(i+1).padStart(2,'0')}`}));return <div><PageHero kicker="Gallery / Inside the facility" title="The work, in view." intro="A visual record of Abed Textile Processing Mills Ltd. — its production environment, machinery, people and facility."/>
+  <section className="bg-[#f7f3eb]"><Shell className="py-12 lg:py-20"><div className="columns-1 gap-5 sm:columns-2 lg:columns-3">{items.map((item,i)=><Reveal key={item.src} delay={(i%3)*60}><button onClick={()=>openLightbox(items,i)} className="group relative mb-5 block w-full break-inside-avoid overflow-hidden bg-[#182722]"><img src={item.src} alt={item.title} className={`w-full object-cover transition duration-700 group-hover:scale-105 group-hover:opacity-80 ${i%4===0?'aspect-[4/5]':'aspect-[4/3]'}`}/><span className="absolute bottom-4 left-4 text-[10px] font-bold uppercase tracking-widest text-white">{item.title}</span><span className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-white opacity-0 transition group-hover:opacity-100"><ArrowUpRight size={15}/></span></button></Reveal>)}</div></Shell></section>
+</div>}
