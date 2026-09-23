@@ -1,10 +1,29 @@
+/* Self-hosted variable fonts (OFL — see public/fonts/LICENSE-*).
+   Served from our own origin: no third-party DNS/TLS handshake, no render-blocking
+   stylesheet, and the files are cached immutably (see public/_headers). */
+@font-face {
+  font-family: 'Bodoni Moda';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('/fonts/bodoni-moda-latin-var.woff2') format('woff2-variations');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 100 1000;
+  font-display: swap;
+  src: url('/fonts/dm-sans-latin-var.woff2') format('woff2-variations');
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root { color: #182722; background: #f7f3eb; font-family: 'DM Sans', sans-serif; font-synthesis: none; }
 html { scroll-behavior: smooth; }
-body { margin: 0; overflow-x: hidden; background: #f7f3eb; }
+body { margin: 0; overflow-x: hidden; background: #f7f3eb; -webkit-tap-highlight-color: transparent; }
 .display { font-family: 'Bodoni Moda', Georgia, serif; font-weight: 600; }
 .nav-link { position: relative; color: #5b625e; transition: color .2s; }
 .nav-link:hover,.nav-link.active { color:#182722; }
@@ -15,8 +34,12 @@ body { margin: 0; overflow-x: hidden; background: #f7f3eb; }
 .rule-grid { background-image:linear-gradient(rgba(24,39,34,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(24,39,34,.07) 1px,transparent 1px); background-size:48px 48px; }
 .card-lift { transition: transform .35s ease, box-shadow .35s ease; }
 .card-lift:hover { transform:translateY(-5px); box-shadow:0 22px 50px rgba(24,39,34,.12); }
-.reveal-up,.reveal-down,.reveal-left,.reveal-right,.reveal-fade { opacity:0; transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1); }
-.reveal-up{transform:translateY(28px)}.reveal-down{transform:translateY(-20px)}.reveal-left{transform:translateX(-28px)}.reveal-right{transform:translateX(28px)}
+
+/* Scroll reveals — opacity + transform only, so they stay on the compositor.
+   The observer adds `.revealed`; elements already in view on first paint are
+   revealed without waiting for a scroll event (see useReveal). */
+.reveal-up,.reveal-down,.reveal-left,.reveal-right,.reveal-fade { opacity:0; transition:opacity .6s ease-out,transform .6s cubic-bezier(.2,.7,.2,1); }
+.reveal-up{transform:translate3d(0,28px,0)}.reveal-down{transform:translate3d(0,-20px,0)}.reveal-left{transform:translate3d(-28px,0,0)}.reveal-right{transform:translate3d(28px,0,0)}
 .revealed { opacity:1; transform:none; }
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.reveal-up,.reveal-down,.reveal-left,.reveal-right,.reveal-fade{opacity:1;transform:none;transition:none}}
 ::-webkit-scrollbar{width:7px}::-webkit-scrollbar-track{background:#efe9df}::-webkit-scrollbar-thumb{background:#a9a89f}
