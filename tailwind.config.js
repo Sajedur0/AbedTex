@@ -42,8 +42,8 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['DM Sans', 'Outfit', 'Inter', 'sans-serif'],
-        display: ['Futura Black BT', 'Outfit', 'sans-serif']
+        sans: ['DM Sans', 'sans-serif'],
+        display: ['Montserrat', 'DM Sans', 'sans-serif']
       },
       borderRadius: {
         '4xl': '2rem',
