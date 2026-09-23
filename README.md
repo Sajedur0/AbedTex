@@ -13,7 +13,7 @@ An Oeko-Tex Certified 100% Export Oriented Manufacturer of Quality Processing Mi
 - **Styling:** Tailwind CSS 3
 - **Icons:** Lucide React
 - **Routing:** React Router (hash router) with route-level code splitting
-- **Fonts:** Bodoni Moda + DM Sans — self-hosted variable WOFF2 subsets
+- **Fonts:** Futura Black BT + DM Sans — self-hosted (TTF + WOFF2)
 
 ## Features
 
