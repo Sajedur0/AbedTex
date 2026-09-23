@@ -23,6 +23,7 @@ An Oeko-Tex Certified 100% Export Oriented Manufacturer of Quality Processing Mi
 - Printing / dyeing / finishing production showcases
 - Compliance, worker welfare and ETP sections
 - Leadership profiles with direct contact links
+- Google Maps embed on the contact page (keyless, mounted only when scrolled near)
 - Scroll reveal animations and blur-up image loading
 - Responsive design (mobile → ultra-wide)
 

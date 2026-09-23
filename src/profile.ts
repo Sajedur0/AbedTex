@@ -50,6 +50,22 @@ export const compliance = [
   'Group insurance and residential facilities', 'Free recreation for staff and workers'
 ];
 
+/* Google Maps pin for the mill.
+   Resolved from the shared Maps link https://maps.app.goo.gl/rJ6HTNXW71f9uGw79
+   → "Abed Textile Processing Mills Ltd." (Ghoradia, Narsingdi 1602) at
+   23.9430798, 90.7320136. */
+const factoryQuery = 'Abed Textile Processing Mills Ltd., Ghoradia, Narsingdi';
+
+export const mapLocation = {
+  name: 'Abed Textile Processing Mills Ltd.',
+  coords: '23.9430798, 90.7320136',
+  plusCode: 'WPVJ+6R Narsingdi',
+  /** The link the company shares — opens the Maps app on phones. */
+  directions: 'https://maps.app.goo.gl/rJ6HTNXW71f9uGw79',
+  /** Keyless embed: no API key, billing account or quota to set up. */
+  embed: `https://www.google.com/maps?q=${encodeURIComponent(factoryQuery)}&hl=en&z=15&output=embed`,
+};
+
 export const contact = {
   corporate: {
     title: 'Corporate Office',
