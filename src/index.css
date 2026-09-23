@@ -1,11 +1,11 @@
 /* Self-hosted fonts — served from our own origin: no third-party DNS/TLS handshake,
    no render-blocking stylesheet, and the files are cached immutably (see public/_headers). */
 @font-face {
-  font-family: 'Futura Black BT';
+  font-family: 'Montserrat';
   font-style: normal;
-  font-weight: 400 900;
+  font-weight: 100 900;
   font-display: swap;
-  src: url('/fonts/futura-black-bt.ttf') format('truetype');
+  src: url('/fonts/montserrat-latin-var.woff2') format('woff2-variations');
 }
 
 @font-face {
@@ -23,7 +23,7 @@
 :root { color: #182722; background: #f7f3eb; font-family: 'DM Sans', sans-serif; font-synthesis: none; }
 html { scroll-behavior: smooth; }
 body { margin: 0; overflow-x: hidden; background: #f7f3eb; -webkit-tap-highlight-color: transparent; }
-.display { font-family: 'Futura Black BT', 'DM Sans', sans-serif; font-weight: 900; }
+.display { font-family: 'Montserrat', 'DM Sans', sans-serif; font-weight: 900; letter-spacing: -.025em; }
 .nav-link { position: relative; color: #5b625e; transition: color .2s; }
 .nav-link:hover,.nav-link.active { color:#182722; }
 .nav-link.active:after { content:''; position:absolute; left:0; right:0; bottom:-12px; height:2px; background:#e86d2a; }
