@@ -18,7 +18,7 @@ Royal Mir Lodge, Plot # F-5/A, House # 2, Road # 11, Sector-6, Uttara, Dhaka –
 - Web / ওয়েবসাইট: www.abedtex.com
 
 **Factory Address / কারখানার ঠিকানা:**
-(Abed Textile Processing Mills Ltd.) Ghoradia, Narsingdi Sador, Narsingdi-1602, Bangladesh.
+(Abed Textile Processing Mills Ltd.) Ghoradia, Narsingdi Sadar - 1602, Dhaka, Bangladesh.
 ঘোড়াদিয়া, নরসিংদী সদর, নরসিংদী-১৬০২, বাংলাদেশ।
 
 - Phone / ফোন: 88-02-9462750

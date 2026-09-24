@@ -30,7 +30,7 @@ export const customers = [
 export const directors = [
   { name: 'Monjur Elahi', role: 'Managing Director', mobile: '01713-562042', email: 'info@nodibanglagroup.com', image: 'manjurElahi' },
   { name: 'Abdullah Al Mamun', role: 'Director', mobile: '01713-519783', email: 'abedmamun@hotmail.com', image: 'abdulMamun' },
-  { name: 'Mahbubur Rahman (Monir)', role: 'Director', mobile: '01711-707403', email: 'abedmonir@hotmail.com', image: 'mahbuburRahman' },
+  { name: 'Mahbubur Rahman Monir', role: 'Director', mobile: '01711-707403', email: 'abedmonir@hotmail.com', image: 'mahbuburRahman' },
 ] as const;
 
 export const values = [
@@ -74,7 +74,7 @@ export const contact = {
   },
   factory: {
     title: 'Factory',
-    address: 'Ghoradia, Narsingdi Sador, Narsingdi-1602, Bangladesh.',
+    address: 'Ghoradia, Narsingdi Sadar - 1602, Dhaka, Bangladesh.',
     phone: '88-02-9462750', fax: '88-02-9464312', email: 'abedmamun@hotmail.com'
   }
 };
