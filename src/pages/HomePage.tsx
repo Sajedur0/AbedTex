@@ -6,9 +6,11 @@ import Reveal from '../components/Reveal';
 import SmartImg from '../components/SmartImg';
 
 const sectionCards = [
-  { title: 'Printing', img: assets.banners.flatbed, text: 'Automatic flat bed screen and rotary printing.' },
+  { title: 'Weaving', img: assets.banners.weaving, text: 'Automated high-speed looms for quality greige fabric.' },
+  { title: 'Flatbed Printing', img: assets.banners.flatbed, text: 'Automatic flat bed screen and rotary printing.' },
+  { title: 'Digital Printing', img: assets.banners.digital, text: 'Direct-to-fabric ultra high-definition printing.' },
   { title: 'Dyeing', img: assets.banners.dyeing, text: 'Jiggers, mercerizing and pad batch capability.' },
-  { title: 'Finishing', img: assets.banners.finishing, text: 'Standers, calendars, folding and washing.' },
+  { title: 'Finishing', img: assets.banners.finishing, text: 'Stenters, calendars, folding and washing.' },
 ];
 
 export default function HomePage() {
@@ -37,8 +39,8 @@ export default function HomePage() {
       </div></Reveal>
     </div></Shell></section>
 
-    <section className="bg-[#182722] py-20 text-white lg:py-28"><Shell><Reveal><div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><Eyebrow light>Our production</Eyebrow><h2 className="display text-5xl md:text-7xl">Print. Dye. Finish.</h2></div><LinkArrow href="#/units" light>Explore capabilities</LinkArrow></div></Reveal>
-      <div className="grid gap-4 md:grid-cols-3">{sectionCards.map(({title,img,text},i)=><Reveal key={title} delay={i*80}><a href="#/units" className="group relative block aspect-[4/5] overflow-hidden"><SmartImg img={img} alt={title} sizes="(min-width:768px) 30vw, 100vw" className="h-full w-full object-cover transition duration-700 group-hover:scale-105"/><div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent"/><div className="absolute inset-x-0 bottom-0 p-7"><div className="display text-4xl">{title}</div><p className="mt-2 text-sm text-white/60">{text}</p><ArrowUpRight className="absolute bottom-7 right-7"/></div></a></Reveal>)}
+    <section className="bg-[#182722] py-20 text-white lg:py-28"><Shell><Reveal><div className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><Eyebrow light>Our production</Eyebrow><h2 className="display text-5xl md:text-7xl">Integrated manufacturing.</h2></div><LinkArrow href="#/units" light>Explore capabilities</LinkArrow></div></Reveal>
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">{sectionCards.map(({title,img,text},i)=><Reveal key={title} delay={i*80}><a href="#/units" className="group relative block aspect-[4/5] overflow-hidden"><SmartImg img={img} alt={title} sizes="(min-width:1280px) 18vw, (min-width:1024px) 30vw, (min-width:640px) 46vw, 100vw" className="h-full w-full object-cover transition duration-700 group-hover:scale-105"/><div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent"/><div className="absolute inset-x-0 bottom-0 p-6"><div className="display text-2xl lg:text-3xl">{title}</div><p className="mt-2 text-xs text-white/60 line-clamp-2">{text}</p><ArrowUpRight className="absolute bottom-6 right-6" size={18}/></div></a></Reveal>)}
       </div>
     </Shell></section>
 

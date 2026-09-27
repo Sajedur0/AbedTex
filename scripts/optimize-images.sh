@@ -59,17 +59,17 @@ for name in weaving flat-bed digital dyeing finishing; do
 done
 
 echo "▸ Machinery photos (weaving / flat bed / digital)"
-for i in 1 2 3 4 5 6 7 8 9; do
+for i in 1 2 3 4 5 6 7 8; do
   s="$SRC/weaving/weaving-$i.jpg"; [ -f "$s" ] || s="$SRC/weaving/weaving-$i.JPG"
-  webp "$s" "$OUT/weaving/weaving-$i-1200.webp" 1200 74
+  [ -f "$s" ] && webp "$s" "$OUT/weaving/weaving-$i-1200.webp" 1200 74
 done
 for i in 1 2 3 4 5 6; do
   s="$SRC/flat-bed/flatbed-$i.jpg"; [ -f "$s" ] || s="$SRC/flat-bed/flatbed-$i.png"
-  webp "$s" "$OUT/flat-bed/flatbed-$i-1200.webp" 1200 74
+  [ -f "$s" ] && webp "$s" "$OUT/flat-bed/flatbed-$i-1200.webp" 1200 74
 done
-for i in 1 2 3; do
+for i in 1 3; do
   s="$SRC/digital/digital-$i.JPG"; [ -f "$s" ] || s="$SRC/digital/digital-$i.jpg"
-  webp "$s" "$OUT/digital/digital-$i-1200.webp" 1200 74
+  [ -f "$s" ] && webp "$s" "$OUT/digital/digital-$i-1200.webp" 1200 74
 done
 # New digital printing images
 for i in 1 2 3 4 5 6; do
@@ -83,11 +83,11 @@ s="$SRC/flat-bed/Flat Bed Printing.png"
 echo "▸ Directors"
 for name in manjur-elahi abdul-manun mahbubur-rahman abed-ali; do
   s="$SRC/leaders/$name.jpg"; [ -f "$s" ] || s="$SRC/leaders/$name.png"
-  webp "$s" "$OUT/leaders/$name-600.webp" 600 78
+  [ -f "$s" ] && webp "$s" "$OUT/leaders/$name-600.webp" 600 78
 done
-for name in manjur-elahi abdul-manun mahbubur-rahman; do
+for name in manjur-elahi abdul-manun mahbubur-rahman abed-ali; do
   s="$SRC/leaders/$name.jpg"; [ -f "$s" ] || s="$SRC/leaders/$name.png"
-  webp "$s" "$OUT/leaders/$name-lqip.webp" 20 45
+  [ -f "$s" ] && webp "$s" "$OUT/leaders/$name-lqip.webp" 20 45
 done
 
 echo "▸ Facility / ETP photo"

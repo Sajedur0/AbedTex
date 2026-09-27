@@ -78,7 +78,7 @@ export const assets = {
   about: picture('about', 'about-bg', [500, 900, 1400], { lqip: true }),
 
   leaders: {
-    abedAli: picture('leaders', 'abed-ali', [600]),
+    abedAli: picture('leaders', 'abed-ali', [600], { lqip: true }),
     manjurElahi: picture('leaders', 'manjur-elahi', [600], { lqip: true }),
     abdulMamun: picture('leaders', 'abdul-manun', [600], { lqip: true }),
     mahbuburRahman: picture('leaders', 'mahbubur-rahman', [600], { lqip: true }),
@@ -92,10 +92,10 @@ export const assets = {
     finishing: picture('sections', 'finishing-banner', [700, 1000, 1600], { lqip: true, full: 1600 }),
   },
 
-  weaving: [1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => picture('weaving', `weaving-${i}`, [1200])),
+  weaving: [1, 2, 3, 4, 5, 6, 7, 8].map((i) => picture('weaving', `weaving-${i}`, [1200])),
   flatbed: [1, 2, 3, 4, 5, 6].map((i) => picture('flat-bed', `flatbed-${i}`, [1200])),
   digital: [
-    ...[1, 2, 3].map((i) => picture('digital', `digital-${i}`, [1200])),
+    ...[1, 3].map((i) => picture('digital', `digital-${i}`, [1200])),
     ...[1, 2, 3, 4, 5, 6].map((i) => picture('digital', `digital-print-${i}`, [1200])),
   ],
   flatbedPrinting: picture('flat-bed', 'flat-bed-printing', [1200]),
