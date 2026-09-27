@@ -70,7 +70,7 @@ function Footer() {
       <div className="grid gap-12 border-b border-white/15 pb-14 lg:grid-cols-[1.4fr_.6fr_.7fr]">
         <div><div className="display text-4xl leading-none md:text-6xl">Made with purpose.<br/><i className="text-[#ff9a55]">Processed with care.</i></div><p className="mt-6 max-w-xl text-sm leading-7 text-white/55">Quality merchandising, timely delivery, high compliance and dedicated customer service since 1993.</p></div>
         <div><div className="footer-label">Navigate</div><div className="mt-5 grid gap-3 text-sm text-white/70">{links.slice(1).map(([to,label]) => <a href={`#${to}`} key={to} onMouseEnter={()=>prefetchRoute(to)} className="hover:text-white">{label}</a>)}</div></div>
-        <div><div className="footer-label">Factory</div><p className="mt-5 text-sm leading-7 text-white/70">Ghoradia, Narsingdi Sadar - 1602<br/>Dhaka, Bangladesh</p><a href="tel:88029462750" className="mt-5 block text-xl font-bold">88-02-9462750</a><a href="mailto:info@nodibanglagroup.com" className="mt-2 block text-sm text-[#ff9a55]">info@nodibanglagroup.com</a></div>
+        <div><div className="footer-label">Factory</div><p className="mt-5 text-sm leading-7 text-white/70">Ghoradia, Narsingdi Sadar - 1602<br/>Dhaka, Bangladesh</p><a href="tel:88029462750" className="mt-5 block text-xl font-bold">88-02-9462750</a><a href="mailto:info@abed.com" className="mt-2 block text-sm text-[#ff9a55]">info@abed.com</a></div>
       </div>
       <div className="flex flex-col gap-3 pt-6 text-[10px] uppercase tracking-[.16em] text-white/45 sm:flex-row sm:justify-between"><span>© {new Date().getFullYear()} Abed Textile Processing Mills Ltd.</span><span>BTMEA & NCCI Member</span></div>
     </Shell>

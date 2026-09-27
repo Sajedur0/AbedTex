@@ -40,7 +40,7 @@ webp() {
 }
 
 echo "▸ Company gallery — 900px grid thumb + 1500px lightbox view + blur placeholder"
-for i in 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16; do
+for i in 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39; do
   s="$SRC/company-gallery/gallery-$i.jpg"
   [ -f "$s" ] || s="$SRC/company-gallery/gallery-$i.png"
   webp "$s" "$OUT/gallery/gallery-$i-600.webp"  600  74
@@ -51,10 +51,11 @@ done
 
 echo "▸ Production section banners"
 for name in weaving flat-bed digital dyeing finishing; do
-  webp "$SRC/sections/$name-banner.jpg" "$OUT/sections/$name-banner-700.webp"  700  74
-  webp "$SRC/sections/$name-banner.jpg" "$OUT/sections/$name-banner-1000.webp" 1000 72
-  webp "$SRC/sections/$name-banner.jpg" "$OUT/sections/$name-banner-1600.webp" 1600 70
-  webp "$SRC/sections/$name-banner.jpg" "$OUT/sections/$name-banner-lqip.webp" 20   45
+  s="$SRC/sections/$name-banner.jpg"; [ -f "$s" ] || s="$SRC/sections/$name-banner.png"
+  webp "$s" "$OUT/sections/$name-banner-700.webp"  700  74
+  webp "$s" "$OUT/sections/$name-banner-1000.webp" 1000 72
+  webp "$s" "$OUT/sections/$name-banner-1600.webp" 1600 70
+  webp "$s" "$OUT/sections/$name-banner-lqip.webp" 20   45
 done
 
 echo "▸ Machinery photos (weaving / flat bed / digital)"
@@ -63,19 +64,30 @@ for i in 1 2 3 4 5 6 7 8 9; do
   webp "$s" "$OUT/weaving/weaving-$i-1200.webp" 1200 74
 done
 for i in 1 2 3 4 5 6; do
-  webp "$SRC/flat-bed/flatbed-$i.jpg" "$OUT/flat-bed/flatbed-$i-1200.webp" 1200 74
+  s="$SRC/flat-bed/flatbed-$i.jpg"; [ -f "$s" ] || s="$SRC/flat-bed/flatbed-$i.png"
+  webp "$s" "$OUT/flat-bed/flatbed-$i-1200.webp" 1200 74
 done
 for i in 1 2 3; do
   s="$SRC/digital/digital-$i.JPG"; [ -f "$s" ] || s="$SRC/digital/digital-$i.jpg"
   webp "$s" "$OUT/digital/digital-$i-1200.webp" 1200 74
 done
+# New digital printing images
+for i in 1 2 3 4 5 6; do
+  s="$SRC/digital/Digital-Print-$i.png"; [ -f "$s" ] || s="$SRC/digital/Digital-Printing-$i.png"
+  [ -f "$s" ] && webp "$s" "$OUT/digital/digital-print-$i-1200.webp" 1200 74
+done
+# Flat bed printing large image
+s="$SRC/flat-bed/Flat Bed Printing.png"
+[ -f "$s" ] && webp "$s" "$OUT/flat-bed/flat-bed-printing-1200.webp" 1200 74
 
 echo "▸ Directors"
 for name in manjur-elahi abdul-manun mahbubur-rahman abed-ali; do
-  webp "$SRC/leaders/$name.jpg" "$OUT/leaders/$name-600.webp" 600 78
+  s="$SRC/leaders/$name.jpg"; [ -f "$s" ] || s="$SRC/leaders/$name.png"
+  webp "$s" "$OUT/leaders/$name-600.webp" 600 78
 done
 for name in manjur-elahi abdul-manun mahbubur-rahman; do
-  webp "$SRC/leaders/$name.jpg" "$OUT/leaders/$name-lqip.webp" 20 45
+  s="$SRC/leaders/$name.jpg"; [ -f "$s" ] || s="$SRC/leaders/$name.png"
+  webp "$s" "$OUT/leaders/$name-lqip.webp" 20 45
 done
 
 echo "▸ Facility / ETP photo"

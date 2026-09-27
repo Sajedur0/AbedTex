@@ -94,7 +94,11 @@ export const assets = {
 
   weaving: [1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => picture('weaving', `weaving-${i}`, [1200])),
   flatbed: [1, 2, 3, 4, 5, 6].map((i) => picture('flat-bed', `flatbed-${i}`, [1200])),
-  digital: [1, 2, 3].map((i) => picture('digital', `digital-${i}`, [1200])),
+  digital: [
+    ...[1, 2, 3].map((i) => picture('digital', `digital-${i}`, [1200])),
+    ...[1, 2, 3, 4, 5, 6].map((i) => picture('digital', `digital-print-${i}`, [1200])),
+  ],
+  flatbedPrinting: picture('flat-bed', 'flat-bed-printing', [1200]),
 
   gallery: (
     [
@@ -114,6 +118,29 @@ export const assets = {
       ['14', 'Worker Safety Zone', 'Compliance'],
       ['15', 'Sharee & 3-Pcs Output', 'Products'],
       ['16', 'Laboratory Testing Unit', 'Quality'],
+      ['17', 'Spinning Section Overview', 'Production'],
+      ['18', 'Yarn Storage & Inventory', 'Facility'],
+      ['19', 'Warping Machine Setup', 'Production'],
+      ['20', 'Sizing Machine Operation', 'Production'],
+      ['21', 'Loom Shed Panorama', 'Production'],
+      ['22', 'Fabric Greige Inspection', 'Quality'],
+      ['23', 'Desizing & Scouring Range', 'Dyeing'],
+      ['24', 'Bleaching Line Continuous', 'Dyeing'],
+      ['25', 'Mercerizing Tension Control', 'Finishing'],
+      ['26', 'Dyeing Lab Color Matching', 'Quality'],
+      ['27', 'Jigger Dyeing Batch Process', 'Dyeing'],
+      ['28', 'Pad-Dry-Cure Finishing', 'Finishing'],
+      ['29', 'Stenter Frame Heat Setting', 'Finishing'],
+      ['30', 'Sanforizing Pre-shrink Unit', 'Finishing'],
+      ['31', 'Calender Glazing Finish', 'Finishing'],
+      ['32', 'Inspection & Rolling Station', 'Quality'],
+      ['33', 'Bale Press Packaging', 'Products'],
+      ['34', 'ETP Biological Treatment', 'Facility'],
+      ['35', 'Water Recycling System', 'Facility'],
+      ['36', 'Boiler House Steam Generation', 'Facility'],
+      ['37', 'Compressed Air Station', 'Facility'],
+      ['38', 'Electrical Substation', 'Facility'],
+      ['39', 'Fire Safety & Hydrant System', 'Compliance'],
     ] as const
   ).map(([id, title, cat]): GalleryItem => {
     const thumb = picture('gallery', `gallery-${id}`, [600, 900], { lqip: true });

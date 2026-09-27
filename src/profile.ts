@@ -28,7 +28,7 @@ export const customers = [
 ];
 
 export const directors = [
-  { name: 'Monjur Elahi', role: 'Managing Director', mobile: '01713-562042', email: 'info@nodibanglagroup.com', image: 'manjurElahi' },
+  { name: 'Monjur Elahi', role: 'Managing Director', mobile: '01713-562042', email: 'info@abed.com', image: 'manjurElahi' },
   { name: 'Abdullah Al Mamun', role: 'Director', mobile: '01713-519783', email: 'abedmamun@hotmail.com', image: 'abdulMamun' },
   { name: 'Mahbubur Rahman Monir', role: 'Director', mobile: '01711-707403', email: 'abedmonir@hotmail.com', image: 'mahbuburRahman' },
 ] as const;
@@ -70,7 +70,7 @@ export const contact = {
   corporate: {
     title: 'Corporate Office',
     address: 'Royal Mir Lodge, Plot # F-5/A, House # 2, Road # 11, Sector-6, Uttara, Dhaka – 1230, Bangladesh.',
-    phone: '88028932117', fax: '88028932119', email: 'info@nodibanglagroup.com'
+    phone: '88028932117', fax: '88028932119', email: 'info@abed.com'
   },
   factory: {
     title: 'Factory',
