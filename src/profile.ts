@@ -28,6 +28,7 @@ export const customers = [
 ];
 
 export const directors = [
+  { name: 'Alhaj Md. Abed Ali', role: 'Founder & Visionary Pioneer', mobile: '+880 1713-562042', email: 'info@abed.com', image: 'abedAli' },
   { name: 'Monjur Elahi', role: 'Managing Director', mobile: '01713-562042', email: 'info@abed.com', image: 'manjurElahi' },
   { name: 'Abdullah Al Mamun', role: 'Director', mobile: '01713-519783', email: 'abedmamun@hotmail.com', image: 'abdulMamun' },
   { name: 'Mahbubur Rahman Monir', role: 'Director', mobile: '01711-707403', email: 'abedmonir@hotmail.com', image: 'mahbuburRahman' },
