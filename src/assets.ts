@@ -1,19 +1,9 @@
 /**
- * Categorized WebP Image Asset Registry.
+ * Categorized WebP image asset registry.
  *
- * All images are categorized in subfolders under `src/assets/images/` and encoded
- * in WebP format:
- *   - hero/
- *   - leaders/
- *   - units/
- *   - machinery/
- *   - products/
- *   - technology/
- *   - sustainability/
- *   - affiliates/
- *   - csr/
- *   - logos/
- *   - gallery/
+ * Photos are kept in category folders under `src/assets/images/` and named with
+ * lowercase snake_case category labels plus two-digit sequence numbers. Gallery
+ * images are additionally grouped by their displayed category.
  */
 
 export interface Img {
@@ -50,134 +40,133 @@ function img(path: string): Img {
 const heroBase = '/img/hero';
 
 export const assets = {
-  logo: img('logos/abed-logo'),
-  qrCode: img('logos/qr-code'),
+  logo: img('logos/logos_01'),
+  qrCode: img('logos/logos_02'),
 
   /** Preloaded full-bleed LCP hero image */
   hero: {
-    src: `${heroBase}-1920.webp`,
-    srcSet: `${heroBase}-960.webp 960w, ${heroBase}-1440.webp 1440w, ${heroBase}-1920.webp 1920w`,
-    full: `${heroBase}-1920.webp`,
+    src: `${heroBase}/hero_03.webp`,
+    srcSet: `${heroBase}/hero_01.webp 960w, ${heroBase}/hero_02.webp 1440w, ${heroBase}/hero_03.webp 1920w`,
+    full: `${heroBase}/hero_03.webp`,
   } as Img,
 
-  heroCampus: img('hero/campus-exterior'),
-  heroLoom: img('hero/hero-loom'),
-  about: img('hero/campus-exterior'),
+  heroCampus: img('hero/hero_01'),
+  heroLoom: img('hero/hero_03'),
+  about: img('hero/hero_01'),
 
   leaders: {
-    abedAli: img('leaders/abed-ali'),
-    monjurElahi: img('leaders/monjur-elahi'),
-    abdullahAlMamun: img('leaders/abdullah-al-mamun'),
-    mahbuburRahman: img('leaders/mahbubur-rahman'),
+    abedAli: img('leaders/leaders_01'),
+    monjurElahi: img('leaders/leaders_02'),
+    abdullahAlMamun: img('leaders/leaders_03'),
+    mahbuburRahman: img('leaders/leaders_04'),
   },
 
   banners: {
-    weaving: img('units/weaving'),
-    pretreatment: img('units/pretreatment'),
-    dyeing: img('units/dyeing'),
-    conventionalPrinting: img('units/conventional-printing'),
-    flatbed: img('units/conventional-printing'),
-    digital: img('units/digital-printing'),
-    washing: img('units/washing'),
-    finishing: img('units/finishing'),
-    etp: img('units/etp'),
+    weaving: img('units/weaving_01'),
+    pretreatment: img('units/pretreatment_01'),
+    dyeing: img('units/dyeing_01'),
+    conventionalPrinting: img('units/conventional_printing_01'),
+    flatbed: img('units/conventional_printing_01'),
+    digital: img('units/digital_printing_01'),
+    washing: img('units/washing_01'),
+    finishing: img('units/finishing_01'),
+    etp: img('units/etp_01'),
   },
 
   machinery: {
-    digitalSinglePass: img('machinery/digital-single-pass'),
-    dyeingJiggers: img('machinery/dyeing-jiggers'),
-    stenterFrame: img('machinery/stenter-frame'),
-    fabricInspection: img('machinery/fabric-inspection'),
-    calenderMachine: img('machinery/calender-machine'),
-    coldPadBatch: img('machinery/cold-pad-batch'),
-    mercerizingRange: img('machinery/mercerizing-range'),
+    digitalSinglePass: img('machinery/digital_printing_01'),
+    dyeingJiggers: img('machinery/dyeing_02'),
+    stenterFrame: img('machinery/finishing_02'),
+    fabricInspection: img('machinery/quality_01'),
+    calenderMachine: img('machinery/finishing_01'),
+    coldPadBatch: img('machinery/dyeing_01'),
+    mercerizingRange: img('machinery/pretreatment_01'),
   },
 
   products: {
-    dyedFabrics: img('products/dyed-fabrics'),
-    printedFabrics: img('products/printed-fabrics'),
-    digitalPrint1: img('products/digital-print-1'),
-    digitalPrint2: img('products/digital-print-2'),
-    digitalPrint3: img('products/digital-print-3'),
-    digitalPrint4: img('products/digital-print-4'),
-    digitalPrint5: img('products/digital-print-5'),
-    digitalPrint6: img('products/digital-print-6'),
-    finishedFabrics: img('products/finished-fabrics'),
+    dyedFabrics: img('products/dyed_fabrics_01'),
+    printedFabrics: img('products/printed_fabrics_01'),
+    digitalPrint1: img('products/digital_printing_01'),
+    digitalPrint2: img('products/digital_printing_02'),
+    digitalPrint3: img('products/digital_printing_03'),
+    digitalPrint4: img('products/digital_printing_04'),
+    digitalPrint5: img('products/digital_printing_05'),
+    digitalPrint6: img('products/digital_printing_06'),
   },
 
   technology: {
-    singlePass: img('technology/single-pass-technology'),
-    printhead: img('technology/printhead-systems'),
-    colourManagement: img('technology/colour-management'),
-    rdLab: img('technology/rd-testing-lab'),
+    singlePass: img('technology/digital_printing_01'),
+    printhead: img('technology/digital_printing_02'),
+    colourManagement: img('technology/colour_management_01'),
+    rdLab: img('technology/quality_01'),
   },
 
   sustainability: {
-    etpAeration: img('sustainability/etp-aeration'),
-    waterTreatment: img('sustainability/water-treatment'),
-    energyUtilities: img('sustainability/energy-utilities'),
-    greenCampus: img('sustainability/green-campus'),
+    etpAeration: img('sustainability/etp_01'),
+    waterTreatment: img('sustainability/water_treatment_01'),
+    energyUtilities: img('sustainability/energy_01'),
+    greenCampus: img('sustainability/campus_01'),
   },
 
   affiliates: {
-    rossaInks: img('affiliates/rossa-digital-inks'),
-    rbrInnovations: img('affiliates/rbr-innovations'),
-    a3ColorChem: img('affiliates/a3-color-chem'),
-    a3ColorCorporation: img('affiliates/a3-color-corporation'),
-    gmTextile: img('affiliates/gm-textile'),
-    nadiBanglaTextile: img('affiliates/nadi-bangla-textile'),
-    nodiBanglaGroup: img('affiliates/nodi-bangla-group'),
+    rossaInks: img('affiliates/affiliates_07'),
+    rbrInnovations: img('affiliates/affiliates_06'),
+    a3ColorChem: img('affiliates/affiliates_01'),
+    a3ColorCorporation: img('affiliates/affiliates_02'),
+    gmTextile: img('affiliates/affiliates_03'),
+    nadiBanglaTextile: img('affiliates/affiliates_04'),
+    nodiBanglaGroup: img('affiliates/affiliates_05'),
   },
 
   csr: {
-    workforceTeam: img('csr/workforce-team'),
-    vocationalEducation: img('csr/vocational-education'),
+    workforceTeam: img('csr/csr_01'),
+    vocationalEducation: img('csr/csr_02'),
   },
 
   gallery: (
     [
-      ['01', 'High Speed Weaving Floor', 'Production'],
-      ['02', 'Fabric Inspection & Roll Quality Check', 'Quality'],
-      ['03', 'Automatic Screen & Rotary Print Line', 'Printing'],
-      ['04', 'High Volume Dyeing Jigger Battery', 'Dyeing'],
-      ['05', 'Modern Stenter Heat Setting Range', 'Finishing'],
-      ['06', 'Color Formulation & Spectrophotometer Lab', 'Quality'],
-      ['07', 'Continuous Open-Width Washing Range', 'Dyeing'],
-      ['08', 'Heavy Calender Glazing Finishing', 'Finishing'],
-      ['09', 'Roller Mercerizing Tension Range', 'Dyeing'],
-      ['10', 'Industrial Digital Textile Printing Suite', 'Printing'],
-      ['11', 'Export Packaging & Baling Station', 'Finishing'],
-      ['12', 'Ghoradia Industrial Campus Infrastructure', 'Facility'],
-      ['13', 'Biological ETP Aeration Tank', 'Sustainability'],
-      ['14', 'Certified Worker Safety & Hydrant Zone', 'Compliance'],
-      ['15', 'Export Grade Sharee & 3-Pcs Output', 'Products'],
-      ['16', 'Laboratory Fastness & Physical Testing', 'Quality'],
-      ['17', 'Spinning & Yarn Preparation Overview', 'Production'],
-      ['18', 'Yarn Storage & Conditioning Floor', 'Facility'],
-      ['19', 'Precision High-Speed Warping Range', 'Production'],
-      ['20', 'Industrial Sizing Machine Operation', 'Production'],
-      ['21', 'Automated Loom Shed Operations', 'Production'],
-      ['22', 'Greige Fabric Inspection Light Table', 'Quality'],
-      ['23', 'Continuous Desizing & Scouring Line', 'Dyeing'],
-      ['24', 'Continuous Bleaching & Pretreatment', 'Dyeing'],
-      ['25', 'Mercerizing Chemical Tension Control', 'Finishing'],
-      ['26', 'Dyeing Lab Color Matching & Pipetting', 'Quality'],
-      ['27', 'Covered Jigger Batch Dyeing Process', 'Dyeing'],
-      ['28', 'Pad-Dry-Cure Chemical Finishing', 'Finishing'],
-      ['29', 'Multi-Chamber Stenter Frame Operation', 'Finishing'],
-      ['30', 'Sanforizing Fabric Pre-Shrinking Unit', 'Finishing'],
-      ['31', 'Saree & Poplin Felt Calender Glazing', 'Finishing'],
-      ['32', 'Finished Roll Inspection & Metric Station', 'Quality'],
-      ['33', 'Hydraulic Bale Press Packing Unit', 'Products'],
-      ['34', 'Biochemical Effluent Treatment Plant (ETP)', 'Sustainability'],
-      ['35', 'Water Recovery & Filtration Plant', 'Sustainability'],
-      ['36', 'Industrial Boiler House & Steam System', 'Facility'],
-      ['37', 'Central Compressed Air Utility Station', 'Facility'],
-      ['38', 'Electrical Substation & Generator Backup', 'Facility'],
-      ['39', 'Active Fire Hydrant & Life Safety Network', 'Compliance'],
+      ['production/production_01', 'High Speed Weaving Floor', 'Production'],
+      ['quality/quality_01', 'Fabric Inspection & Roll Quality Check', 'Quality'],
+      ['printing/conventional_printing_01', 'Automatic Screen & Rotary Print Line', 'Printing'],
+      ['dyeing/dyeing_01', 'High Volume Dyeing Jigger Battery', 'Dyeing'],
+      ['finishing/finishing_01', 'Modern Stenter Heat Setting Range', 'Finishing'],
+      ['quality/quality_02', 'Color Formulation & Spectrophotometer Lab', 'Quality'],
+      ['dyeing/dyeing_02', 'Continuous Open-Width Washing Range', 'Dyeing'],
+      ['finishing/finishing_02', 'Heavy Calender Glazing Finishing', 'Finishing'],
+      ['dyeing/dyeing_03', 'Roller Mercerizing Tension Range', 'Dyeing'],
+      ['printing/digital_printing_01', 'Industrial Digital Textile Printing Suite', 'Printing'],
+      ['finishing/finishing_03', 'Export Packaging & Baling Station', 'Finishing'],
+      ['facility/facility_01', 'Ghoradia Industrial Campus Infrastructure', 'Facility'],
+      ['sustainability/sustainability_01', 'Biological ETP Aeration Tank', 'Sustainability'],
+      ['compliance/compliance_01', 'Certified Worker Safety & Hydrant Zone', 'Compliance'],
+      ['products/products_01', 'Export Grade Sharee & 3-Pcs Output', 'Products'],
+      ['quality/quality_03', 'Laboratory Fastness & Physical Testing', 'Quality'],
+      ['production/production_02', 'Spinning & Yarn Preparation Overview', 'Production'],
+      ['facility/facility_02', 'Yarn Storage & Conditioning Floor', 'Facility'],
+      ['production/production_03', 'Precision High-Speed Warping Range', 'Production'],
+      ['production/production_04', 'Industrial Sizing Machine Operation', 'Production'],
+      ['production/production_05', 'Automated Loom Shed Operations', 'Production'],
+      ['quality/quality_04', 'Greige Fabric Inspection Light Table', 'Quality'],
+      ['dyeing/dyeing_04', 'Continuous Desizing & Scouring Line', 'Dyeing'],
+      ['dyeing/dyeing_05', 'Continuous Bleaching & Pretreatment', 'Dyeing'],
+      ['finishing/finishing_04', 'Mercerizing Chemical Tension Control', 'Finishing'],
+      ['quality/quality_05', 'Dyeing Lab Color Matching & Pipetting', 'Quality'],
+      ['dyeing/dyeing_06', 'Covered Jigger Batch Dyeing Process', 'Dyeing'],
+      ['finishing/finishing_05', 'Pad-Dry-Cure Chemical Finishing', 'Finishing'],
+      ['finishing/finishing_06', 'Multi-Chamber Stenter Frame Operation', 'Finishing'],
+      ['finishing/finishing_07', 'Sanforizing Fabric Pre-Shrinking Unit', 'Finishing'],
+      ['finishing/finishing_08', 'Saree & Poplin Felt Calender Glazing', 'Finishing'],
+      ['quality/quality_06', 'Finished Roll Inspection & Metric Station', 'Quality'],
+      ['products/products_02', 'Hydraulic Bale Press Packing Unit', 'Products'],
+      ['sustainability/sustainability_02', 'Biochemical Effluent Treatment Plant (ETP)', 'Sustainability'],
+      ['sustainability/sustainability_03', 'Water Recovery & Filtration Plant', 'Sustainability'],
+      ['facility/facility_03', 'Industrial Boiler House & Steam System', 'Facility'],
+      ['facility/facility_04', 'Central Compressed Air Utility Station', 'Facility'],
+      ['facility/facility_05', 'Electrical Substation & Generator Backup', 'Facility'],
+      ['compliance/compliance_02', 'Active Fire Hydrant & Life Safety Network', 'Compliance'],
     ] as const
-  ).map(([id, title, cat]): GalleryItem => {
-    const thumb = img(`gallery/gallery-${id}`);
+  ).map(([imagePath, title, cat]): GalleryItem => {
+    const thumb = img(`gallery/${imagePath}`);
     return { thumb, src: thumb.src, title, cat };
   }),
 };

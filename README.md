@@ -31,27 +31,40 @@ Abed Textile Processing Mills Limited operates an integrated manufacturing platf
 - **Icons:** Lucide React
 - **Routing:** React Router 7 (hash router) with route-level code splitting
 - **Fonts:** Montserrat (display) + DM Sans (body) — self-hosted variable WOFF2
-- **Image Pipeline:** 100% categorized WebP assets organized by category folders
+- **Image Pipeline:** Category-foldered WebP photos with consistent snake_case names and two-digit sequence numbers (the site icon remains PNG)
 
 ---
 
 ## Categorized Asset Architecture
 
-All images are strictly saved in `.webp` format and organized cleanly under `src/assets/images/`:
+Photos are WebP files grouped into category folders under `src/assets/images/`. Filenames use lowercase `snake_case` category names with zero-padded sequence numbers, for example `digital_printing_01.webp` and `digital_printing_02.webp`. Gallery images are additionally separated into subfolders that match their displayed category. The responsive landing-page images and PNG site icon are organized under `public/img/`.
 
 ```
 src/assets/images/
-├── hero/            # Campus exterior & loom shed hero backgrounds
-├── leaders/         # Founder, Chairman, MD/CEO & Director portraits
-├── units/           # 7 production wing banners (weaving, dyeing, digital, etc.)
-├── machinery/       # Operational machine floor photos (single-pass, jiggers, stenters)
-├── products/        # Dyed & printed fabrics + 6 signature print library items
-├── technology/      # Single-pass line, piezoelectric printheads & RIP systems
-├── sustainability/  # Biological ETP, clarifiers & green campus
-├── affiliates/      # Rossa Digital Inks, RBR Innovations, A3 Chem, Nadi Bangla
-├── csr/             # Workforce team & vocational education
-├── logos/           # Official company logo & QR profile code
-└── gallery/         # 39 verified factory records
+├── affiliates/      # Partner companies
+├── csr/             # Workforce & vocational education
+├── gallery/         # Factory records, grouped by category
+│   ├── compliance/
+│   ├── dyeing/
+│   ├── facility/
+│   ├── finishing/
+│   ├── printing/
+│   ├── production/
+│   ├── products/
+│   ├── quality/
+│   └── sustainability/
+├── hero/            # Campus & loom backgrounds
+├── leaders/         # Leadership portraits
+├── logos/           # Company logo & QR profile code
+├── machinery/       # Production equipment
+├── products/        # Fabric products & digital-print library
+├── sustainability/  # ETP, water, energy & campus
+├── technology/      # Printing systems, color management & lab
+└── units/           # Production-wing banners
+
+public/img/
+├── hero/            # Responsive hero_01.webp … hero_03.webp
+└── logos/           # Site icon
 ```
 
 ---

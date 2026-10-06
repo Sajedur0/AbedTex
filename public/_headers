@@ -2,7 +2,7 @@
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
-# Hero / favicon — stable filenames, so a shorter TTL with background revalidation
+# Public images — stable category-based filenames, with background revalidation
 /img/*
   Cache-Control: public, max-age=2592000, stale-while-revalidate=604800
 
