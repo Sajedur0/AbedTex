@@ -1,57 +1,77 @@
 # Abed Textile Processing Mills Ltd.
 
-**আবেদ টেক্সটাইল প্রোসেসিং মিলস লিমিটেড**
+**আবেদ টেক্সটাইল প্রসেসিং মিলস লিমিটেড**
 
-An Oeko-Tex Certified 100% Export Oriented Manufacturer of Quality Processing Mills in Bangladesh. Since 1993.
+*Textile Expertise. Digital Progress.*  
+An Integrated Textile Processing & High-Speed Digital Printing Enterprise in Bangladesh. Established in the early 1990s.
+
+---
+
+## Overview
+
+Abed Textile Processing Mills Limited operates an integrated manufacturing platform at Ghoradia, Narsingdi, Bangladesh. With over three decades of manufacturing experience and an 18,000 workforce, the enterprise connects weaving, pretreatment, dyeing, conventional screen/serbo printing, high-speed single-pass digital printing, washing, finishing, and biological effluent treatment into one coordinated operation.
+
+### Key Verified Metrics
+
+- **Workforce:** 18,000 employees & skilled technical teams
+- **Digital & Total Printing Capacity:** 120,000 metres / day
+- **Dyeing Capacity:** 80,000 metres / day (35 jiggers & Cold Pad Batch)
+- **Conventional Screen / Serbo Printing:** 80,000 metres / day
+- **Continuous Washing Range:** 280,000 metres / day
+- **Finishing & Stenters:** 280,000 metres / day (7 Stenters & 4 Heavy Calenders)
+- **Effluent Treatment Plant (ETP):** 2,400+ m³/day Biochemical Treatment Facility
 
 ---
 
 ## Tech Stack
 
-- **Framework:** React 18 + TypeScript
-- **Build Tool:** Vite 5
-- **Styling:** Tailwind CSS 3
+- **Framework:** React 19 + TypeScript
+- **Build Tool:** Vite 8
+- **Styling:** Tailwind CSS 4
 - **Icons:** Lucide React
-- **Routing:** React Router (hash router) with route-level code splitting
-- **Fonts:** Montserrat (display) + DM Sans (body) — self-hosted (variable WOFF2)
+- **Routing:** React Router 7 (hash router) with route-level code splitting
+- **Fonts:** Montserrat (display) + DM Sans (body) — self-hosted variable WOFF2
+- **Image Pipeline:** 100% categorized WebP assets organized by category folders
 
-## Features
+---
 
-- Fullscreen image lightbox with keyboard + swipe-free paging and neighbour preloading
-- 24 machinery types (72 units) with instant search
-- 6 product categories with lead-time specs
-- Printing / dyeing / finishing production showcases
-- Compliance, worker welfare and ETP sections
-- Leadership profiles with direct contact links
-- Google Maps embed on the contact page (keyless, mounted only when scrolled near)
-- Scroll reveal animations and blur-up image loading
-- Responsive design (mobile → ultra-wide)
+## Categorized Asset Architecture
 
-## Performance
+All images are strictly saved in `.webp` format and organized cleanly under `src/assets/images/`:
 
-The site is deliberately tuned for slow mobile connections and repeat visits:
-
-| Area | What we do |
-|---|---|
-| **Images** | Every photo is shipped as WebP in 2–3 responsive sizes (600/900/1500px …) with `srcSet` + `sizes`, `loading="lazy"` and a ~500 byte LQIP blur-up placeholder. 343 MB of source photos → **8 MB** of WebP derivatives; a typical page transfers a few hundred KB. |
-| **Hero (LCP)** | `/img/hero-*.webp` uses stable URLs so `index.html` can `<link rel="preload" imagesrcset ... fetchpriority="high">` it while the JS bundle is still downloading. |
-| **Fonts** | Self-hosted variable subsets (83 KB total) served from our own origin and preloaded — no third-party DNS/TLS handshake, no render-blocking Google Fonts request. |
-| **JS** | Route-level `React.lazy` chunks, idle-time prefetch of the likely next pages, and hover prefetch on nav links. Entry bundle ≈ 78 kB gzip. |
-| **CSS** | One 25 kB (5.5 kB gzip) Tailwind stylesheet, animations limited to `opacity`/`transform` so they stay on the compositor. |
-| **Caching** | Content-hashed assets are immutable for a year (`public/_headers`), fonts for a year, hero images 30 days + `stale-while-revalidate`, HTML always revalidated. |
-| **Smoothness** | A single shared `IntersectionObserver` for all reveal animations, instant scroll-reset on route change (instead of animated), no `backdrop-filter` on the sticky header, `useDeferredValue` for the machinery search. |
-
-### Regenerating images
-
-Source photographs live in `src/assets/images/**` and are never bundled. Whenever a photo
-is added or replaced, regenerate the derivatives:
-
-```bash
-npm run images     # requires ImageMagick (`convert`) on PATH
+```
+src/assets/images/
+├── hero/            # Campus exterior & loom shed hero backgrounds
+├── leaders/         # Founder, Chairman, MD/CEO & Director portraits
+├── units/           # 7 production wing banners (weaving, dyeing, digital, etc.)
+├── machinery/       # Operational machine floor photos (single-pass, jiggers, stenters)
+├── products/        # Dyed & printed fabrics + 6 signature print library items
+├── technology/      # Single-pass line, piezoelectric printheads & RIP systems
+├── sustainability/  # Biological ETP, clarifiers & green campus
+├── affiliates/      # Rossa Digital Inks, RBR Innovations, A3 Chem, Nadi Bangla
+├── csr/             # Workforce team & vocational education
+├── logos/           # Official company logo & QR profile code
+└── gallery/         # 39 verified factory records
 ```
 
-This writes `src/assets/opt/**` (build assets) and `public/img/**` (preloaded hero) and
-prints a before/after size report.
+---
+
+## Production Wings & Machinery
+
+| No. | Stage | Machine / Category | Quantity | Capability |
+|-----|-------|--------------------|----------|------------|
+| 01 | **Weaving** | Weaving / Repair Looms | 32 | Greige fabric formation |
+| 02 | **Pretreatment** | Singeing Machines | 2 | Gas-fired surface smoothing |
+| 03 | **Pretreatment** | Mercerizing Machines | 2 | Clip & roller mercerize |
+| 04 | **Dyeing** | Cold Pad Batch (CPB) Machines | 2 | Low liquor ratio coloration |
+| 05 | **Dyeing** | Dyeing Jiggers | 35 | Single, double, jumbo & covered |
+| 06 | **Printing** | Digital Printing Machines | 8 | Single-pass Atexco, VEGA, BYDI, RBR |
+| 07 | **Printing** | Serbo Printing Machines | 5 | Screen & serbo precision lines |
+| 08 | **Printing** | Loop Steamers | 2 | High-temperature color fixation |
+| 09 | **Finishing** | Stenter Machines | 7 | Bruckner & Babcock heat-setting |
+| 10 | **Finishing** | Calender Machines | 4 | Bowl, saree felt & poplin felt |
+
+---
 
 ## Getting Started
 
@@ -59,132 +79,34 @@ prints a before/after size report.
 # Install dependencies
 npm install
 
-# Start dev server (http://localhost:3000)
+# Start development server
 npm run dev
 
-# Build for production
+# Production build
 npm run build
 
-# Preview the production build (http://localhost:4173) — use this to check real
-# bundle sizes, code splitting and caching behaviour
-npm run preview
-
-# Regenerate optimized WebP derivatives after adding photos
-npm run images
-```
-
-## Deployment (Cloudflare — Workers with static assets)
-
-The project is configured for **Cloudflare's unified Workers & Pages platform** (a Worker serving the Vite build as static assets):
-
-- `wrangler.toml` — Worker config: `[assets] directory = "./dist"` + `not_found_handling = "single-page-application"` (SPA fallback)
-- `public/_headers` — asset caching & security headers
-- `.node-version` + `engines.node` — pins **Node 22** (required by wrangler 4.x) on Cloudflare's build system
-- `package.json` scripts:
-  - `prepare` — **auto-builds on every `npm install`/`npm ci`**, so `dist/` always exists before the deploy command runs (this is what makes Cloudflare's build pipeline work even without a separate build command)
-  - `npm run deploy` — build + `wrangler deploy`
-  - `npm run cf:dev` — build + local Worker runtime preview
-
-> **Important:** the `name` in `wrangler.toml` must match your app's name in the Cloudflare dashboard. If your Worker has a different name, update it there.
-
-### Option 1 — Git integration (auto-deploy on push)
-
-Cloudflare's build pipeline (`npm clean-install` → deploy command) works out of the box because the `prepare` script builds `dist/` during dependency install. Still, the recommended dashboard settings (Workers & Pages → your app → Settings → Build) are:
-
-| Setting | Value |
-|---|---|
-| **Build command** | `npm run build` (optional — `prepare` covers it) |
-| **Deploy command** | `npx wrangler deploy` for production branch / `npx wrangler versions upload` for preview branches (Cloudflare defaults) |
-| **Production branch** | `main` |
-
-Preview (non-production) branches get a preview version URL via `versions upload`; pushing to the production branch runs `wrangler deploy`. Both need **Node 22** — already handled by `.node-version` in this repo.
-
-### Option 2 — Deploy via Wrangler CLI
-
-```bash
-# One-time: login to Cloudflare
-npx wrangler login
-
-# Build + deploy
-npm run deploy
-```
-
-### Option 3 — GitHub Actions
-
-A ready-made workflow template is included at `docs/deploy-cloudflare.yml.example`. Copy it into place and add the secrets to your repository (**Settings → Secrets and variables → Actions**):
-
-```bash
-mkdir -p .github/workflows
-cp docs/deploy-cloudflare.yml.example .github/workflows/deploy-cloudflare.yml
-```
-
-Required secrets:
-
-- `CLOUDFLARE_API_TOKEN` — API token with permission to edit Workers (and Deployments)
-- `CLOUDFLARE_ACCOUNT_ID` — your Cloudflare account ID
-
-Once added, every push to `main` deploys automatically.
-
-### Local Cloudflare preview
-
-```bash
-# Serves the production build through Wrangler's local Worker runtime
-npm run cf:dev
-```
-
-### Classic Cloudflare Pages (alternative)
-
-Prefer the classic Pages product instead? Skip `wrangler.toml` entirely — in the dashboard create a **Pages** project (Connect to Git) with framework preset **Vite**, build command `npm run build`, output directory `dist`, or from your machine run:
-
-```bash
-npx wrangler login
-npm run deploy:pages   # build + wrangler pages deploy dist
-```
-
-## Project Structure
-
-```
-src/
-├── App.tsx              # Main application component
-├── main.tsx             # Entry point
-├── index.css            # Global styles & Tailwind config
-├── assets.ts            # Image & asset imports
-├── routes.ts            # Lazy route chunks + prefetch helpers
-├── hooks/useReveal.ts   # Shared IntersectionObserver reveal hook
-├── components/SmartImg.tsx  # Responsive WebP + LQIP image component
-├── assets/
-│   ├── opt/             # Generated WebP derivatives (used by the app)
-│   ├── logos/           # Company logo
-│   └── images/
-│       ├── about/       # About section images
-│       ├── leaders/     # Management team photos
-│       ├── sections/    # Production unit banners
-│       ├── weaving/     # Weaving unit gallery
-│       ├── flat-bed/    # Flatbed printing gallery
-│       ├── digital/     # Digital printing gallery
-│       └── company-gallery/  # General factory gallery
-```
-
-## Production Units
-
-| Unit | Description |
-|------|-------------|
-| Weaving | High-speed automated loom infrastructure |
-| Flat Bed & Rotary Printing | Industrial screen printing lines |
-| Digital Printing | Ultra high-definition direct-to-fabric |
-| Dyeing & Pre-Treatment | Jiggers, Pad Batch, Mercerizing |
-| Finishing & Stenter | Bruckner Stenters, Calendars, Super Wash |
-| ETP | 2,400 m³/day Biochemical Effluent Treatment |
-
-## Run with Server
-
-```bash
-# Lightweight Node static file server for the source tree (http://localhost:3000)
-node server.js
-
-# To serve the *optimized* production build instead, use:
+# Preview production build
 npm run preview
 ```
+
+---
+
+## Leadership
+
+- **Haji Abed Ali Miah** — Founder & Visionary Pioneer
+- **Mohammad Monjur Elahi, MP** — Chairman, Abed Textile & Nadi Bangla Group
+- **Abdullah Al Mamun** — Managing Director / CEO
+- **Mahbubur Rahman Monir** — Director
+
+---
+
+## Contact
+
+- **Factory:** Ghoradia, Narsingdi Sadar, Narsingdi, Bangladesh (`01711644582`, `+880 2 9462750-51`)
+- **Corporate Office:** House 2 (Flat 5/A), Road 11, Sector 6, Uttara, Dhaka-1230 (`+880 2 8932117`)
+- **Email:** `abedtextilebd@yahoo.com`
+
+---
 
 ## License
 
