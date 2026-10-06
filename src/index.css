@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 /* Self-hosted fonts — served from our own origin: no third-party DNS/TLS handshake,
    no render-blocking stylesheet, and the files are cached immutably (see public/_headers). */
 @font-face {
@@ -15,10 +17,6 @@
   font-display: swap;
   src: url('/fonts/dm-sans-latin-var.woff2') format('woff2-variations');
 }
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 :root { color: #182722; background: #f7f3eb; font-family: 'DM Sans', sans-serif; font-synthesis: none; }
 html { scroll-behavior: smooth; }
