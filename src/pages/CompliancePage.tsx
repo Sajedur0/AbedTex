@@ -1,135 +1,278 @@
-import { ArrowUpRight, Check, HeartPulse, ShieldCheck, Sprout } from 'lucide-react';
+import { Check, Droplets, Zap, Recycle, FlaskConical } from 'lucide-react';
 import { assets } from '../assets';
-import { compliance, facts } from '../profile';
+import { sustainabilityPillars, rdFlow, qaFlow, testingParameters } from '../profile';
 import { useApp } from '../App';
-import { PageHero, Shell, Eyebrow } from '../components/Site';
+import { Eyebrow, PageHero, Shell, LinkArrow } from '../components/Site';
 import Reveal from '../components/Reveal';
-import SmartImg from '../components/SmartImg';
-
-const complianceVisuals = [
-  { img: assets.gallery[13].thumb, title: 'Worker Safety & Training Zone', cat: 'Worker Welfare' },
-  { img: assets.gallery[38].thumb, title: 'Fire Safety & Hydrant Network', cat: 'Life Safety' },
-  { img: assets.gallery[33].thumb, title: '2400 m³/day Biological ETP Plant', cat: 'Environment' },
-  { img: assets.gallery[34].thumb, title: 'Industrial Water Recycling System', cat: 'Sustainability' },
-];
 
 export default function CompliancePage() {
   const { openLightbox } = useApp();
 
-  const lightboxItems = complianceVisuals.map((c) => ({
-    src: c.img.full || c.img.src,
-    title: `${c.cat} — ${c.title}`,
-    thumb: c.img,
-  }));
+  const showcaseImages = [
+    { src: assets.sustainability.etpAeration.src, title: 'Biological ETP Aeration Tank & Clean Effluent', cat: 'ETP' },
+    { src: assets.sustainability.waterTreatment.src, title: 'Industrial Water Clarification & Recycling Station', cat: 'Water' },
+    { src: assets.technology.rdLab.src, title: 'Analytical Quality & Color Formulation Laboratory', cat: 'Quality' },
+    { src: assets.sustainability.energyUtilities.src, title: 'High-Efficiency Boiler House & Thermal Plant', cat: 'Energy' },
+  ];
 
   return (
-    <div>
+    <div className="bg-[#f7f3eb] text-[#182722]">
       <PageHero
-        kicker="Responsibility / People & planet"
-        title="Standards made visible."
-        intro="Our compliance policy is based on SA-8000, local Labor Laws and key buyer codes of conduct. The factory follows ILO and Bangladesh Labor Law standards."
+        kicker="Sustainability, Quality & Responsibility"
+        title="Better manufacturing through better resource use."
+        intro="For a textile-processing enterprise, environmental responsibility is directly tied to disciplined management of water, energy, chemicals, and materials. We link verified operational data with continuous technological improvement."
       />
 
-      {/* 3 Core Pillars */}
-      <section className="bg-[#182722] text-white">
-        <Shell className="grid gap-px bg-white/15 py-16 md:grid-cols-3 lg:py-24">
-          {[
-            [ShieldCheck, 'Fair work', 'No child labor, no forced labor, ensured wages and regulated hours.'],
-            [HeartPulse, 'Worker welfare', 'Health care, maternity protection, welfare committee, day care and insurance.'],
-            [Sprout, 'Safe environment', 'Protective clothing, ventilation, filtration, lighting and a no-smoking workplace.'],
-          ].map(([Icon, t, d]: any) => (
-            <div className="bg-[#182722] p-8" key={t}>
-              <Icon className="text-[#ff9a55]" size={32} />
-              <h2 className="display mt-10 text-4xl">{t}</h2>
-              <p className="mt-4 text-sm leading-7 text-white/55">{d}</p>
-            </div>
-          ))}
-        </Shell>
-      </section>
+      {/* 8 Sustainability Action Areas (Page 16) */}
+      <section className="py-20 lg:py-28">
+        <Shell>
+          <div className="max-w-3xl mb-16">
+            <Eyebrow>Sustainability Framework</Eyebrow>
+            <h2 className="display text-4xl md:text-6xl">8 Pillars of Responsible Production</h2>
+            <p className="mt-3 text-base text-[#5c645f]">
+              Our approach prioritizes measurable manufacturing upgrades, rigorous MRSL compliance, and biological wastewater
+              remediation over generic sustainability claims.
+            </p>
+          </div>
 
-      {/* Policy in Action Checkpoints */}
-      <section className="bg-[#f7f3eb]">
-        <Shell className="py-20 lg:py-28">
-          <div className="grid gap-12 lg:grid-cols-[.55fr_1.45fr]">
-            <div>
-              <Eyebrow>Policy in action</Eyebrow>
-              <h2 className="display text-5xl leading-[.95]">A workplace built around dignity.</h2>
-              <p className="mt-6 text-sm leading-7 text-[#626965]">
-                Fire drills are conducted at least 12 times each year, with prevention and evacuation given top priority.
-              </p>
-            </div>
-            <div className="grid gap-px bg-black/10 sm:grid-cols-2">
-              {compliance.map((x) => (
-                <Reveal key={x}>
-                  <div className="flex h-full gap-3 bg-[#efe9df] p-5 text-sm font-semibold leading-6">
-                    <Check size={16} className="mt-1 shrink-0 text-[#e86d2a]" />
-                    {x}
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {sustainabilityPillars.map((p, idx) => (
+              <Reveal key={p.title} delay={idx * 50}>
+                <div className="rounded-2xl border border-black/10 bg-white p-6 shadow-sm hover:shadow transition h-full flex flex-col justify-between">
+                  <div>
+                    <span className="font-mono text-xs font-bold text-[#a34d20]">Pillar 0{idx + 1}</span>
+                    <h3 className="display text-xl font-bold mt-2 mb-3">{p.title}</h3>
+                    <p className="text-xs text-[#5c645f] leading-relaxed">{p.desc}</p>
                   </div>
-                </Reveal>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          {/* Sustainability Management Framework Cycle */}
+          <div className="mt-16 rounded-2xl bg-[#182722] p-8 text-white">
+            <div className="text-xs font-bold uppercase tracking-widest text-[#ff9a55] mb-2">Management & Review Cycle</div>
+            <h3 className="display text-2xl font-bold mb-4">Continuous Governance & Verification</h3>
+            <div className="flex flex-wrap items-center gap-2 text-xs font-semibold text-white/80">
+              {['Management', 'Sustainability Leadership', 'Safety & Environment Teams', 'Audited Operational Data', 'KPI Targets', 'Quarterly Review', 'Technological Improvement'].map((step, i) => (
+                <div key={step} className="flex items-center gap-2">
+                  <span className="rounded bg-white/10 px-3 py-1.5 border border-white/10">{step}</span>
+                  {i < 6 && <span className="text-[#ff9a55] font-bold">→</span>}
+                </div>
               ))}
             </div>
           </div>
         </Shell>
       </section>
 
-      {/* Compliance Visuals */}
-      <section className="bg-[#182722] py-20 text-white lg:py-28">
+      {/* Responsible Resource Management (Page 17) */}
+      <section className="bg-[#efe9df] py-20 lg:py-28 border-y border-black/10">
         <Shell>
-          <div className="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end">
-            <div>
-              <Eyebrow light>Verified Standards</Eyebrow>
-              <h2 className="display text-4xl md:text-6xl">Safety & Ecology On-Site</h2>
-              <p className="mt-3 max-w-xl text-sm leading-6 text-white/60">
-                Direct evidence of our fire safety systems, worker protection zones, and biological effluent treatment plant.
-              </p>
-            </div>
-            <div className="text-xs font-bold uppercase tracking-wider text-white/50">
-              Click to view inspection details
-            </div>
+          <div className="max-w-3xl mb-16">
+            <Eyebrow>Resource Systems</Eyebrow>
+            <h2 className="display text-4xl md:text-6xl">Every Resource Counts</h2>
+            <p className="mt-3 text-base text-[#5c645f]">
+              Responsible manufacturing begins with knowing what enters the factory, how it is consumed, and where recovery
+              is achievable.
+            </p>
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {complianceVisuals.map((c, idx) => (
-              <Reveal key={c.title} delay={idx * 80}>
-                <button
-                  onClick={() => openLightbox(lightboxItems, idx)}
-                  className="group relative flex aspect-[4/3] w-full flex-col justify-end overflow-hidden border border-white/10 bg-[#263a33] p-5 text-left transition duration-300 hover:border-[#ff9a55]/60"
-                >
-                  <SmartImg
-                    img={c.img}
-                    alt={c.title}
-                    sizes="(min-width:1024px) 22vw, (min-width:640px) 45vw, 100vw"
-                    className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105 group-hover:opacity-85"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent" />
-                  <div className="relative z-10">
-                    <span className="rounded-full bg-[#ff9a55]/20 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-[#ff9a55] border border-[#ff9a55]/30">
-                      {c.cat}
-                    </span>
-                    <h3 className="mt-2 text-sm font-bold text-white leading-snug">{c.title}</h3>
+          <div className="grid gap-6 md:grid-cols-2">
+            <Reveal>
+              <div className="rounded-2xl border border-black/10 bg-white p-8 shadow-sm h-full space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-lg bg-[#a34d20]/10 text-[#a34d20] flex items-center justify-center">
+                    <FlaskConical size={20} />
                   </div>
-                  <span className="absolute right-4 top-4 grid h-8 w-8 place-items-center rounded-full bg-white text-[#182722] opacity-0 shadow-md transition group-hover:opacity-100">
-                    <ArrowUpRight size={14} />
-                  </span>
-                </button>
-              </Reveal>
-            ))}
+                  <div>
+                    <h3 className="display text-2xl font-bold">Chemicals & Dyes</h3>
+                    <span className="text-xs font-bold text-[#a34d20] uppercase tracking-wider">MRSL Compliance</span>
+                  </div>
+                </div>
+                <p className="text-xs leading-relaxed text-[#5c645f]">
+                  Strict supplier screening and comprehensive inventory tracking prevent hazardous chemicals from entering the
+                  processing stream. Complete Safety Data Sheets (SDS) are verified prior to floor dispensing.
+                </p>
+                <div className="rounded-xl bg-[#f7f3eb] p-4 text-[11px] font-semibold text-[#182722] border border-black/5">
+                  Supplier Approval → Chemical Review → SDS Verification → Safe Storage → Controlled Dosing → Inventory Tracking → Waste Neutralization
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={100}>
+              <div className="rounded-2xl border border-black/10 bg-white p-8 shadow-sm h-full space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-lg bg-[#a34d20]/10 text-[#a34d20] flex items-center justify-center">
+                    <Droplets size={20} />
+                  </div>
+                  <div>
+                    <h3 className="display text-2xl font-bold">Water & Biological ETP</h3>
+                    <span className="text-xs font-bold text-[#a34d20] uppercase tracking-wider">Measure · Reduce · Reuse · Treat</span>
+                  </div>
+                </div>
+                <p className="text-xs leading-relaxed text-[#5c645f]">
+                  Our 2,400+ m³/day biochemical effluent treatment plant employs multi-stage aerobic aeration tanks, clarifiers, and
+                  sand/carbon filtration. Treated effluent is safely returned to natural standards or recycled for factory utilities.
+                </p>
+                <div className="rounded-xl bg-[#f7f3eb] p-4 text-[11px] font-semibold text-[#182722] border border-black/5">
+                  Flow Metres → Low Liquor Machines → Multi-Stage Aeration → Clarifier Settlement → Sand/Carbon Polishing → Utility Recycling
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={150}>
+              <div className="rounded-2xl border border-black/10 bg-white p-8 shadow-sm h-full space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-lg bg-[#a34d20]/10 text-[#a34d20] flex items-center justify-center">
+                    <Zap size={20} />
+                  </div>
+                  <div>
+                    <h3 className="display text-2xl font-bold">Energy & Utilities</h3>
+                    <span className="text-xs font-bold text-[#a34d20] uppercase tracking-wider">Thermal & Electrical Optimization</span>
+                  </div>
+                </div>
+                <p className="text-xs leading-relaxed text-[#5c645f]">
+                  Boiler economizers recover exhaust heat to preheat feed water, variable-frequency drives (VFD) govern motor loads,
+                  and automated pneumatic management eliminates compressed-air losses across all manufacturing floors.
+                </p>
+                <div className="rounded-xl bg-[#f7f3eb] p-4 text-[11px] font-semibold text-[#182722] border border-black/5">
+                  Waste Heat Recovery → Thermal Insulation → Variable Speed Drives → Steam Trap Audits → Utility Monitoring
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={200}>
+              <div className="rounded-2xl border border-black/10 bg-white p-8 shadow-sm h-full space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-lg bg-[#a34d20]/10 text-[#a34d20] flex items-center justify-center">
+                    <Recycle size={20} />
+                  </div>
+                  <div>
+                    <h3 className="display text-2xl font-bold">Waste & Circularity</h3>
+                    <span className="text-xs font-bold text-[#a34d20] uppercase tracking-wider">Source Prevention & Recovery</span>
+                  </div>
+                </div>
+                <p className="text-xs leading-relaxed text-[#5c645f]">
+                  Digital printing dramatically cuts dye liquor waste. Solid fabric selvedges and yarn scraps are sorted and baled
+                  for downstream recycling, while ETP biosludge is dewatered responsibly.
+                </p>
+                <div className="rounded-xl bg-[#f7f3eb] p-4 text-[11px] font-semibold text-[#182722] border border-black/5">
+                  Digital Precision Dosing → Fabric Offcut Segregation → Sludge Dewatering → Certified Waste Management
+                </div>
+              </div>
+            </Reveal>
           </div>
         </Shell>
       </section>
 
-      {/* Biochemical Treatment Banner */}
-      <section className="bg-[#e86d2a] text-white">
-        <Shell className="grid items-center gap-8 py-14 md:grid-cols-[1fr_auto]">
-          <div>
-            <div className="text-[10px] font-bold uppercase tracking-widest text-white/65">Biochemical treatment</div>
-            <h2 className="display mt-2 text-4xl md:text-6xl">
-              {facts.etp} · {facts.etpArea}
-            </h2>
+      {/* R&D & Quality Assurance (Page 12) */}
+      <section className="bg-[#f7f3eb] py-20 lg:py-28">
+        <Shell>
+          <div className="grid gap-14 lg:grid-cols-2 items-start mb-16">
+            <Reveal>
+              <div className="space-y-6">
+                <Eyebrow>R&D Flow</Eyebrow>
+                <h2 className="display text-3xl md:text-5xl">Development Before Production</h2>
+                <p className="text-sm leading-relaxed text-[#5c645f]">
+                  Reliable bulk production begins with disciplined laboratory development. Our technical teams work across color,
+                  chemistry, fabric preparation, and digital printhead parameters to convert concept requirements into repeatable bulk runs.
+                </p>
+
+                <div className="space-y-2">
+                  {rdFlow.map((step, idx) => (
+                    <div key={step} className="flex items-center gap-3 rounded-lg border border-black/5 bg-white p-3 shadow-xs">
+                      <span className="h-6 w-6 rounded-full bg-[#e86d2a] text-white flex items-center justify-center font-bold text-xs shrink-0">
+                        {idx + 1}
+                      </span>
+                      <span className="text-xs font-bold text-[#182722]">{step}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={120}>
+              <div className="space-y-6">
+                <Eyebrow>Quality Assurance</Eyebrow>
+                <h2 className="display text-3xl md:text-5xl">Continuous In-Line Quality Control</h2>
+                <p className="text-sm leading-relaxed text-[#5c645f]">
+                  Quality is governed throughout the manufacturing cycle rather than checked only at the end. Laboratory standards,
+                  chemical dosing, and machine parameters connect directly with buyer requirements.
+                </p>
+
+                <div className="space-y-2">
+                  {qaFlow.map((step, idx) => (
+                    <div key={step} className="flex items-center gap-3 rounded-lg border border-black/5 bg-white p-3 shadow-xs">
+                      <span className="h-6 w-6 rounded-full bg-[#182722] text-white flex items-center justify-center font-bold text-xs shrink-0">
+                        {idx + 1}
+                      </span>
+                      <span className="text-xs font-bold text-[#182722]">{step}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
           </div>
-          <p className="max-w-sm text-sm leading-7 text-white/75">
-            Modern ETP machinery imported from Ecotex Pte Ltd., Singapore.
-          </p>
+
+          {/* 9 Key Testing Areas Table (Page 12) */}
+          <div className="rounded-2xl border border-black/10 bg-white p-8 shadow-sm">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+              <div>
+                <div className="text-xs font-bold uppercase tracking-wider text-[#a34d20]">Laboratory Testing Facilities</div>
+                <h3 className="display text-2xl font-bold mt-1">9 Certified Testing Parameters</h3>
+              </div>
+              <span className="rounded-full bg-[#182722]/5 px-4 py-1.5 text-xs font-bold text-[#182722]">
+                Calibrated Testing Lab
+              </span>
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {testingParameters.map((t) => (
+                <div key={t.name} className="rounded-xl border border-black/5 bg-[#fbf8f2] p-4">
+                  <div className="flex items-center gap-2 font-bold text-xs text-[#182722]">
+                    <Check size={14} className="text-[#e86d2a]" /> {t.name}
+                  </div>
+                  <div className="text-[11px] text-[#5c645f] mt-1 font-mono">{t.standard}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Shell>
+      </section>
+
+      {/* Visual Previews */}
+      <section className="bg-[#182722] py-20 text-white lg:py-28">
+        <Shell>
+          <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <Eyebrow light>Verified Facility</Eyebrow>
+              <h2 className="display text-4xl md:text-6xl text-white">Environmental & Quality Infrastructure</h2>
+            </div>
+            <LinkArrow href="#/gallery" light>Open full photo gallery</LinkArrow>
+          </div>
+
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {showcaseImages.map((item, idx) => (
+              <button
+                key={item.title}
+                onClick={() => openLightbox(showcaseImages, idx)}
+                className="group relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-white/10 bg-[#101b18] text-left shadow"
+              >
+                <img
+                  src={item.src}
+                  alt={item.title}
+                  className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <span className="rounded bg-[#ff9a55] px-2 py-0.5 text-[9px] font-bold uppercase text-[#182722]">
+                    {item.cat}
+                  </span>
+                  <div className="font-bold text-xs text-white mt-1 line-clamp-1">{item.title}</div>
+                </div>
+              </button>
+            ))}
+          </div>
         </Shell>
       </section>
     </div>

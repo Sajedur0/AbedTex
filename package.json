@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "images": "bash scripts/optimize-images.sh",
     "preview": "vite preview",
     "deploy": "npm run build && wrangler deploy",
     "cf:dev": "npm run build && wrangler dev",
