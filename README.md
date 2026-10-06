@@ -52,7 +52,8 @@ src/assets/images/
 │   ├── production/
 │   ├── products/
 │   ├── quality/
-│   └── sustainability/
+│   ├── sustainability/
+│   └── weaving/     # Loom shed, warp threading, greige output
 ├── hero/            # Campus & loom backgrounds
 ├── leaders/         # Leadership portraits
 ├── logos/           # Company logo & QR profile code

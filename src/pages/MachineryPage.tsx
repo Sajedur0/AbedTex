@@ -17,6 +17,7 @@ const machineGallery = [
   { name: 'Cold Pad Batch (CPB) Coloration Range', stage: 'Dyeing', img: assets.machinery.coldPadBatch },
   { name: 'Clip & Roller Mercerizing Tension Range', stage: 'Pretreatment', img: assets.machinery.mercerizingRange },
   { name: 'High-Speed Automated Weaving Looms', stage: 'Weaving', img: assets.banners.weaving },
+  { name: 'Loom Warp Beam, Heddle & Take-Up Unit', stage: 'Weaving', img: assets.weaving.warpThreading },
   { name: 'Precision Greige Fabric Light-Table Station', stage: 'Weaving', img: assets.machinery.fabricInspection },
 ];
 
@@ -272,7 +273,7 @@ export default function MachineryPage() {
                 Photographs from our live factory floor showing high-speed digital printers, jiggers, stenters, and looms.
               </p>
             </div>
-            <LinkArrow href="#/gallery">Explore all 39 factory images</LinkArrow>
+            <LinkArrow href="#/gallery">Explore all {assets.gallery.length} factory images</LinkArrow>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">

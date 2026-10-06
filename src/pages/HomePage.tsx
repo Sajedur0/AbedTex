@@ -162,7 +162,7 @@ export default function HomePage() {
                 <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl border border-black/10">
                   <SmartImg
                     img={assets.heroLoom}
-                    alt="High speed weaving loom floor"
+                    alt="High-speed digital textile printing line on the Ghoradia campus"
                     sizes="(min-width:1024px) 46vw, 100vw"
                     className="h-full w-full object-cover"
                   />

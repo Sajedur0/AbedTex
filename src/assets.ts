@@ -54,6 +54,15 @@ export const assets = {
   heroLoom: img('hero/hero_03'),
   about: img('hero/hero_01'),
 
+  /** Weaving section — loom shed, warp preparation, loom detail & greige output */
+  weaving: {
+    loomShed: img('gallery/weaving/weaving_03'),
+    warpThreading: img('gallery/weaving/weaving_01'),
+    greigeRolls: img('gallery/weaving/weaving_02'),
+    loomRow: img('gallery/weaving/weaving_04'),
+    loomClothBeam: img('gallery/weaving/weaving_05'),
+  },
+
   leaders: {
     abedAli: img('leaders/leaders_01'),
     monjurElahi: img('leaders/leaders_02'),
@@ -164,6 +173,11 @@ export const assets = {
       ['facility/facility_04', 'Central Compressed Air Utility Station', 'Facility'],
       ['facility/facility_05', 'Electrical Substation & Generator Backup', 'Facility'],
       ['compliance/compliance_02', 'Active Fire Hydrant & Life Safety Network', 'Compliance'],
+      ['weaving/weaving_03', 'High Speed Loom Shed Panorama', 'Weaving'],
+      ['weaving/weaving_04', 'Automated Weaving Loom Row & Cloth Beam', 'Weaving'],
+      ['weaving/weaving_01', 'Loom Warp Threading & Heddle Detail', 'Weaving'],
+      ['weaving/weaving_02', 'Woven Greige Fabric Roll Output', 'Weaving'],
+      ['weaving/weaving_05', 'Loom Shed Machine & Drive Detail', 'Weaving'],
     ] as const
   ).map(([imagePath, title, cat]): GalleryItem => {
     const thumb = img(`gallery/${imagePath}`);
