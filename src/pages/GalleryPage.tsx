@@ -6,7 +6,7 @@ import { PageHero, Shell } from '../components/Site';
 import Reveal from '../components/Reveal';
 import SmartImg from '../components/SmartImg';
 
-const categories = ['All', 'Production', 'Printing', 'Dyeing', 'Finishing', 'Quality', 'Sustainability', 'Facility', 'Compliance', 'Products'] as const;
+const categories = ['All', 'Weaving', 'Production', 'Printing', 'Dyeing', 'Finishing', 'Quality', 'Sustainability', 'Facility', 'Compliance', 'Products'] as const;
 
 export default function GalleryPage() {
   const { openLightbox } = useApp();
@@ -20,9 +20,9 @@ export default function GalleryPage() {
   return (
     <div className="bg-[#f7f3eb] text-[#182722]">
       <PageHero
-        kicker="Visual Documentation / 39 Factory Records"
+        kicker={`Visual Documentation / ${assets.gallery.length} Factory Records`}
         title="Inside the manufacturing facility."
-        intro="A comprehensive 39-image visual record of Abed Textile Processing Mills Limited — its automated loom sheds, high-speed digital printing lines, dyeing jiggers, continuous wash ranges, laboratory facilities, and biological effluent treatment plant."
+        intro={`A comprehensive ${assets.gallery.length}-image visual record of Abed Textile Processing Mills Limited — its automated loom sheds, high-speed digital printing lines, dyeing jiggers, continuous wash ranges, laboratory facilities, and biological effluent treatment plant.`}
       />
 
       <section className="bg-[#efe9df] border-b border-black/10 sticky top-[78px] z-30 shadow-xs">

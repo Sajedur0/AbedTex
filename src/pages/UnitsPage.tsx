@@ -33,11 +33,11 @@ export default function UnitsPage() {
       ],
       gallery: [
         { img: assets.banners.weaving, title: 'High Speed Loom Shed Panorama' },
+        { img: assets.weaving.loomRow, title: 'Automated Weaving Loom Row & Cloth Beam' },
+        { img: assets.weaving.loomClothBeam, title: 'Loom Shed Machine & Drive Detail' },
+        { img: assets.weaving.warpThreading, title: 'Loom Warp Threading & Heddle Detail' },
+        { img: assets.weaving.greigeRolls, title: 'Woven Greige Fabric Roll Output' },
         { img: assets.machinery.fabricInspection, title: 'Greige Fabric Inspection & Rolling' },
-        { img: assets.gallery[0].thumb, title: 'Automated Loom Operations' },
-        { img: assets.gallery[18].thumb, title: 'Precision Warping Range' },
-        { img: assets.gallery[19].thumb, title: 'Industrial Sizing Machine Setup' },
-        { img: assets.gallery[20].thumb, title: 'Loom Weaving Shed Grid' },
       ],
     },
     {
