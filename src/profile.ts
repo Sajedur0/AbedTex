@@ -177,7 +177,7 @@ export const leaders = [
   {
     id: 'chairman',
     name: 'Mohammad Monjur Elahi, MP',
-    role: 'Chairman, Abed Textile & Nadi Bangla Group',
+    role: 'Chairman, Abed Textile Processing Mills Ltd. & Nadi Bangla Group',
     designation: 'Chairman',
     credentials: 'B.Com, National University, Bangladesh',
     experience: 'Textile · Construction · Hospitality · Property',

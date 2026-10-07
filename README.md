@@ -108,7 +108,7 @@ npm run preview
 ## Leadership
 
 - **Haji Abed Ali Miah** — Founder & Visionary Pioneer
-- **Mohammad Monjur Elahi, MP** — Chairman, Abed Textile & Nadi Bangla Group
+- **Mohammad Monjur Elahi, MP** — Chairman, Abed Textile Processing Mills Ltd. & Nadi Bangla Group
 - **Abdullah Al Mamun** — Managing Director / CEO
 - **Mahbubur Rahman Monir** — Director
 

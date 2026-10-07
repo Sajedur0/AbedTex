@@ -145,7 +145,7 @@ export const assets = {
       ['dyeing/dyeing_03', 'Roller Mercerizing Tension Range', 'Dyeing'],
       ['printing/digital_printing_01', 'Industrial Digital Textile Printing Suite', 'Printing'],
       ['finishing/finishing_03', 'Export Packaging & Baling Station', 'Finishing'],
-      ['facility/facility_01', 'Ghoradia Mills Industrial Infrastructure', 'Facility'],
+      ['facility/facility_01', 'Industrial Infrastructure, Ghoradia', 'Facility'],
       ['sustainability/sustainability_01', 'Biological ETP Aeration Tank', 'Sustainability'],
       ['compliance/compliance_01', 'Certified Worker Safety & Hydrant Zone', 'Compliance'],
       ['products/products_01', 'Export Grade Sharee & 3-Pcs Output', 'Products'],

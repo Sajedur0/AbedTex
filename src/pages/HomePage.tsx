@@ -50,7 +50,7 @@ export default function HomePage() {
       <section className="relative min-h-[calc(100vh-112px)] overflow-hidden bg-[#182722] text-white">
         <SmartImg
           img={assets.hero}
-          alt="Abed Textile factory"
+          alt="Abed Textile Processing Mills Ltd. factory"
           priority
           sizes="100vw"
           className="absolute inset-0 h-full w-full object-cover opacity-35"

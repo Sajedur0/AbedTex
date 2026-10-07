@@ -262,7 +262,7 @@ export default function UnitsPage() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
                       <div className="absolute bottom-5 left-5 right-5 text-white">
                         <div className="text-lg font-bold">{unit.title}</div>
-                        <div className="text-xs text-white/70">Abed Textile Ghoradia Mills</div>
+                        <div className="text-xs text-white/70">Abed Textile Processing Mills Ltd.</div>
                       </div>
                     </div>
                   </Reveal>
