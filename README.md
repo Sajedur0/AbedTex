@@ -54,12 +54,12 @@ src/assets/images/
 │   ├── quality/
 │   ├── sustainability/
 │   └── weaving/     # Loom shed, warp threading, greige output
-├── hero/            # Campus & loom backgrounds
+├── hero/            # Mills & loom backgrounds
 ├── leaders/         # Leadership portraits
 ├── logos/           # Company logo & QR profile code
 ├── machinery/       # Production equipment
 ├── products/        # Fabric products & digital-print library
-├── sustainability/  # ETP, water, energy & campus
+├── sustainability/  # ETP, water, energy & mill site
 ├── technology/      # Printing systems, color management & lab
 └── units/           # Production-wing banners
 

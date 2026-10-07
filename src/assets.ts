@@ -50,7 +50,7 @@ export const assets = {
     full: `${heroBase}/hero_03.webp`,
   } as Img,
 
-  heroCampus: img('hero/hero_01'),
+  heroMill: img('hero/hero_01'),
   heroLoom: img('hero/hero_03'),
   about: img('hero/hero_01'),
 
@@ -114,7 +114,7 @@ export const assets = {
     etpAeration: img('sustainability/etp_01'),
     waterTreatment: img('sustainability/water_treatment_01'),
     energyUtilities: img('sustainability/energy_01'),
-    greenCampus: img('sustainability/campus_01'),
+    greenMillSite: img('sustainability/mill_site_01'),
   },
 
   affiliates: {
@@ -145,7 +145,7 @@ export const assets = {
       ['dyeing/dyeing_03', 'Roller Mercerizing Tension Range', 'Dyeing'],
       ['printing/digital_printing_01', 'Industrial Digital Textile Printing Suite', 'Printing'],
       ['finishing/finishing_03', 'Export Packaging & Baling Station', 'Finishing'],
-      ['facility/facility_01', 'Ghoradia Industrial Campus Infrastructure', 'Facility'],
+      ['facility/facility_01', 'Ghoradia Mills Industrial Infrastructure', 'Facility'],
       ['sustainability/sustainability_01', 'Biological ETP Aeration Tank', 'Sustainability'],
       ['compliance/compliance_01', 'Certified Worker Safety & Hydrant Zone', 'Compliance'],
       ['products/products_01', 'Export Grade Sharee & 3-Pcs Output', 'Products'],

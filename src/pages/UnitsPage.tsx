@@ -165,7 +165,7 @@ export default function UnitsPage() {
       <PageHero
         kicker="Production Units / Integrated Manufacturing"
         title="Connected processes. Consistent execution."
-        intro="From raw yarn weaving and chemical pretreatment to single-pass digital printing, dyeing, open-width washing, and finishing — our Ghoradia campus coordinates every step under disciplined process control."
+        intro="From raw yarn weaving and chemical pretreatment to single-pass digital printing, dyeing, open-width washing, and finishing — our Ghoradia mills coordinate every step under disciplined process control."
       />
 
       {/* Capacities Banner */}
@@ -262,7 +262,7 @@ export default function UnitsPage() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
                       <div className="absolute bottom-5 left-5 right-5 text-white">
                         <div className="text-lg font-bold">{unit.title}</div>
-                        <div className="text-xs text-white/70">Abed Textile Ghoradia Campus</div>
+                        <div className="text-xs text-white/70">Abed Textile Ghoradia Mills</div>
                       </div>
                     </div>
                   </Reveal>
