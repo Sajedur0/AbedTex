@@ -173,17 +173,6 @@ export default function HomePage() {
                     <div className="text-xs text-white/70">89+ Heavy Industrial Production Units</div>
                   </div>
                 </div>
-
-                {/* Floating founder badge */}
-                <div className="absolute -bottom-6 -left-4 sm:left-6 flex items-center gap-4 rounded-xl bg-[#182722] p-4 text-white shadow-2xl border border-white/10 max-w-xs">
-                  <div className="h-12 w-12 shrink-0 overflow-hidden rounded-full border border-[#ff9a55]">
-                    <img src={assets.leaders.abedAli.src} alt="Haji Abed Ali Miah" className="h-full w-full object-cover object-top" />
-                  </div>
-                  <div className="text-xs">
-                    <div className="font-bold text-[#ff9a55]">Haji Abed Ali Miah</div>
-                    <div className="text-white/60 text-[11px]">Founder & Pioneer</div>
-                  </div>
-                </div>
               </div>
             </Reveal>
           </div>
