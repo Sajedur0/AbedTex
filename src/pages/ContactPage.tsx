@@ -105,7 +105,7 @@ export default function ContactPage() {
           <div className="grid gap-8 lg:grid-cols-[1.4fr_0.6fr] lg:items-end mb-10">
             <div>
               <Eyebrow>Factory Location & Coordinates</Eyebrow>
-              <h2 className="display text-4xl md:text-5xl">Visit the Ghoradia Campus</h2>
+              <h2 className="display text-4xl md:text-5xl">Visit Abed Textile Processing Mills Ltd.</h2>
               <p className="mt-3 max-w-xl text-sm leading-relaxed text-[#5c645f]">
                 Located in the heart of Narsingdi’s historic textile hub with dedicated arterial highway access to Dhaka and Chittagong.
               </p>

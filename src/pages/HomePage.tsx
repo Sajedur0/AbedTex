@@ -50,7 +50,7 @@ export default function HomePage() {
       <section className="relative min-h-[calc(100vh-112px)] overflow-hidden bg-[#182722] text-white">
         <SmartImg
           img={assets.hero}
-          alt="Abed Textile factory"
+          alt="Abed Textile Processing Mills Ltd. factory"
           priority
           sizes="100vw"
           className="absolute inset-0 h-full w-full object-cover opacity-35"
@@ -162,14 +162,14 @@ export default function HomePage() {
                 <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl border border-black/10">
                   <SmartImg
                     img={assets.heroLoom}
-                    alt="High-speed digital textile printing line on the Ghoradia campus"
+                    alt="High-speed digital textile printing line at the Ghoradia mills"
                     sizes="(min-width:1024px) 46vw, 100vw"
                     className="h-full w-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                   <div className="absolute bottom-6 left-6 right-6 text-white">
                     <div className="text-[10px] font-bold uppercase tracking-widest text-[#ff9a55]">Integrated Facility</div>
-                    <div className="text-xl font-bold">Ghoradia Campus, Narsingdi Sadar</div>
+                    <div className="text-xl font-bold">Ghoradia, Narsingdi Sadar</div>
                     <div className="text-xs text-white/70">89+ Heavy Industrial Production Units</div>
                   </div>
                 </div>

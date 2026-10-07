@@ -12,7 +12,7 @@ export default function AboutPage() {
   const { openLightbox } = useApp();
 
   const galleryItems = [
-    { src: assets.heroCampus.src, title: 'Abed Textile Industrial Campus, Narsingdi', cat: 'Campus' },
+    { src: assets.heroMill.src, title: 'Abed Textile Processing Mills Ltd., Narsingdi', cat: 'Mill' },
     { src: assets.weaving.loomShed.src, title: 'Automated Loom Shed Floor', cat: 'Weaving' },
     { src: assets.technology.singlePass.src, title: 'Single-Pass Digital Production Line', cat: 'Digital' },
     { src: assets.sustainability.etpAeration.src, title: 'Biological ETP Aeration Facility', cat: 'ETP' },
@@ -266,7 +266,7 @@ export default function AboutPage() {
           <div className="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end">
             <div>
               <Eyebrow>Industrial Infrastructure</Eyebrow>
-              <h2 className="display text-4xl md:text-6xl">Inside the Ghoradia Campus</h2>
+              <h2 className="display text-4xl md:text-6xl">Inside Abed Textile Processing Mills Ltd.</h2>
               <p className="mt-2 text-sm text-[#5c645f]">
                 Integrated factory grounds spanning purpose-built production halls, biological ETP, and power backup.
               </p>

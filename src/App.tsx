@@ -70,7 +70,7 @@ function Navbar() {
         <Shell className="flex h-[78px] items-center justify-between gap-4">
           <a href="#/" className="flex items-center gap-3 group">
             <div className="h-12 w-12 rounded-lg bg-white p-1 border border-black/10 shadow-sm flex items-center justify-center transition group-hover:border-[#e86d2a]">
-              <img src={assets.logo.src} alt="Abed Textile" width={44} height={40} className="h-full w-full object-contain" />
+              <img src={assets.logo.src} alt="Abed Textile Processing Mills Ltd." width={44} height={40} className="h-full w-full object-contain" />
             </div>
             <div className="leading-tight">
               <div className="text-[15px] font-black tracking-[-.02em] text-[#182722]">ABED TEXTILE</div>
@@ -146,7 +146,7 @@ function Footer() {
               <div className="h-11 w-11 rounded-lg bg-white/10 p-1 flex items-center justify-center">
                 <img
                   src={assets.logo.src}
-                  alt="Abed Textile"
+                  alt="Abed Textile Processing Mills Ltd."
                   width={36}
                   height={32}
                   className="h-full w-full object-contain brightness-0 invert"
