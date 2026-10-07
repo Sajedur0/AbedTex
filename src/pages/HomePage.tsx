@@ -169,7 +169,7 @@ export default function HomePage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                   <div className="absolute bottom-6 left-6 right-6 text-white">
                     <div className="text-[10px] font-bold uppercase tracking-widest text-[#ff9a55]">Integrated Facility</div>
-                    <div className="text-xl font-bold">Ghoradia Mills, Narsingdi Sadar</div>
+                    <div className="text-xl font-bold">Ghoradia, Narsingdi Sadar</div>
                     <div className="text-xs text-white/70">89+ Heavy Industrial Production Units</div>
                   </div>
                 </div>
