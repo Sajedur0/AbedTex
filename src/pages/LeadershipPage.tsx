@@ -39,11 +39,6 @@ export default function LeadershipPage() {
                           className="h-full w-full object-cover object-top transition duration-700 hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
-                        <div className="absolute top-4 left-4">
-                          <span className="rounded-full bg-[#e86d2a] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white">
-                            0{idx + 1} · {leader.designation}
-                          </span>
-                        </div>
                         <div className="absolute bottom-4 left-4 right-4 text-white">
                           <h3 className="display text-2xl lg:text-3xl font-bold">{leader.name}</h3>
                           <p className="text-xs text-[#ff9a55] font-semibold mt-0.5">{leader.role}</p>
