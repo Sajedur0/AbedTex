@@ -1,3 +1,4 @@
+import { useState, type FormEvent } from 'react';
 import { ArrowUpRight, Mail, MapPin, Phone, Building2, Landmark, Factory } from 'lucide-react';
 import { assets } from '../assets';
 import { contactInfo, leaders, csrInstitutions, financialPartners } from '../profile';
@@ -5,6 +6,92 @@ import { PageHero, Shell, Eyebrow } from '../components/Site';
 import GoogleMap from '../components/GoogleMap';
 import Reveal from '../components/Reveal';
 import SmartImg from '../components/SmartImg';
+
+function InquiryForm() {
+  const [sent, setSent] = useState(false);
+  const field =
+    'w-full rounded-lg border border-black/15 bg-white px-4 py-3 text-sm text-[#182722] outline-none focus:border-[#e86d2a] focus:ring-2 focus:ring-[#e86d2a]/20';
+
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const f = new FormData(e.currentTarget);
+    const get = (k: string) => String(f.get(k) ?? '').trim();
+    const body = [
+      `Name: ${get('name')}`,
+      `Company: ${get('company')}`,
+      `Phone: ${get('phone')}`,
+      `Email: ${get('email')}`,
+      '',
+      get('message'),
+    ].join('\n');
+    window.location.href = `mailto:${contactInfo.factory.email}?subject=${encodeURIComponent(
+      `[Website Inquiry] ${get('topic')}`
+    )}&body=${encodeURIComponent(body)}`;
+    setSent(true);
+  };
+
+  return (
+    <section id="inquiry" className="py-20 lg:py-28 border-b border-black/10">
+      <Shell>
+        <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+          <div>
+            <Eyebrow>Send an Inquiry</Eyebrow>
+            <h2 className="display text-4xl md:text-5xl">Tell us what you need.</h2>
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-[#5c645f]">
+              Share your fabric, dyeing or digital printing requirement. Submitting opens your email app with the
+              message ready to send to {contactInfo.factory.email}.
+            </p>
+          </div>
+          <form onSubmit={onSubmit} className="grid gap-4 rounded-2xl border border-black/10 bg-white p-6 shadow-sm sm:grid-cols-2 sm:p-8">
+            <label className="text-xs font-bold">
+              Your name
+              <input name="name" required autoComplete="name" className={`${field} mt-1.5 font-normal`} />
+            </label>
+            <label className="text-xs font-bold">
+              Company
+              <input name="company" autoComplete="organization" className={`${field} mt-1.5 font-normal`} />
+            </label>
+            <label className="text-xs font-bold">
+              Email
+              <input name="email" type="email" required autoComplete="email" className={`${field} mt-1.5 font-normal`} />
+            </label>
+            <label className="text-xs font-bold">
+              Phone / WhatsApp
+              <input name="phone" type="tel" autoComplete="tel" className={`${field} mt-1.5 font-normal`} />
+            </label>
+            <label className="text-xs font-bold sm:col-span-2">
+              Topic
+              <select name="topic" className={`${field} mt-1.5 font-normal`} defaultValue="Digital printing">
+                <option>Digital printing</option>
+                <option>Dyeing & processing</option>
+                <option>Woven fabrics</option>
+                <option>Finishing</option>
+                <option>Partnership / other</option>
+              </select>
+            </label>
+            <label className="text-xs font-bold sm:col-span-2">
+              Message
+              <textarea name="message" required rows={5} className={`${field} mt-1.5 font-normal`} />
+            </label>
+            <div className="sm:col-span-2 flex flex-wrap items-center gap-4">
+              <button
+                type="submit"
+                className="inline-flex items-center gap-2 rounded-full bg-[#e86d2a] px-6 py-3 text-xs font-bold text-white transition hover:bg-[#c95820]"
+              >
+                Send inquiry <ArrowUpRight size={14} />
+              </button>
+              {sent && (
+                <span role="status" className="text-xs text-[#5c645f]">
+                  If your email app did not open, write to {contactInfo.factory.email}.
+                </span>
+              )}
+            </div>
+          </form>
+        </div>
+      </Shell>
+    </section>
+  );
+}
 
 export default function ContactPage() {
   const leaderImgs: Record<string, typeof assets.leaders.abedAli> = {
@@ -98,6 +185,8 @@ export default function ContactPage() {
           </div>
         </Shell>
       </section>
+
+      <InquiryForm />
 
       {/* Google Map of Factory at Ghoradia, Narsingdi */}
       <section id="map" className="py-20 lg:py-28 border-b border-black/10">

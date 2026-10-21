@@ -196,7 +196,7 @@ export default function ProductsPage() {
               <p className="text-xs text-white/70 mt-1">Our technical development lab provides rapid lab dips and sample strike-offs.</p>
             </div>
             <a
-              href="#/contact"
+              href="/contact"
               className="shrink-0 rounded-full bg-[#e86d2a] px-6 py-3 text-xs font-bold text-white transition hover:bg-[#c95820]"
             >
               Request Fabric Samples
