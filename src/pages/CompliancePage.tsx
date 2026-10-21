@@ -265,7 +265,7 @@ export default function CompliancePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
-                  <span className="rounded bg-[#ff9a55] px-2 py-0.5 text-[9px] font-bold uppercase text-[#182722]">
+                  <span className="rounded bg-[#ff9a55] px-2 py-0.5 text-[11px] font-bold uppercase text-[#182722]">
                     {item.cat}
                   </span>
                   <div className="font-bold text-xs text-white mt-1 line-clamp-1">{item.title}</div>

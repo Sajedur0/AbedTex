@@ -182,7 +182,7 @@ export default function UnitsPage() {
               <div key={label} className="p-3">
                 <div className="display text-2xl lg:text-3xl font-black text-[#ff9a55]">{val}</div>
                 <div className="mt-1 text-xs font-bold uppercase tracking-wider text-white">{label}</div>
-                <div className="text-[10px] text-white/50">{sub}</div>
+                <div className="text-[11px] text-white/50">{sub}</div>
               </div>
             ))}
           </div>
@@ -205,7 +205,7 @@ export default function UnitsPage() {
               <div key={wf.step} className="rounded-xl border border-black/10 bg-white p-3.5 shadow-sm">
                 <div className="text-[#a34d20] font-black text-xs">{wf.step}</div>
                 <div className="font-bold text-xs text-[#182722] mt-1">{wf.name}</div>
-                <div className="text-[10px] text-[#5c645f] leading-tight mt-1">{wf.desc}</div>
+                <div className="text-[11px] text-[#5c645f] leading-tight mt-1">{wf.desc}</div>
               </div>
             ))}
           </div>
@@ -243,7 +243,7 @@ export default function UnitsPage() {
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
                         {unit.stats.map((st) => (
                           <div key={st.label} className="rounded-xl border border-black/10 bg-white p-3.5 shadow-sm">
-                            <div className="text-[10px] font-bold uppercase tracking-wider text-[#a34d20]">{st.label}</div>
+                            <div className="text-[11px] font-bold uppercase tracking-wider text-[#a34d20]">{st.label}</div>
                             <div className="mt-1 font-bold text-xs text-[#182722]">{st.val}</div>
                           </div>
                         ))}
@@ -288,7 +288,7 @@ export default function UnitsPage() {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition" />
                         <div className="absolute bottom-2 left-2 right-2 text-white">
-                          <div className="text-[10px] font-bold line-clamp-1">{item.title}</div>
+                          <div className="text-[11px] font-bold line-clamp-1">{item.title}</div>
                         </div>
                         <span className="absolute right-2 top-2 grid h-6 w-6 place-items-center rounded-full bg-white text-[#182722] opacity-0 transition group-hover:opacity-100">
                           <ArrowUpRight size={12} />

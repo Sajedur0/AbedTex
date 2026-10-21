@@ -141,7 +141,7 @@ export default function ProductsPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent" />
                   <div className="relative z-10">
-                    <span className="rounded bg-[#ff9a55] px-2.5 py-0.5 text-[9px] font-bold uppercase text-[#182722]">
+                    <span className="rounded bg-[#ff9a55] px-2.5 py-0.5 text-[11px] font-bold uppercase text-[#182722]">
                       {item.category}
                     </span>
                     <h4 className="mt-2 text-base font-bold text-white line-clamp-1">{item.title}</h4>

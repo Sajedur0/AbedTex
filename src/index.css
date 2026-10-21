@@ -19,7 +19,7 @@
 }
 
 :root { color: #182722; background: #f7f3eb; font-family: 'DM Sans', sans-serif; font-synthesis: none; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 96px; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 body { margin: 0; overflow-x: hidden; background: #f7f3eb; -webkit-tap-highlight-color: transparent; }
 .display { font-family: 'Montserrat', 'DM Sans', sans-serif; font-weight: 900; letter-spacing: -.025em; }
 .nav-link { position: relative; color: #5b625e; transition: color .2s; }
@@ -41,3 +41,21 @@ body { margin: 0; overflow-x: hidden; background: #f7f3eb; -webkit-tap-highlight
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.reveal-up,.reveal-down,.reveal-left,.reveal-right,.reveal-fade{opacity:1;transform:none;transition:none}}
 ::-webkit-scrollbar{width:7px}::-webkit-scrollbar-track{background:#efe9df}::-webkit-scrollbar-thumb{background:#a9a89f}
 *:focus-visible{outline:2px solid #e86d2a;outline-offset:3px}
+
+/* ---- Responsive / accessibility polish ---- */
+:focus-visible { outline: 2px solid #e86d2a; outline-offset: 3px; border-radius: 4px; }
+img { max-width: 100%; height: auto; }
+h1, h2, h3 { text-wrap: balance; overflow-wrap: break-word; }
+p { text-wrap: pretty; }
+/* Horizontal chip rows (filters) scroll on one line instead of wrapping into 4+ rows. */
+.chip-row { display:flex; gap:.5rem; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch; scroll-snap-type:x proximity; }
+.chip-row::-webkit-scrollbar { display:none; }
+.chip-row > * { flex:none; scroll-snap-align:start; }
+@media (pointer: coarse) {
+  .tap { min-height: 44px; display:inline-flex; align-items:center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; scroll-behavior:auto !important; }
+  .reveal-up,.reveal-down,.reveal-left,.reveal-right,.reveal-fade { opacity:1; transform:none; }
+}

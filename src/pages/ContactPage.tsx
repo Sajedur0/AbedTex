@@ -10,7 +10,7 @@ import SmartImg from '../components/SmartImg';
 function InquiryForm() {
   const [sent, setSent] = useState(false);
   const field =
-    'w-full rounded-lg border border-black/15 bg-white px-4 py-3 text-sm text-[#182722] outline-none focus:border-[#e86d2a] focus:ring-2 focus:ring-[#e86d2a]/20';
+    'w-full rounded-lg border border-black/15 bg-white px-4 py-3 text-base sm:text-sm text-[#182722] outline-none focus:border-[#e86d2a] focus:ring-2 focus:ring-[#e86d2a]/20';
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -117,7 +117,7 @@ export default function ContactPage() {
             <div className="rounded-2xl border border-white/15 bg-white/5 p-8 md:p-10 flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <span className="rounded bg-[#ff9a55] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#182722]">
+                  <span className="rounded bg-[#ff9a55] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[#182722]">
                     Primary Manufacturing Plant
                   </span>
                   <Factory size={22} className="text-[#ff9a55]" />
@@ -155,7 +155,7 @@ export default function ContactPage() {
             <div className="rounded-2xl border border-white/15 bg-white/5 p-8 md:p-10 flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <span className="rounded bg-white/20 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white">
+                  <span className="rounded bg-white/20 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white">
                     Headquarters
                   </span>
                   <Building2 size={22} className="text-[#ff9a55]" />
@@ -265,12 +265,12 @@ export default function ContactPage() {
                   </div>
                   <div className="text-xs text-[#5c645f] space-y-1">
                     {d.mobile && (
-                      <a href={`tel:${d.mobile}`} className="hover:text-[#e86d2a] block font-medium">
+                      <a href={`tel:${d.mobile}`} className="block py-1.5 font-medium hover:text-[#e86d2a]">
                         {d.mobile}
                       </a>
                     )}
                     {d.email && (
-                      <a href={`mailto:${d.email}`} className="hover:text-[#e86d2a] block">
+                      <a href={`mailto:${d.email}`} className="block py-1.5 hover:text-[#e86d2a]">
                         {d.email}
                       </a>
                     )}
@@ -309,7 +309,7 @@ export default function ContactPage() {
                       <span className="font-mono text-xs font-bold text-[#a34d20]">0{i + 1}</span>
                       <span className="text-xs font-bold text-[#182722]">{inst.name}</span>
                     </div>
-                    <span className="text-[10px] font-semibold text-[#5c645f] bg-[#efe9df] px-2.5 py-0.5 rounded-full">
+                    <span className="text-[11px] font-semibold text-[#5c645f] bg-[#efe9df] px-2.5 py-0.5 rounded-full">
                       {inst.category}
                     </span>
                   </div>
@@ -338,7 +338,7 @@ export default function ContactPage() {
 
               <div className="mt-8 rounded-2xl bg-[#e86d2a] p-6 text-white flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div>
-                  <div className="text-[10px] font-bold uppercase tracking-wider text-white/80">Corporate Email</div>
+                  <div className="text-[11px] font-bold uppercase tracking-wider text-white/80">Corporate Email</div>
                   <div className="display text-xl font-bold">abedtextilebd@yahoo.com</div>
                 </div>
                 <a

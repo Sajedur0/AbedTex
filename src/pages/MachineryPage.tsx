@@ -69,7 +69,7 @@ export default function MachineryPage() {
               <div key={label} className="p-3">
                 <div className="display text-2xl lg:text-3xl font-black text-[#ff9a55]">{val}</div>
                 <div className="mt-1 text-xs font-bold uppercase tracking-wider text-white">{label}</div>
-                <div className="text-[10px] text-white/50">{sub}</div>
+                <div className="text-[11px] text-white/50">{sub}</div>
               </div>
             ))}
           </div>
@@ -104,15 +104,15 @@ export default function MachineryPage() {
           </div>
 
           {/* Stage Filter Buttons */}
-          <div className="flex flex-wrap items-center gap-2 mb-8">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#a34d20] mr-2 flex items-center gap-1">
+          <div className="mb-8 flex flex-wrap items-center gap-2">
+            <span className="mr-2 flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-[#a34d20]">
               <Filter size={14} /> Stage:
             </span>
             {stages.map((stage) => (
               <button
                 key={stage}
                 onClick={() => setSelectedStage(stage)}
-                className={`rounded-full px-4 py-1.5 text-xs font-bold transition ${
+                className={`rounded-full px-4 py-2.5 text-xs font-bold transition sm:py-2 ${
                   selectedStage === stage
                     ? 'bg-[#182722] text-white shadow'
                     : 'bg-[#efe9df] text-[#182722] hover:bg-[#e4ddcf]'
@@ -121,7 +121,7 @@ export default function MachineryPage() {
                 {stage}
               </button>
             ))}
-            <span className="ml-auto text-xs font-bold text-[#5c645f]">
+            <span className="w-full text-xs font-bold text-[#5c645f] sm:ml-auto sm:w-auto">
               Showing {filteredMachinery.length} categories ({totalUnits} units)
             </span>
           </div>
@@ -129,8 +129,8 @@ export default function MachineryPage() {
           {/* Table */}
           <div className="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm">
             <div className="overflow-x-auto">
-              <table className="w-full text-left text-sm">
-                <thead className="border-b border-black/10 bg-[#efe9df] text-[11px] font-bold uppercase tracking-wider text-[#182722]">
+              <table className="block w-full text-left text-sm md:table">
+                <thead className="hidden md:table-header-group border-b border-black/10 bg-[#efe9df] text-[11px] font-bold uppercase tracking-wider text-[#182722]">
                   <tr>
                     <th className="py-4 px-6 w-16">No.</th>
                     <th className="py-4 px-6 w-36">Stage</th>
@@ -138,16 +138,16 @@ export default function MachineryPage() {
                     <th className="py-4 px-6 w-32 text-right">Quantity</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-black/5 text-[#182722]">
+                <tbody className="block divide-y divide-black/5 text-[#182722] md:table-row-group">
                   {filteredMachinery.map((m) => (
-                    <tr key={m.id} className="hover:bg-[#fbf8f2] transition">
-                      <td className="py-5 px-6 font-mono font-bold text-xs text-[#a34d20]">{m.id}</td>
-                      <td className="py-5 px-6">
+                    <tr key={m.id} className="grid grid-cols-[1fr_auto] items-start gap-x-4 gap-y-3 px-5 py-5 transition hover:bg-[#fbf8f2] md:table-row md:p-0">
+                      <td className="hidden font-mono text-xs font-bold text-[#a34d20] md:table-cell md:px-6 md:py-5">{m.id}</td>
+                      <td className="col-start-1 row-start-1 md:table-cell md:px-6 md:py-5">
                         <span className="rounded-full bg-[#182722]/5 px-3 py-1 text-[11px] font-bold text-[#182722]">
                           {m.stage}
                         </span>
                       </td>
-                      <td className="py-5 px-6">
+                      <td className="col-span-2 row-start-2 md:table-cell md:px-6 md:py-5">
                         <div className="font-bold text-base text-[#182722]">{m.name}</div>
                         <div className="text-xs text-[#5c645f] mt-1 leading-relaxed">{m.description}</div>
                         {m.highlight && (
@@ -156,9 +156,9 @@ export default function MachineryPage() {
                           </div>
                         )}
                       </td>
-                      <td className="py-5 px-6 text-right">
+                      <td className="col-start-2 row-start-1 text-right md:table-cell md:px-6 md:py-5">
                         <span className="display text-2xl font-black text-[#182722]">{m.qty}</span>
-                        <span className="text-[10px] text-[#5c645f] block uppercase tracking-wider">Units</span>
+                        <span className="text-[11px] text-[#5c645f] block uppercase tracking-wider">Units</span>
                       </td>
                     </tr>
                   ))}
@@ -291,7 +291,7 @@ export default function MachineryPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition" />
                   <div className="absolute bottom-3 left-3 right-3 text-white">
-                    <span className="rounded bg-[#e86d2a] px-2 py-0.5 text-[8px] font-bold uppercase">
+                    <span className="rounded bg-[#e86d2a] px-2 py-0.5 text-[10px] font-bold uppercase">
                       {m.stage}
                     </span>
                     <div className="mt-1 font-bold text-xs line-clamp-1">{m.name}</div>

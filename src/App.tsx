@@ -53,16 +53,16 @@ function Navbar() {
   return (
     <>
       <div className="bg-[#182722] text-[#efe9df]">
-        <Shell className="flex h-9 items-center justify-between text-[10px] font-semibold uppercase tracking-[.16em]">
+        <Shell className="flex h-9 items-center justify-between gap-3 max-sm:whitespace-nowrap text-[11px] font-semibold uppercase tracking-[.16em] max-sm:text-[10px] max-sm:tracking-[.06em]">
           <div className="flex items-center gap-4">
             <span className="text-[#ff9a55]">{facts.tagline}</span>
-            <span className="hidden md:inline text-white/40">|</span>
-            <span className="hidden md:inline">18,000 Workforce · 120,000 m/day Digital Printing</span>
+            <span className="hidden lg:inline text-white/40">|</span>
+            <span className="hidden lg:inline">18,000 Workforce · 120,000 m/day Digital Printing</span>
           </div>
           <div className="flex items-center gap-4">
-            <span className="hidden sm:inline">Ghoradia, Narsingdi · Bangladesh</span>
-            <span className="text-white/40 hidden sm:inline">|</span>
-            <a href={`tel:${contactInfo.factory.mobile}`} className="hover:text-[#ff9a55] transition">{contactInfo.factory.mobile}</a>
+            <span className="hidden md:inline">Ghoradia, Narsingdi · Bangladesh</span>
+            <span className="text-white/40 hidden md:inline">|</span>
+            <a href={`tel:${contactInfo.factory.mobile}`} className="inline-flex h-9 items-center hover:text-[#ff9a55] transition">{contactInfo.factory.mobile}</a>
           </div>
         </Shell>
       </div>
@@ -75,11 +75,11 @@ function Navbar() {
             </div>
             <div className="leading-tight">
               <div className="text-[15px] font-black tracking-[-.02em] text-[#182722]">ABED TEXTILE</div>
-              <div className="text-[9px] font-bold uppercase tracking-[.16em] text-[#a34d20]">Processing Mills Ltd.</div>
+              <div className="text-[11px] font-bold uppercase tracking-[.16em] text-[#a34d20]">Processing Mills Ltd.</div>
             </div>
           </a>
 
-          <nav aria-label="Primary" className="hidden xl:flex items-center gap-4">
+          <nav aria-label="Primary" className="hidden min-[1380px]:flex items-center gap-4">
             {links.map(([to, label]) => (
               <a
                 key={to}
@@ -88,7 +88,7 @@ function Navbar() {
                 onFocus={() => prefetchRoute(to)}
                 onTouchStart={() => prefetchRoute(to)}
                 aria-current={pathname === to ? 'page' : undefined}
-                className={`nav-link text-[12px] font-bold tracking-tight px-2 py-1 rounded transition ${
+                className={`nav-link whitespace-nowrap text-[12px] font-bold tracking-tight px-2 py-1 rounded transition ${
                   pathname === to ? 'active text-[#e86d2a]' : 'text-[#182722] hover:text-[#e86d2a]'
                 }`}
               >
@@ -101,7 +101,7 @@ function Navbar() {
             <a
               href="/contact"
               onMouseEnter={() => prefetchRoute('/contact')}
-              className="hidden sm:inline-flex items-center gap-2 rounded-full bg-[#e86d2a] px-5 py-2.5 text-xs font-bold text-white shadow-sm transition hover:bg-[#c95820]"
+              className="hidden sm:inline-flex items-center gap-2 whitespace-nowrap rounded-full bg-[#e86d2a] px-5 py-2.5 text-xs font-bold text-white shadow-sm transition hover:bg-[#c95820]"
             >
               Contact Us <ArrowUpRight size={14} />
             </a>
@@ -109,7 +109,7 @@ function Navbar() {
               aria-label="Toggle menu"
               aria-expanded={open}
               onClick={() => setOpen(!open)}
-              className="grid h-10 w-10 place-items-center rounded-full bg-[#182722] text-white xl:hidden shadow"
+              className="grid h-10 w-10 place-items-center rounded-full bg-[#182722] text-white min-[1380px]:hidden shadow"
             >
               {open ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -117,12 +117,12 @@ function Navbar() {
         </Shell>
 
         {open && (
-          <Shell className="grid grid-cols-2 gap-px border-t border-black/10 py-4 bg-[#fbf8f2] xl:hidden">
+          <Shell className="grid max-h-[calc(100svh-120px)] grid-cols-1 gap-px overflow-y-auto border-t border-black/10 py-2 bg-[#fbf8f2] min-[420px]:grid-cols-2 min-[1380px]:hidden">
             {[...links, ['/contact', 'Contact & Inquiry']].map(([to, label]) => (
               <a
                 key={to}
                 href={to}
-                className={`border-b border-black/5 px-3 py-3 text-sm font-bold ${
+                className={`border-b border-black/5 px-3 py-3.5 text-sm font-bold ${
                   pathname === to ? 'text-[#e86d2a]' : 'text-[#182722]'
                 }`}
               >
@@ -154,8 +154,8 @@ function Footer() {
               </div>
               <div className="leading-tight">
                 <div className="text-[15px] font-black tracking-[-.02em] text-white">ABED TEXTILE</div>
-                <div className="text-[8px] font-bold uppercase tracking-[.16em] text-[#ff9a55]">Processing Mills Ltd.</div>
-                <div className="text-[8px] text-white/50">Textile Expertise. Digital Progress.</div>
+                <div className="text-[10px] font-bold uppercase tracking-[.16em] text-[#ff9a55]">Processing Mills Ltd.</div>
+                <div className="text-[10px] text-white/50">Textile Expertise. Digital Progress.</div>
               </div>
             </div>
             <div className="display text-3xl leading-snug md:text-5xl text-white">
@@ -183,12 +183,12 @@ function Footer() {
                   href={to}
                   key={to}
                   onMouseEnter={() => prefetchRoute(to)}
-                  className="hover:text-white transition flex items-center gap-1.5"
+                  className="hover:text-white transition flex items-center gap-1.5 py-1.5"
                 >
                   <span className="text-[#ff9a55]/60 text-xs">›</span> {label}
                 </a>
               ))}
-              <a href="/contact" className="hover:text-white transition flex items-center gap-1.5 text-[#ff9a55]">
+              <a href="/contact" className="hover:text-white transition flex items-center gap-1.5 py-1.5 text-[#ff9a55]">
                 <span className="text-[#ff9a55] text-xs">›</span> Contact & Factory Location
               </a>
             </div>
@@ -214,10 +214,10 @@ function Footer() {
               <div className="flex items-center gap-3">
                 <Phone size={16} className="text-[#ff9a55] shrink-0" />
                 <div>
-                  <a href={`tel:${contactInfo.factory.mobile}`} className="hover:text-white block font-medium">
+                  <a href={`tel:${contactInfo.factory.mobile}`} className="hover:text-white block py-1 font-medium">
                     {contactInfo.factory.mobile}
                   </a>
-                  <a href="tel:+88029462750" className="hover:text-white text-xs text-white/60 block">
+                  <a href="tel:+88029462750" className="hover:text-white text-xs text-white/60 block py-1">
                     +880 2 9462750-51
                   </a>
                 </div>
@@ -285,14 +285,28 @@ function Lightbox({
     });
   }, [state]);
 
+  const [touchX, setTouchX] = useState<number | null>(null);
   if (!state) return null;
   const item = state.items[state.index];
 
   return (
-    <div onClick={close} className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#101b18]/95 p-5">
+    <div
+      onClick={close}
+      onTouchStart={(e) => setTouchX(e.touches[0].clientX)}
+      onTouchEnd={(e) => {
+        if (touchX === null) return;
+        const dx = e.changedTouches[0].clientX - touchX;
+        setTouchX(null);
+        if (Math.abs(dx) > 50) move(dx < 0 ? 1 : -1);
+      }}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Image viewer"
+      className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#101b18]/95 p-3 sm:p-5"
+    >
       <button
         aria-label="Close"
-        className="absolute right-5 top-5 z-10 text-white transition hover:opacity-70 p-2 rounded-full bg-white/10"
+        className="absolute right-3 top-3 z-10 grid h-11 w-11 place-items-center rounded-full bg-white/15 text-white transition hover:opacity-70 sm:right-5 sm:top-5"
         onClick={close}
       >
         <X size={24} />
@@ -303,7 +317,7 @@ function Lightbox({
           e.stopPropagation();
           move(-1);
         }}
-        className="absolute left-4 z-10 grid h-12 w-12 place-items-center rounded-full bg-white text-[#182722] shadow-lg transition hover:scale-105"
+        className="absolute left-2 z-10 grid h-11 w-11 place-items-center rounded-full bg-white/90 text-[#182722] shadow-lg transition hover:scale-105 sm:left-4 sm:h-12 sm:w-12"
       >
         <ChevronLeft size={24} />
       </button>
@@ -312,7 +326,7 @@ function Lightbox({
           src={item.src}
           alt={item.title || ''}
           decoding="async"
-          className="max-h-[75vh] max-w-[86vw] rounded-lg object-contain shadow-2xl"
+          className="max-h-[75svh] max-w-[94vw] rounded-lg object-contain shadow-2xl sm:max-w-[86vw]"
         />
         {item.title && (
           <div className="mt-4 text-center text-white">
@@ -329,7 +343,7 @@ function Lightbox({
           e.stopPropagation();
           move(1);
         }}
-        className="absolute right-4 z-10 grid h-12 w-12 place-items-center rounded-full bg-white text-[#182722] shadow-lg transition hover:scale-105"
+        className="absolute right-2 z-10 grid h-11 w-11 place-items-center rounded-full bg-white/90 text-[#182722] shadow-lg transition hover:scale-105 sm:right-4 sm:h-12 sm:w-12"
       >
         <ChevronRight size={24} />
       </button>

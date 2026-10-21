@@ -51,7 +51,7 @@ export default function LeadershipPage() {
 
                         {leader.philosophy && (
                           <div className="rounded-xl bg-[#fbf8f2] border border-black/5 p-4">
-                            <div className="text-[10px] font-bold uppercase tracking-wider text-[#a34d20] mb-2">Founder Philosophy</div>
+                            <div className="text-[11px] font-bold uppercase tracking-wider text-[#a34d20] mb-2">Founder Philosophy</div>
                             <div className="flex flex-wrap gap-2">
                               {leader.philosophy.map((p) => (
                                 <span key={p} className="rounded-md bg-white px-2.5 py-1 text-xs font-bold text-[#182722] border border-black/5">
@@ -90,12 +90,12 @@ export default function LeadershipPage() {
                       <div className="border-t border-black/10 bg-[#efe9df] p-4 px-6 sm:px-8 flex flex-wrap items-center justify-between gap-3 text-xs">
                         <div className="flex flex-wrap gap-4 text-[#182722]">
                           {leader.mobile && (
-                            <a href={`tel:${leader.mobile}`} className="flex items-center gap-1.5 font-bold hover:text-[#e86d2a]">
+                            <a href={`tel:${leader.mobile}`} className="flex items-center gap-1.5 py-1.5 font-bold hover:text-[#e86d2a]">
                               <Phone size={13} className="text-[#e86d2a]" /> {leader.mobile}
                             </a>
                           )}
                           {leader.email && (
-                            <a href={`mailto:${leader.email}`} className="flex items-center gap-1.5 font-bold hover:text-[#e86d2a]">
+                            <a href={`mailto:${leader.email}`} className="flex items-center gap-1.5 py-1.5 font-bold hover:text-[#e86d2a]">
                               <Mail size={13} className="text-[#e86d2a]" /> {leader.email}
                             </a>
                           )}

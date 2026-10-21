@@ -47,7 +47,7 @@ export default function HomePage() {
   return (
     <div className="bg-[#f7f3eb] text-[#182722]">
       {/* Hero Section */}
-      <section className="relative min-h-[calc(100vh-112px)] overflow-hidden bg-[#182722] text-white">
+      <section className="relative min-h-[calc(100svh-112px)] overflow-hidden bg-[#182722] text-white">
         <SmartImg
           img={assets.hero}
           alt="Abed Textile Processing Mills Ltd. factory"
@@ -57,7 +57,7 @@ export default function HomePage() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#182722] via-[#182722]/85 to-transparent" />
 
-        <Shell className="relative flex min-h-[calc(100vh-112px)] flex-col justify-between py-10 lg:py-14">
+        <Shell className="relative flex min-h-[calc(100svh-112px)] flex-col justify-between py-10 lg:py-14">
           <div className="flex flex-wrap items-center justify-between gap-3 text-[11px] font-bold uppercase tracking-[.2em] text-[#ff9a55]">
             <span>Ghoradia, Narsingdi · Bangladesh</span>
             <span className="hidden sm:inline text-white/50">Established Early 1990s · 30+ Years Experience</span>
@@ -69,7 +69,7 @@ export default function HomePage() {
                 <Sparkles size={14} />
                 <span>Textile Expertise · Digital Progress</span>
               </div>
-              <h1 className="display max-w-5xl text-[clamp(3.5rem,8.2vw,8rem)] leading-[.88] tracking-tight">
+              <h1 className="display max-w-5xl text-[clamp(2.75rem,8.2vw,8rem)] leading-[.92] sm:leading-[.88] tracking-tight">
                 Built on experience.<br />
                 <i className="text-[#ff9a55] font-serif">Driven by progress.</i>
               </h1>
@@ -97,7 +97,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="flex items-center justify-between border-t border-white/20 pt-5 text-[10px] font-bold uppercase tracking-[.18em] text-white/50">
+          <div className="flex items-center justify-between border-t border-white/20 pt-5 text-[11px] font-bold uppercase tracking-[.18em] text-white/50">
             <span>Scroll to explore capabilities</span>
             <ArrowDown size={15} className="animate-bounce" />
           </div>
@@ -118,7 +118,7 @@ export default function HomePage() {
             <div key={label} className="px-4 py-6 text-center lg:text-left">
               <div className="display text-2xl lg:text-3xl font-black">{val}</div>
               <div className="mt-1 text-[11px] font-bold uppercase tracking-wider text-white/90">{label}</div>
-              <div className="text-[10px] text-white/65 hidden sm:block">{sub}</div>
+              <div className="text-[11px] text-white/65 hidden sm:block">{sub}</div>
             </div>
           ))}
         </Shell>
@@ -168,7 +168,7 @@ export default function HomePage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                   <div className="absolute bottom-6 left-6 right-6 text-white">
-                    <div className="text-[10px] font-bold uppercase tracking-widest text-[#ff9a55]">Integrated Facility</div>
+                    <div className="text-[11px] font-bold uppercase tracking-widest text-[#ff9a55]">Integrated Facility</div>
                     <div className="text-xl font-bold">Ghoradia, Narsingdi Sadar</div>
                     <div className="text-xs text-white/70">89+ Heavy Industrial Production Units</div>
                   </div>
@@ -222,7 +222,7 @@ export default function HomePage() {
                 >
                   <div className="text-[#ff9a55] font-black text-xs">{wf.step}</div>
                   <div className="mt-1 text-xs font-bold text-white line-clamp-1">{wf.name}</div>
-                  <div className="mt-1 text-[10px] text-white/50 leading-tight line-clamp-2">{wf.desc}</div>
+                  <div className="mt-1 text-[11px] text-white/50 leading-tight line-clamp-2">{wf.desc}</div>
                 </div>
               ))}
             </div>
@@ -244,7 +244,7 @@ export default function HomePage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 p-5">
-                    <span className="inline-block rounded bg-[#ff9a55] px-2.5 py-0.5 text-[10px] font-bold text-[#182722] mb-2">
+                    <span className="inline-block rounded bg-[#ff9a55] px-2.5 py-0.5 text-[11px] font-bold text-[#182722] mb-2">
                       {wing.subtitle}
                     </span>
                     <div className="display text-xl font-bold text-white">{wing.title}</div>
@@ -313,7 +313,7 @@ export default function HomePage() {
                     alt="Single pass digital printing machine"
                     className="h-full w-full object-cover"
                   />
-                  <span className="absolute left-4 top-4 rounded bg-[#182722]/85 px-3 py-1 text-[10px] font-bold text-white">
+                  <span className="absolute left-4 top-4 rounded bg-[#182722]/85 px-3 py-1 text-[11px] font-bold text-white">
                     Single-Pass High Speed
                   </span>
                 </div>
@@ -325,7 +325,7 @@ export default function HomePage() {
                       alt="Advanced printhead systems"
                       className="h-full w-full object-cover"
                     />
-                    <span className="absolute bottom-3 left-3 text-[10px] font-bold text-white bg-black/60 px-2 py-0.5 rounded">
+                    <span className="absolute bottom-3 left-3 text-[11px] font-bold text-white bg-black/60 px-2 py-0.5 rounded">
                       Precision Printheads
                     </span>
                   </div>
@@ -335,7 +335,7 @@ export default function HomePage() {
                       alt="Digital print floral output"
                       className="h-full w-full object-cover"
                     />
-                    <span className="absolute bottom-3 left-3 text-[10px] font-bold text-white bg-black/60 px-2 py-0.5 rounded">
+                    <span className="absolute bottom-3 left-3 text-[11px] font-bold text-white bg-black/60 px-2 py-0.5 rounded">
                       Finished Fabric Output
                     </span>
                   </div>
@@ -368,7 +368,7 @@ export default function HomePage() {
                 <div className="rounded-2xl border border-white/15 bg-white/5 p-6 hover:bg-white/10 transition flex flex-col justify-between h-full">
                   <div>
                     <div className="flex items-center justify-between mb-4">
-                      <span className="rounded bg-[#ff9a55]/20 text-[#ff9a55] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider">
+                      <span className="rounded bg-[#ff9a55]/20 text-[#ff9a55] px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider">
                         {aff.tagline}
                       </span>
                     </div>
@@ -468,9 +468,9 @@ export default function HomePage() {
               <div className="grid gap-3 sm:grid-cols-2">
                 {csrInstitutions.map((inst, idx) => (
                   <div key={inst.name} className="rounded-xl border border-black/10 bg-white p-3.5 shadow-sm">
-                    <span className="text-[10px] font-bold text-[#e86d2a]">0{idx + 1}</span>
+                    <span className="text-[11px] font-bold text-[#e86d2a]">0{idx + 1}</span>
                     <div className="font-bold text-xs text-[#182722] mt-0.5">{inst.name}</div>
-                    <div className="text-[10px] text-[#5c645f]">{inst.category}</div>
+                    <div className="text-[11px] text-[#5c645f]">{inst.category}</div>
                   </div>
                 ))}
               </div>

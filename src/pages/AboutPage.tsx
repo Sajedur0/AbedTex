@@ -61,7 +61,7 @@ export default function AboutPage() {
                   <div key={l} className="rounded-2xl border border-black/10 bg-[#efe9df] p-5 shadow-sm">
                     <div className="text-xl lg:text-2xl font-black text-[#182722]">{v}</div>
                     <div className="mt-1 text-[11px] font-bold uppercase tracking-wider text-[#a34d20]">{l}</div>
-                    <div className="mt-1 text-[10px] text-[#5c645f]">{s}</div>
+                    <div className="mt-1 text-[11px] text-[#5c645f]">{s}</div>
                   </div>
                 ))}
               </div>
@@ -84,7 +84,7 @@ export default function AboutPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6">
-                  <div className="text-[10px] font-bold uppercase tracking-widest text-[#ff9a55]">The Founder</div>
+                  <div className="text-[11px] font-bold uppercase tracking-widest text-[#ff9a55]">The Founder</div>
                   <h3 className="display text-2xl font-bold">Haji Abed Ali Miah</h3>
                   <p className="text-xs text-white/70">Founder & Visionary Pioneer</p>
                 </div>
@@ -251,7 +251,7 @@ export default function AboutPage() {
             <div className="flex flex-wrap gap-2.5">
               {codeOfConduct.map((item, idx) => (
                 <div key={item} className="flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold text-white">
-                  <span className="text-[#ff9a55] text-[10px]">0{idx + 1}</span>
+                  <span className="text-[#ff9a55] text-[11px]">0{idx + 1}</span>
                   <span>{item}</span>
                 </div>
               ))}
@@ -288,7 +288,7 @@ export default function AboutPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
                   <div className="absolute bottom-4 left-4 right-4">
-                    <span className="rounded bg-[#e86d2a] px-2 py-0.5 text-[9px] font-bold uppercase text-white">
+                    <span className="rounded bg-[#e86d2a] px-2 py-0.5 text-[11px] font-bold uppercase text-white">
                       {item.cat}
                     </span>
                     <div className="mt-1 font-bold text-xs text-white line-clamp-1">{item.title}</div>

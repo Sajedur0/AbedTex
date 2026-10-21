@@ -26,9 +26,9 @@ export default function GalleryPage() {
       />
 
       <section className="bg-[#efe9df] border-b border-black/10 sticky top-[78px] z-30 shadow-xs">
-        <Shell className="py-4">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#a34d20] mr-2 flex items-center gap-1">
+        <Shell className="py-3 sm:py-4">
+          <div className="chip-row items-center">
+            <span className="mr-2 flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-[#a34d20]">
               <Filter size={14} /> Category:
             </span>
             {categories.map((cat) => {
@@ -37,7 +37,7 @@ export default function GalleryPage() {
                 <button
                   key={cat}
                   onClick={() => setSelectedCat(cat)}
-                  className={`rounded-full px-4 py-1.5 text-xs font-bold transition-all ${
+                  className={`rounded-full px-4 py-2.5 text-xs font-bold transition-all sm:py-2 ${
                     active
                       ? 'bg-[#182722] text-white shadow-sm'
                       : 'bg-white text-[#5c645f] hover:bg-white hover:text-black border border-black/10'
@@ -53,14 +53,14 @@ export default function GalleryPage() {
 
       <section className="py-12 lg:py-20">
         <Shell>
-          <div className="mb-8 flex items-center justify-between">
+          <div className="mb-8 flex flex-wrap items-center justify-between gap-2">
             <div className="text-xs font-bold uppercase tracking-[.18em] text-[#a34d20]">
               Showing {filteredItems.length} of {assets.gallery.length} verified facility records
             </div>
             {selectedCat !== 'All' && (
               <button
                 onClick={() => setSelectedCat('All')}
-                className="text-xs font-bold text-[#e86d2a] hover:underline"
+                className="tap text-xs font-bold text-[#e86d2a] hover:underline"
               >
                 Reset filter (Show all)
               </button>
@@ -84,7 +84,7 @@ export default function GalleryPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-80 transition group-hover:opacity-95" />
                   <div className="absolute inset-x-0 bottom-0 p-5">
-                    <span className="inline-block rounded-full bg-[#ff9a55]/20 px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-[#ff9a55] border border-[#ff9a55]/30 mb-1.5">
+                    <span className="inline-block rounded-full bg-[#ff9a55]/20 px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wider text-[#ff9a55] border border-[#ff9a55]/30 mb-1.5">
                       {item.cat}
                     </span>
                     <h3 className="text-sm font-bold text-white leading-snug">{item.title}</h3>

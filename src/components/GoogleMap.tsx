@@ -45,7 +45,7 @@ export default function GoogleMap({ src, title, caption = 'Loading map', classNa
         <div className="absolute inset-0 grid place-items-center">
           <div className="text-center">
             <MapPin className="mx-auto text-[#e86d2a]" size={26} />
-            <div className="mt-3 text-[10px] font-bold uppercase tracking-[.2em] text-[#6d7570]">{caption}</div>
+            <div className="mt-3 text-[11px] font-bold uppercase tracking-[.2em] text-[#6d7570]">{caption}</div>
           </div>
         </div>
       )}

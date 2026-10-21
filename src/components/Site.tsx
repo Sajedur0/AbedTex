@@ -12,11 +12,11 @@ export function Eyebrow({ children, light = false }: { children: ReactNode; ligh
 export function PageHero({ kicker, title, intro, children }: { kicker: string; title: string; intro: string; children?: ReactNode }) {
   return (
     <section className="page-hero border-b border-black/10 bg-[#efe9df]">
-      <Shell className="py-16 md:py-24">
+      <Shell className="py-12 sm:py-16 md:py-24">
         <div className="grid gap-10 lg:grid-cols-[1fr_340px] lg:items-end">
           <div className="max-w-4xl">
             <Eyebrow>{kicker}</Eyebrow>
-            <h1 className="display text-[clamp(3rem,7vw,7rem)] leading-[.84] text-[#182722]">{title}</h1>
+            <h1 className="display text-[clamp(2.25rem,8.5vw,7rem)] leading-[.95] sm:leading-[.88] lg:leading-[.84] text-[#182722]">{title}</h1>
           </div>
           <div>
             <p className="max-w-md text-[15px] leading-7 text-[#4d5752]">{intro}</p>
