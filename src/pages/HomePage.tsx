@@ -11,35 +11,35 @@ const productionWings = [
     subtitle: '32 Looms',
     img: assets.banners.weaving,
     text: 'High-speed automated industrial loom shed producing premium greige cotton fabric.',
-    link: '#/units',
+    link: '/units',
   },
   {
     title: 'Dyeing & Pretreatment',
     subtitle: '80,000 m/day',
     img: assets.banners.dyeing,
     text: 'Singeing, clip/roller mercerizing, Cold Pad Batch and 35 single/jumbo jigger units.',
-    link: '#/units',
+    link: '/units',
   },
   {
     title: 'Digital Textile Printing',
     subtitle: '120,000 m/day',
     img: assets.banners.digital,
     text: 'Industrial single-pass Atexco, VEGA, BYDI, and RBR Hybrid printing suites.',
-    link: '#/units',
+    link: '/units',
   },
   {
     title: 'Conventional Printing',
     subtitle: '80,000 m/day',
     img: assets.banners.conventionalPrinting,
     text: 'Automatic rotary screen and serbo flatbed lines with high-temperature loop steamers.',
-    link: '#/units',
+    link: '/units',
   },
   {
     title: 'Washing & Finishing',
     subtitle: '280,000 m/day',
     img: assets.banners.finishing,
     text: 'Multi-chamber Bruckner & Babcock stenters, open-width wash ranges and calenders.',
-    link: '#/units',
+    link: '/units',
   },
 ];
 
@@ -82,13 +82,13 @@ export default function HomePage() {
               </p>
               <div className="mt-6 flex flex-col sm:flex-row gap-3">
                 <a
-                  href="#/units"
+                  href="/units"
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-[#e86d2a] px-6 py-3 text-xs font-bold text-white transition hover:bg-[#c95820]"
                 >
                   Production Units <ArrowUpRight size={14} />
                 </a>
                 <a
-                  href="#/about"
+                  href="/about"
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-white/10 px-6 py-3 text-xs font-bold text-white transition hover:bg-white/20"
                 >
                   Our Journey
@@ -152,7 +152,7 @@ export default function HomePage() {
                 </div>
 
                 <div className="pt-2">
-                  <LinkArrow href="#/about">Read full company story & journey</LinkArrow>
+                  <LinkArrow href="/about">Read full company story & journey</LinkArrow>
                 </div>
               </div>
             </Reveal>
@@ -205,7 +205,7 @@ export default function HomePage() {
                   coordinated operation. Connected processes. Better control. Consistent execution.
                 </p>
               </div>
-              <LinkArrow href="#/units" light>
+              <LinkArrow href="/units" light>
                 View all 5 wings & machinery
               </LinkArrow>
             </div>
@@ -296,7 +296,7 @@ export default function HomePage() {
                     <div className="text-xs text-white/60">Single-pass Atexco, VEGA, BYDI & RBR Hybrid</div>
                   </div>
                   <a
-                    href="#/machinery"
+                    href="/machinery"
                     className="shrink-0 rounded-full bg-[#e86d2a] px-5 py-2.5 text-xs font-bold text-white transition hover:bg-[#c95820]"
                   >
                     View Machine Specs
@@ -437,7 +437,7 @@ export default function HomePage() {
                 </div>
 
                 <div className="pt-2">
-                  <LinkArrow href="#/compliance">Explore our full sustainability & quality policy</LinkArrow>
+                  <LinkArrow href="/compliance">Explore our full sustainability & quality policy</LinkArrow>
                 </div>
               </div>
             </Reveal>
@@ -459,7 +459,7 @@ export default function HomePage() {
                 and healthcare institutions across Narsingdi and Shibpur.
               </p>
               <div className="mt-6">
-                <LinkArrow href="#/leadership">Meet our leadership team</LinkArrow>
+                <LinkArrow href="/leadership">Meet our leadership team</LinkArrow>
               </div>
             </div>
 

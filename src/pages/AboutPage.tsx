@@ -120,7 +120,7 @@ export default function AboutPage() {
                 </div>
 
                 <div className="pt-4">
-                  <LinkArrow href="#/leadership" light>
+                  <LinkArrow href="/leadership" light>
                     Learn about current Board of Directors & Chairman
                   </LinkArrow>
                 </div>
@@ -271,7 +271,7 @@ export default function AboutPage() {
                 Integrated factory grounds spanning purpose-built production halls, biological ETP, and power backup.
               </p>
             </div>
-            <LinkArrow href="#/gallery">Open full gallery ({assets.gallery.length} photos)</LinkArrow>
+            <LinkArrow href="/gallery">Open full gallery ({assets.gallery.length} photos)</LinkArrow>
           </div>
 
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

@@ -273,7 +273,7 @@ export default function MachineryPage() {
                 Photographs from our live factory floor showing high-speed digital printers, jiggers, stenters, and looms.
               </p>
             </div>
-            <LinkArrow href="#/gallery">Explore all {assets.gallery.length} factory images</LinkArrow>
+            <LinkArrow href="/gallery">Explore all {assets.gallery.length} factory images</LinkArrow>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">

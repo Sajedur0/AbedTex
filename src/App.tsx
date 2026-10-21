@@ -1,8 +1,9 @@
 import { Suspense, createContext, useCallback, useContext, useEffect, useState } from 'react';
-import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { ArrowUpRight, ChevronLeft, ChevronRight, Menu, X, Phone, Mail, MapPin } from 'lucide-react';
 import { assets, type Img } from './assets';
 import { Shell } from './components/Site';
+import Seo from './components/Seo';
 import { facts, contactInfo } from './profile';
 import { prefetchLikelyRoutes, prefetchRoute } from './routes';
 import HomePage from './pages/HomePage';
@@ -68,7 +69,7 @@ function Navbar() {
 
       <header className="sticky top-0 z-40 border-b border-black/10 bg-[#f7f3eb]">
         <Shell className="flex h-[78px] items-center justify-between gap-4">
-          <a href="#/" className="flex items-center gap-3 group">
+          <a href="/" className="flex items-center gap-3 group">
             <div className="h-12 w-12 rounded-lg bg-white p-1 border border-black/10 shadow-sm flex items-center justify-center transition group-hover:border-[#e86d2a]">
               <img src={assets.logo.src} alt="Abed Textile Processing Mills Ltd." width={44} height={40} className="h-full w-full object-contain" />
             </div>
@@ -78,11 +79,11 @@ function Navbar() {
             </div>
           </a>
 
-          <nav className="hidden xl:flex items-center gap-4">
+          <nav aria-label="Primary" className="hidden xl:flex items-center gap-4">
             {links.map(([to, label]) => (
               <a
                 key={to}
-                href={`#${to}`}
+                href={to}
                 onMouseEnter={() => prefetchRoute(to)}
                 onFocus={() => prefetchRoute(to)}
                 onTouchStart={() => prefetchRoute(to)}
@@ -98,7 +99,7 @@ function Navbar() {
 
           <div className="flex items-center gap-2">
             <a
-              href="#/contact"
+              href="/contact"
               onMouseEnter={() => prefetchRoute('/contact')}
               className="hidden sm:inline-flex items-center gap-2 rounded-full bg-[#e86d2a] px-5 py-2.5 text-xs font-bold text-white shadow-sm transition hover:bg-[#c95820]"
             >
@@ -120,7 +121,7 @@ function Navbar() {
             {[...links, ['/contact', 'Contact & Inquiry']].map(([to, label]) => (
               <a
                 key={to}
-                href={`#${to}`}
+                href={to}
                 className={`border-b border-black/5 px-3 py-3 text-sm font-bold ${
                   pathname === to ? 'text-[#e86d2a]' : 'text-[#182722]'
                 }`}
@@ -179,7 +180,7 @@ function Footer() {
             <div className="grid gap-2.5 text-sm text-white/70">
               {links.map(([to, label]) => (
                 <a
-                  href={`#${to}`}
+                  href={to}
                   key={to}
                   onMouseEnter={() => prefetchRoute(to)}
                   className="hover:text-white transition flex items-center gap-1.5"
@@ -187,7 +188,7 @@ function Footer() {
                   <span className="text-[#ff9a55]/60 text-xs">›</span> {label}
                 </a>
               ))}
-              <a href="#/contact" className="hover:text-white transition flex items-center gap-1.5 text-[#ff9a55]">
+              <a href="/contact" className="hover:text-white transition flex items-center gap-1.5 text-[#ff9a55]">
                 <span className="text-[#ff9a55] text-xs">›</span> Contact & Factory Location
               </a>
             </div>
@@ -356,10 +357,12 @@ export default function App() {
 
   return (
     <AppContext.Provider value={{ openLightbox }}>
-      <HashRouter>
+      <BrowserRouter>
         <ScrollTop />
+        <Seo />
+        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-bold">Skip to content</a>
         <Navbar />
-        <main>
+        <main id="main">
           <Suspense fallback={<RouteFallback />}>
             <Routes>
               <Route path="/" element={<HomePage />} />
@@ -376,7 +379,7 @@ export default function App() {
         </main>
         <Footer />
         <Lightbox state={lightbox} close={closeLightbox} move={move} />
-      </HashRouter>
+      </BrowserRouter>
     </AppContext.Provider>
   );
 }

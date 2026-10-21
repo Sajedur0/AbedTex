@@ -29,7 +29,7 @@ Abed Textile Processing Mills Limited operates an integrated manufacturing platf
 - **Build Tool:** Vite 8
 - **Styling:** Tailwind CSS 4
 - **Icons:** Lucide React
-- **Routing:** React Router 7 (hash router) with route-level code splitting
+- **Routing:** React Router 7 (browser router, real URLs like `/about`) with route-level code splitting
 - **Fonts:** Montserrat (display) + DM Sans (body) — self-hosted variable WOFF2
 - **Image Pipeline:** Category-foldered WebP photos with consistent snake_case names and two-digit sequence numbers (the site icon remains PNG)
 
@@ -86,6 +86,14 @@ public/img/
 | 10 | **Finishing** | Calender Machines | 4 | Bowl, saree felt & poplin felt |
 
 ---
+
+## SEO & Deployment
+
+- Per-page `<title>`, description, canonical and Open Graph tags are set in `src/components/Seo.tsx`; base tags and Organization JSON-LD live in `index.html`.
+- Set `SITE_URL` when building for production to fill absolute URLs and emit `sitemap.xml` / `robots.txt`:
+  `SITE_URL=https://your-domain.com npm run build`
+- Old hash links (`/#/about`) are redirected to `/about` automatically.
+- The Contact page includes an inquiry form that opens the visitor's email app (no backend required).
 
 ## Getting Started
 

@@ -248,7 +248,7 @@ export default function CompliancePage() {
               <Eyebrow light>Verified Facility</Eyebrow>
               <h2 className="display text-4xl md:text-6xl text-white">Environmental & Quality Infrastructure</h2>
             </div>
-            <LinkArrow href="#/gallery" light>Open full photo gallery</LinkArrow>
+            <LinkArrow href="/gallery" light>Open full photo gallery</LinkArrow>
           </div>
 
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
