@@ -75,7 +75,6 @@ function Navbar() {
             <div className="leading-tight">
               <div className="text-[15px] font-black tracking-[-.02em] text-[#182722]">ABED TEXTILE</div>
               <div className="text-[9px] font-bold uppercase tracking-[.16em] text-[#a34d20]">Processing Mills Ltd.</div>
-              <div className="text-[8px] font-medium text-[#5c645f] hidden sm:block">আবেদ টেক্সটাইল প্রসেসিং মিলস লিঃ</div>
             </div>
           </a>
 
